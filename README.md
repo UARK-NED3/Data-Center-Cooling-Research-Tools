@@ -2,7 +2,7 @@
 
 ![Data Center Cooling Research Tools scope illustration](docs/assets/data-center-cooling-research-tools.png)
 
-A curated hub for researchers working on data center cooling, thermal management, liquid cooling, facility energy modeling, control, testing, and digital twins.
+A hub for researchers working on data center cooling, thermal management, liquid cooling, facility energy modeling, control, testing, and digital twins.
 
 The goal is not to promote one model, one solver, or one lab codebase. This repository is meant to be a one-stop starting point for finding useful tools across the full cooling stack: from bubble and droplet physics to chip/package cooling, rack liquid loops, CDUs, facility simulation, PUE/WUE/ERE accounting, heat reuse, and AI-assisted operation.
 
