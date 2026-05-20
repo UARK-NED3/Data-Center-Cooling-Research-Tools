@@ -16,6 +16,7 @@ Included resources should help researchers design, model, test, monitor, optimiz
 - [Room, Building, And Campus Modeling](#room-building-and-campus-modeling)
 - [AI, Control, Digital Twins, And Operations](#ai-control-digital-twins-and-operations)
 - [System Metrics, Standards, And Accounting](#system-metrics-standards-and-accounting)
+- [Skills, Agents, And Plugin Collections](#skills-agents-and-plugin-collections)
 - [Discovery Sources](#discovery-sources)
 - [Entry Format](#entry-format)
 
@@ -90,6 +91,17 @@ Resources that connect cooling innovations to system-level outcomes.
 | ASHRAE thermal guidelines | Standard/guideline | IT/facility | Operating envelopes, allowable conditions, environmental classes, and data center thermal management guidance. |
 | Reliability and serviceability metrics | Evaluation workflow | Component to facility | Leak risk, maintainability, redundancy, uptime, pump/fan failure, fouling, corrosion, and instrumentation drift. |
 
+## Skills, Agents, And Plugin Collections
+
+Agent skills and plugin collections can help researchers run literature reviews, screen data center opportunities, automate facility-control workflows, and preserve reproducible engineering reasoning. Include them when they support research work; do not treat them as substitutes for validated thermal-fluid models, calibrated experiments, or engineering judgment.
+
+| Resource | Type | Scale | Notes |
+| --- | --- | --- | --- |
+| [Mechanical Engineering Research Skill](https://github.com/hanhuark/mechanical-engineering-research-skill) | Agent skill | Thermal-fluid research workflow | Source-aware workflow for heat transfer, fluid mechanics, HVAC, energy systems, CFD, experiments, AI/ML, research coding, proposals, and technical writing. Useful as a domain-specific research assistant for data center cooling studies. |
+| [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) | Plugin/skill collection | Research workflow | Academic research skills for literature review, paper planning, writing, review, citation checking, and publication workflows. Useful for cooling researchers preparing reviews, manuscripts, and proposal background sections. |
+| [Data Center Due Diligence Orchestrator](https://mcpmarket.com/tools/skills/data-center-due-diligence-orchestrator) | Agent skill | Site/facility/investment workflow | Coordinates multi-domain data center due diligence across power, connectivity, land, environmental, and commercial factors. Relevant for site selection, infrastructure risk, and early-stage facility cooling constraints. |
+| [Sensibo Automation](https://mcpmarket.com/tools/skills/sensibo-automation) | Agent skill / MCP workflow | Building HVAC/control | Automates Sensibo-connected climate control and monitoring. Mostly adjacent to data centers, but relevant for building-level HVAC control experiments, small lab test spaces, and AI-driven climate-control workflow prototypes. |
+
 ## Discovery Sources
 
 Use these sources to find candidate entries. Candidates should be screened before inclusion.
@@ -120,4 +132,3 @@ Recommended tags:
 ## Contributing
 
 Contributions are welcome when they improve the usefulness of the hub for data center cooling researchers. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before adding entries.
-
