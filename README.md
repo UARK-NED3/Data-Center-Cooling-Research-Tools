@@ -18,6 +18,7 @@ Included resources should help researchers design, model, test, monitor, optimiz
 - [System Metrics, Standards, And Accounting](#system-metrics-standards-and-accounting)
 - [Skills, Agents, And Plugin Collections](#skills-agents-and-plugin-collections)
 - [Discovery Sources](#discovery-sources)
+- [Repository Review Workflow](#repository-review-workflow)
 - [Entry Format](#entry-format)
 
 ## Fundamental Thermal-Fluid Mechanisms
@@ -113,6 +114,13 @@ Use these sources to find candidate entries. Candidates should be screened befor
 | Paper artifact links | Reproducible research code and datasets. | Prefer papers with clear model assumptions, validation, and reusable data or scripts. |
 | Standards and professional societies | High-confidence definitions and test guidance. | Include stable links and note whether access is open or paid. |
 | Vendor examples and documentation | Practical workflows for commercial solvers and hardware. | Avoid marketing-only entries; prefer technical examples, manuals, or validation cases. |
+
+## Repository Review Workflow
+
+GitHub search should be used as a candidate-mining workflow, not as automatic evidence. Search-derived repositories should be screened, reviewed, and then either cited in the main README, placed in an adjacent/educational section, or excluded.
+
+- Review protocol: [docs/repo-review-workflow.md](docs/repo-review-workflow.md)
+- Initial candidate queue: [docs/candidate-repos.md](docs/candidate-repos.md)
 
 ## Entry Format
 
