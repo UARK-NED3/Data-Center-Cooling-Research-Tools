@@ -43,6 +43,7 @@ Tools for heat generation, spreading, conduction, cold plates, direct-to-chip co
 | Chip power map workflows | Data/model workflow | Chip/package | Map power density to junction temperature, hotspot risk, cooling limits, and system-level energy implications. |
 | Electro-thermal co-design workflows | Design workflow | Chip/server | Joint treatment of power delivery, thermal constraints, 800 VDC architectures, reliability, and cooling requirements. |
 | Smart Cooling Library | Open-source candidate | Processor/rack | Modelica thermal modeling of processors, cooling systems, loops, and rack simulation; screen before full inclusion. |
+| [xenabmirza/magnetocaloric-thin-film-cooling](https://github.com/xenabmirza/magnetocaloric-thin-film-cooling) | Open-source candidate | Microchip / emerging cooling | Python/Jupyter candidate for magnetocaloric thin-film cooling concepts; no README was available during initial screening, so treat as a low-confidence candidate until reviewed. |
 
 ## Rack, CDU, And Liquid Loop Systems
 
@@ -54,7 +55,9 @@ Tools for rack cooling hardware, hydraulic integration, liquid loops, CDUs, rear
 | Direct-to-chip liquid-cooling workflows | Design/modeling workflow | Server/rack | Cold plate selection, manifold design, pressure drop, flow balancing, quick disconnects, leak detection, and serviceability. |
 | Immersion cooling workflows | Design/testing workflow | Server/rack/tank | Dielectric fluid selection, boiling/single-phase behavior, material compatibility, maintenance, and electrical reliability. |
 | Rear-door heat exchanger workflows | Design/modeling workflow | Rack/room | Rack heat capture, air-liquid heat exchange, fan interaction, condensation risk, and controls. |
-| 2listic/datacenter-planner | Open-source candidate | Rack/room | 3D planning for racks and cooling systems; useful as a visualization/planning candidate after screening. |
+| [2listic/datacenter-planner](https://github.com/2listic/datacenter-planner) | Open-source planning tool | Rack/room | Web-based 2D-to-3D data center planning tool for placing racks and cooling equipment; useful for layout visualization, not a validated thermal solver. |
+| [LianLiTech/In-Rack-Coolant-Distribution-Unit](https://github.com/LianLiTech/In-Rack-Coolant-Distribution-Unit) | Vendor/product material | Rack/CDU | In-rack CDU and containerized data center cooling overview; useful for hardware landscape awareness, but needs datasheets or test data before engineering citation. |
+| [LianLiTech/Data-Center-Liquid-Cooling-System](https://github.com/LianLiTech/Data-Center-Liquid-Cooling-System) | Vendor/product material | Rack/liquid cooling | Liquid-cooling product overview for high-density AI/HPC racks; include only as market/hardware orientation unless technical documentation is added. |
 
 ## Room, Building, And Campus Modeling
 
@@ -67,6 +70,9 @@ Tools for connecting component and rack innovations to facility energy use, wate
 | Data-center room CFD workflows | CFD workflow | Room/facility | Air management, containment, recirculation, bypass, rack inlet temperatures, and CRAC/CRAH interactions. |
 | [nuoaleon/Data-center-PUE-prediction-tool](https://github.com/nuoaleon/Data-center-PUE-prediction-tool) | Open notebooks | Facility/campus | Physics-based PUE prediction and sensitivity analysis for climate-dependent hyperscale data center cooling scenarios. |
 | Heat reuse workflows | Design/accounting workflow | Facility/campus | Waste heat recovery, district heating, greenhouse/aquaculture uses, ERE accounting, economics, and temperature-grade constraints. |
+| [ME421-Capstone-Project/chiller-model](https://github.com/ME421-Capstone-Project/chiller-model) | Open-source package / educational project | Chiller array / facility | Models thermal interference among nearby chillers, greedy chiller selection, aging, startup ramp, wind, and dynamic load; useful for educational facility optimization studies. |
+| [femmetronics/Data-Center-Cooling-System](https://github.com/femmetronics/Data-Center-Cooling-System) | Open-source simulation / educational project | Facility/operations | Simulates cooling-mode selection and workload scheduling with water, energy, carbon, psychrometric, and workload-shifting considerations. |
+| [NSTuttle/EfficiencyCalculatorWeb](https://github.com/NSTuttle/EfficiencyCalculatorWeb) | Web calculator / educational | Facility/PUE | Older HTML/CSS/JS calculator for estimating savings from PUE improvement; useful as a simple teaching reference, not a full facility model. |
 
 ## AI, Control, Digital Twins, And Operations
 
@@ -76,7 +82,18 @@ Tools for control, surrogate modeling, monitoring, data-driven optimization, and
 | --- | --- | --- | --- |
 | [4g/dcool](https://github.com/4g/dcool) | Open-source example | Operations/control | Data center cooling with reinforcement learning; useful as a control research example rather than a universal validated controller. |
 | [HewlettPackard/dc-rl](https://github.com/HewlettPackard/dc-rl) | Open-source environment | Operations/control | SustainDC environments for data center simulation and control, including cooling optimization, workload scheduling, battery management, and multi-agent RL. |
-| Predictive cooling optimizer repositories | Open-source candidates | Operations/control | Temperature-aware predictive control and optimization examples from GitHub search results; screen for assumptions, data, and validation. |
+| [wfzheng/AlphaDataCenterCooling](https://github.com/wfzheng/AlphaDataCenterCooling) | Open-source virtual testbed | Cooling control / Modelica | Dockerized data center cooling simulation service with a Gymnasium environment, Modelica/FMU resources, and real-data-based cooling-system structure for testing control strategies. |
+| [kardashev-lab/datacenter-cooling-sim](https://github.com/kardashev-lab/datacenter-cooling-sim) | Open-source simulation framework | AI workload / cooling / telemetry | Combines AI workload simulation, thermal/cooling simulation, AlphaDataCenterCooling adapters, Prometheus/Grafana telemetry, and dashboard components; needs deeper validation review. |
+| [vk22006/predictive-cooling-optimizer-for-data-centers](https://github.com/vk22006/predictive-cooling-optimizer-for-data-centers) | Open-source notebook / dashboard | Chiller scheduling / predictive control | Temperature-aware chiller scheduling project using feature engineering, XGBoost energy and temperature models, and constraint-based optimization; useful as an educational predictive-control example. |
+| [imamdoula004/AI-Hybrid-EMPC-DataCenter-Cooling](https://github.com/imamdoula004/AI-Hybrid-EMPC-DataCenter-Cooling) | Paper artifact / simulation code | Predictive control / digital twin | Simulation code for an IEEE manuscript on LSTM forecasting, hybrid economic MPC, PID fallback, cyber-physical resilience, cost, carbon, and ASHRAE thermal constraints. |
+| [Jalaljalili/Cooling-Dynamic-Model](https://github.com/Jalaljalili/Cooling-Dynamic-Model) | Open-source educational model | Dynamic modeling / PID control | RC thermal model with transfer functions, Bode plots, PID response comparison, disturbance injection, actuator limits, and closed-loop visualization. |
+| [D1D104/fuzzy-miso-datacenter-cooling](https://github.com/D1D104/fuzzy-miso-datacenter-cooling) | Open-source control prototype | Fuzzy CRAC control | Fuzzy MISO/Mamdani controller for CRAC power control with MQTT and Node-RED monitoring; useful as a lightweight control teaching/prototyping reference. |
+| [Lucabr01/RL-and-Gradient-Free-Based-Datacenter-Cooling-Controller](https://github.com/Lucabr01/RL-and-Gradient-Free-Based-Datacenter-Cooling-Controller) | Open-source educational project | EnergyPlus/Gymnasium control | Sinergym/EnergyPlus-based data center HVAC control study comparing Soft Actor-Critic and evolutionary strategies for energy and thermal-safety objectives. |
+| [rishithayanidhi/Data_Center_Cooling_Optimization_Environment](https://github.com/rishithayanidhi/Data_Center_Cooling_Optimization_Environment) | Open-source RL environment | Multi-zone cooling control | FastAPI/Hugging Face style environment for multi-zone temperature management, energy optimization, and RL-based autonomous control; needs validation review. |
+| [SohelHossain1218/Smart-IoT-Data-Center-Cooling-Environment-Monitor](https://github.com/SohelHossain1218/Smart-IoT-Data-Center-Cooling-Environment-Monitor) | Open-source hardware prototype | Server-room monitoring/control | ESP8266-based environmental monitoring and dual-AC control with temperature, humidity, air quality, smoke sensing, OLED, Telegram alerts, and manual override. |
+| [eeyx1/cooling-fan-predictive-maintenance-digital-twin](https://github.com/eeyx1/cooling-fan-predictive-maintenance-digital-twin) | Open-source digital twin prototype | Cooling fan maintenance | ESP32/MQTT/Python BMS dashboard for cooling-fan condition monitoring, anomaly detection, simulated validation, evidence logging, and feedback-based retraining. |
+| [iaziz6/Digital-Twin-for-Data-Center-Cooling](https://github.com/iaziz6/Digital-Twin-for-Data-Center-Cooling) | Open-source candidate | Rack cooling digital twin | Physics-regularized 3D U-Net concept for rack cooling with uncertainty quantification; README is minimal, so keep as a candidate until deeper code/paper review. |
+| [xiaodongwang991481/energy_saving](https://github.com/xiaodongwang991481/energy_saving) | Open-source candidate | ML energy saving | Machine-learning project for data center cooling energy saving; README is minimal, so keep as a low-confidence candidate pending code review. |
 | Digital twin workflows | Modeling/operations workflow | Rack/facility | Sensor fusion, reduced-order models, uncertainty, calibration, anomaly detection, control, and what-if analysis. |
 | CFDTwin-style surrogate workflows | Research workflow | Component/facility | CFD automation, design of experiments, POD/reduced-order modeling, neural surrogate training, and validation. |
 
@@ -102,6 +119,7 @@ Agent skills and plugin collections can help researchers run literature reviews,
 | [Imbad0202/academic-research-skills](https://github.com/Imbad0202/academic-research-skills) | Plugin/skill collection | Research workflow | Academic research skills for literature review, paper planning, writing, review, citation checking, and publication workflows. Useful for cooling researchers preparing reviews, manuscripts, and proposal background sections. |
 | [Data Center Due Diligence Orchestrator](https://mcpmarket.com/tools/skills/data-center-due-diligence-orchestrator) | Agent skill | Site/facility/investment workflow | Coordinates multi-domain data center due diligence across power, connectivity, land, environmental, and commercial factors. Relevant for site selection, infrastructure risk, and early-stage facility cooling constraints. |
 | [Sensibo Automation](https://mcpmarket.com/tools/skills/sensibo-automation) | Agent skill / MCP workflow | Building HVAC/control | Automates Sensibo-connected climate control and monitoring. Mostly adjacent to data centers, but relevant for building-level HVAC control experiments, small lab test spaces, and AI-driven climate-control workflow prototypes. |
+| [HyperYJ/ai-liquid-council](https://github.com/HyperYJ/ai-liquid-council) | Agent skill | AI data center liquid cooling due diligence | Chinese/English-oriented skill for evaluating liquid-cooling projects, companies, direct-to-chip vs immersion routes, CDUs, manifolds, QDs, retrofit constraints, and investment/technical diligence. |
 
 ## Discovery Sources
 
@@ -121,6 +139,7 @@ GitHub search should be used as a candidate-mining workflow, not as automatic ev
 
 - Review protocol: [docs/repo-review-workflow.md](docs/repo-review-workflow.md)
 - Initial candidate queue: [docs/candidate-repos.md](docs/candidate-repos.md)
+- Initial review log: [docs/review-log-2026-05-20.md](docs/review-log-2026-05-20.md)
 
 ## Entry Format
 
