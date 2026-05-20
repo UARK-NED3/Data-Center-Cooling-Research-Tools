@@ -6,6 +6,11 @@ This review pass screened GitHub repositories from the `data center cooling`, `d
 
 | Repository | Decision | Rationale |
 | --- | --- | --- |
+| [cldunlap73/BubbleID](https://github.com/cldunlap73/BubbleID) | Include | Lab-related paper artifact and open-source framework for pool-boiling bubble interface dynamics analysis using segmentation, tracking, and classification. |
+| [UARK-NED3/BubbleID-Flow](https://github.com/UARK-NED3/BubbleID-Flow) | Include | Lab adaptation workspace for flow-boiling bubble segmentation, ROI preprocessing, high-speed image sequence handling, COCO annotation utilities, and Mask R-CNN fine-tuning. |
+| [UARK-NED3/FlowLab](https://github.com/UARK-NED3/FlowLab) | Include | Lab toolkit for single-phase and two-phase liquid-cooling experiments, multimodal flow-loop data collection, acoustic emission, accelerometers, and analysis notebooks. |
+| [UARK-NED3/AELab](https://github.com/UARK-NED3/AELab) | Include | Lab acoustic-emission analysis workspace for phase-change processes, flow boiling, pool boiling, and sensing-system tutorials. |
+| [UARK-NED3/CFDTwin](https://github.com/UARK-NED3/CFDTwin) | Include | Lab desktop app for Ansys Fluent DOE automation, POD plus neural-network surrogate training, and Fluent comparison validation workflows. |
 | [HewlettPackard/dc-rl](https://github.com/HewlettPackard/dc-rl) | Include | SustainDC provides documented Python environments for sustainable data center control, including cooling optimization, workload scheduling, battery management, Gymnasium integration, benchmarking algorithms, metrics, and a paper link. |
 | [wfzheng/AlphaDataCenterCooling](https://github.com/wfzheng/AlphaDataCenterCooling) | Include | Virtual testbed with Docker service, Gymnasium environment, Modelica/FMU resources, and real-data-based cooling-system structure. |
 | [nuoaleon/Data-center-PUE-prediction-tool](https://github.com/nuoaleon/Data-center-PUE-prediction-tool) | Include | Physics-based PUE prediction notebooks tied to a peer-reviewed Energy paper, climate-zone analysis, sensitivity analysis, and uncertainty quantification. |

@@ -31,6 +31,10 @@ Tools and workflows for understanding the physics behind cooling technologies.
 | Droplet dynamics analysis | Research workflow | Spray/evaporation | Droplet impact, spreading, rebound, evaporation, spray cooling, and heat-transfer characterization. |
 | Acoustic emission and flow visualization workflows | Experimental workflow | Boiling/two-phase | Useful for boiling regime identification, event detection, and multimodal diagnostics. |
 | IR thermography workflows | Experimental workflow | Chip/surface | Useful for chip power maps, thermal maps, boiling surfaces, and validation of simulations. |
+| [cldunlap73/BubbleID](https://github.com/cldunlap73/BubbleID) | Open-source research code / paper artifact | Pool boiling / bubble dynamics | Deep-learning framework for bubble interface dynamics analysis using segmentation, tracking, and classification models; supports departure classification, interface velocity prediction, and bubble-statistics extraction from manually labeled pool-boiling imagery. |
+| [UARK-NED3/BubbleID-Flow](https://github.com/UARK-NED3/BubbleID-Flow) | Lab research workflow | Flow boiling / bubble segmentation | Adaptation workspace for applying BubbleID-style segmentation to flow-boiling images, including flow-channel ROI preprocessing, high-speed BMP sequence support, COCO annotation utilities, Mask R-CNN fine-tuning configs, and bubble-mask validation scripts. |
+| [UARK-NED3/FlowLab](https://github.com/UARK-NED3/FlowLab) | Lab experimental toolkit | Single-phase and two-phase liquid cooling | Research toolkit for flow-loop, heater-power, acoustic-emission, and accelerometer measurements in microchannel liquid-cooling experiments, with protocols, multimodal data-collection guidance, example files, and analysis notebooks. |
+| [UARK-NED3/AELab](https://github.com/UARK-NED3/AELab) | Lab experimental toolkit | Acoustic emission / phase change | Collaborative acoustic-emission analysis workspace for pool boiling, flow boiling, immersed partial discharge, partial discharge, and sensing-system workflows; useful for phase-change diagnostics and reproducible AE tutorials. |
 
 ## Chip, Package, And Server Cooling
 
@@ -95,6 +99,7 @@ Tools for control, surrogate modeling, monitoring, data-driven optimization, and
 | [iaziz6/Digital-Twin-for-Data-Center-Cooling](https://github.com/iaziz6/Digital-Twin-for-Data-Center-Cooling) | Open-source candidate | Rack cooling digital twin | Physics-regularized 3D U-Net concept for rack cooling with uncertainty quantification; README is minimal, so keep as a candidate until deeper code/paper review. |
 | [xiaodongwang991481/energy_saving](https://github.com/xiaodongwang991481/energy_saving) | Open-source candidate | ML energy saving | Machine-learning project for data center cooling energy saving; README is minimal, so keep as a low-confidence candidate pending code review. |
 | Digital twin workflows | Modeling/operations workflow | Rack/facility | Sensor fusion, reduced-order models, uncertainty, calibration, anomaly detection, control, and what-if analysis. |
+| [UARK-NED3/CFDTwin](https://github.com/UARK-NED3/CFDTwin) | Lab desktop app / surrogate workflow | CFD surrogate modeling | Wizard-based desktop app for building POD plus neural-network surrogate models from Ansys Fluent simulations, including case loading, DOE sampling, batch simulation, training, validation, and Fluent comparison workflows. |
 | CFDTwin-style surrogate workflows | Research workflow | Component/facility | CFD automation, design of experiments, POD/reduced-order modeling, neural surrogate training, and validation. |
 
 ## System Metrics, Standards, And Accounting
