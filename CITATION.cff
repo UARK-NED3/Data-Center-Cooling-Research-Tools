@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this catalog, please cite it as below."
+title: "Data Center Cooling Research Tools"
+type: dataset
+authors:
+  - name: "UARK-NED3"
+version: "2026.06"
+date-released: "2026-06-20"
+url: "https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools"
+abstract: "A curated research-tool hub for data center cooling, thermal management, liquid cooling, facility energy modeling, control, testing, digital twins, and sustainability metrics."

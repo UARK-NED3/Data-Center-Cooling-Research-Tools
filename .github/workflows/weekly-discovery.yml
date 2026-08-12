@@ -1,0 +1,74 @@
+name: Weekly Tool Discovery
+
+on:
+  schedule:
+    - cron: "0 14 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Run GitHub discovery
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python scripts/discover_github_repos.py \
+            --per-page 15 \
+            --output-md latest-github-discovery.md \
+            --output-csv latest-github-candidates.csv
+
+      - name: Upload discovery artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: latest-github-discovery
+          path: |
+            latest-github-discovery.md
+            latest-github-candidates.csv
+
+      - name: Open or update review issue
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require("fs");
+            const body = fs.readFileSync("latest-github-discovery.md", "utf8");
+            const marker = "<!-- data-center-cooling-tools-weekly-discovery -->";
+            const { owner, repo } = context.repo;
+            const titlePrefix = "Weekly data center cooling tool discovery";
+            const issues = await github.paginate(github.rest.issues.listForRepo, {
+              owner,
+              repo,
+              state: "open",
+              per_page: 50,
+            });
+            const existing = issues.find((issue) =>
+              issue.title.startsWith(titlePrefix) && !issue.pull_request
+            );
+            if (existing) {
+              await github.rest.issues.createComment({
+                owner,
+                repo,
+                issue_number: existing.number,
+                body: `${marker}\n\n${body}`,
+              });
+            } else {
+              const date = new Date().toISOString().slice(0, 10);
+              await github.rest.issues.create({
+                owner,
+                repo,
+                title: `${titlePrefix} - ${date}`,
+                body: `${marker}\n\n${body}`,
+              });
+            }

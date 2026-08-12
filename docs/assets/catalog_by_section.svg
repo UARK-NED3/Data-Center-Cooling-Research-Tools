@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="386" viewBox="0 0 980 386">
+<rect width="100%" height="100%" fill="#ffffff"/>
+<text x="32" y="38" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="#1f2937">Resources By Cooling-Stack Section</text>
+<text x="32" y="60" font-family="Arial, sans-serif" font-size="13" fill="#6b7280">Generated from README.md resource tables</text>
+<text x="32" y="92" font-family="Arial, sans-serif" font-size="14" fill="#374151">Fundamental Thermal-Fluid Mechanisms</text>
+<rect x="330" y="77" width="540" height="18" rx="3" fill="#e5e7eb"/>
+<rect x="330" y="77" width="172" height="18" rx="3" fill="#2563eb"/>
+<text x="888" y="92" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">8</text>
+<text x="32" y="126" font-family="Arial, sans-serif" font-size="14" fill="#374151">Chip, Package, And Server Cooling</text>
+<rect x="330" y="111" width="540" height="18" rx="3" fill="#e5e7eb"/>
+<rect x="330" y="111" width="108" height="18" rx="3" fill="#2563eb"/>
+<text x="888" y="126" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">5</text>
+<text x="32" y="160" font-family="Arial, sans-serif" font-size="14" fill="#374151">Rack, CDU, And Liquid Loop Systems</text>
+<rect x="330" y="145" width="540" height="18" rx="3" fill="#e5e7eb"/>
+<rect x="330" y="145" width="259" height="18" rx="3" fill="#2563eb"/>
+<text x="888" y="160" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">12</text>
+<text x="32" y="194" font-family="Arial, sans-serif" font-size="14" fill="#374151">Room, Building, And Campus Modeling</text>
+<rect x="330" y="179" width="540" height="18" rx="3" fill="#e5e7eb"/>
+<rect x="330" y="179" width="237" height="18" rx="3" fill="#2563eb"/>
+<text x="888" y="194" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">11</text>
+<text x="32" y="228" font-family="Arial, sans-serif" font-size="14" fill="#374151">AI, Control, Digital Twins, And Operations</text>
+<rect x="330" y="213" width="540" height="18" rx="3" fill="#e5e7eb"/>
+<rect x="330" y="213" width="540" height="18" rx="3" fill="#2563eb"/>
+<text x="888" y="228" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">25</text>
+<text x="32" y="262" font-family="Arial, sans-serif" font-size="14" fill="#374151">System Metrics, Standards, And Accounting</text>
+<rect x="330" y="247" width="540" height="18" rx="3" fill="#e5e7eb"/>
+<rect x="330" y="247" width="237" height="18" rx="3" fill="#2563eb"/>
+<text x="888" y="262" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">11</text>
+<text x="32" y="296" font-family="Arial, sans-serif" font-size="14" fill="#374151">Sustainability: Life Cycle, Water, Carbon, And Heat Reuse</text>
+<rect x="330" y="281" width="540" height="18" rx="3" fill="#e5e7eb"/>
+<rect x="330" y="281" width="108" height="18" rx="3" fill="#2563eb"/>
+<text x="888" y="296" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">5</text>
+<text x="32" y="330" font-family="Arial, sans-serif" font-size="14" fill="#374151">Skills, Agents, And Plugin Collections</text>
+<rect x="330" y="315" width="540" height="18" rx="3" fill="#e5e7eb"/>
+<rect x="330" y="315" width="108" height="18" rx="3" fill="#2563eb"/>
+<text x="888" y="330" font-family="Arial, sans-serif" font-size="14" font-weight="700" fill="#111827">5</text>
+</svg>

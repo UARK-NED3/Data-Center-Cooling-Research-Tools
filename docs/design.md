@@ -21,7 +21,8 @@ The primary organization is by physical scale:
 5. AI, control, digital twins, and operations.
 6. System metrics, standards, and accounting.
 
-Each entry should also carry implicit workflow and evidence context in its note.
+Each entry should also carry workflow and evidence context in its note. For linked or promoted entries, use explicit metadata tokens for `validation_basis`, `run_status`, `artifact_status`, and `reviewed_on`.
+Generated outputs make that context explicit through `status`, `evidence_level`, `validation_basis`, `run_status`, `artifact_status`, `reviewed_on`, `validation_signal`, `review_priority`, and `workflow_tags`.
 
 ## Discovery Strategy
 
@@ -44,4 +45,20 @@ Initial seed examples include:
 ## Maintenance Rules
 
 The contribution rubric should protect the library from becoming a generic data-center repository list. Every resource needs a clear cooling, energy, sustainability, telemetry, control, or hardware-management link.
+
+## Generated Artifacts
+
+The README remains the source of truth. Generated artifacts provide convenience, not a second catalog database:
+
+- `docs/generated/catalog_resources.csv` for filtering and reuse.
+- `docs/generated/catalog_summary.md` for current coverage counts.
+- `docs/generated/catalog_quality_report.md` for evidence-label consistency checks and validation metadata warnings.
+- `docs/assets/catalog_*.svg` for visual summaries.
+- `docs/generated/latest-github-discovery.md` and `data/discovery/latest-github-candidates.csv` for candidate mining.
+
+Generated summaries are rebuilt with `python scripts/build_catalog_assets.py`, and label consistency is checked with `python scripts/check_catalog_quality.py`. GitHub discovery is run with `python scripts/discover_github_repos.py`.
+
+## Automation Position
+
+The scheduled GitHub Actions workflow mines possible new tools and opens or updates a review issue. It does not edit the README automatically. This keeps curation human-reviewed while still making the repository easier to keep current.
 
