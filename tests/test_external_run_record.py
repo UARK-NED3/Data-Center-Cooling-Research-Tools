@@ -19,6 +19,33 @@ ADAPTERS_DIRECTORY = (
 
 
 class ExternalRunRecordTests(unittest.TestCase):
+    def test_simscape_inspection_utility_is_non_destructive(self):
+        source = (ADAPTERS_DIRECTORY / "inspect_simscape_liquid_model.m").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("load_system", source)
+        self.assertIn("find_system", source)
+        self.assertIn("close_system(modelName, 0)", source)
+        self.assertNotIn("sim(", source)
+        self.assertNotIn("save_system", source)
+
+    def test_simscape_inspection_filters_paths_relative_to_the_model_root(self):
+        source = (ADAPTERS_DIRECTORY / "inspect_simscape_liquid_model.m").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("relativePaths = extractAfter(blockPaths, strlength(modelName));", source)
+        self.assertIn("contains(lower(relativePaths), keywords)", source)
+
+    def test_simscape_inspection_records_one_representative_server_mask(self):
+        source = (ADAPTERS_DIRECTORY / "inspect_simscape_liquid_model.m").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("report.representative_server_unit", source)
+        self.assertIn('get_param(blockPath, "MaskValues")', source)
+
     def test_matlab_preflight_binds_ver_output_before_reading_product_names(self):
         source = (ADAPTERS_DIRECTORY / "matlab_preflight.m").read_text(
             encoding="utf-8"

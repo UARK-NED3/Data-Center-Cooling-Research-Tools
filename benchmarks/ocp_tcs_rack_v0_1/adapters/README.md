@@ -39,6 +39,25 @@ status have been recorded.
 The current source-specific boundary and staged comparison plan are in
 [`simscape_mapping_plan.md`](simscape_mapping_plan.md).
 
+## Read-only MathWorks model inspection
+
+After cloning the BSD-3-Clause MathWorks source at the revision recorded in
+the mapping plan, write an inspection report outside this repository and the
+external source checkout:
+
+```matlab
+addpath("<this-repository>/benchmarks/ocp_tcs_rack_v0_1/adapters")
+report = inspect_simscape_liquid_model( ...
+    "<external-Data-Center-Simscape-root>", ...
+    "<local-output-directory>/model_inventory.json");
+```
+
+The utility opens and closes `DataCenterCooling.slx` without simulation or a
+model save. It records the model solver and stop-time expressions, structural
+block inventory, and the published parameters of one representative server
+unit. The report includes an absolute local source path and must remain a
+local provenance artifact unless it is sanitized for release.
+
 ## Candidate models
 
 - **CompOpt**: a local rack-environment smoke run was completed at commit

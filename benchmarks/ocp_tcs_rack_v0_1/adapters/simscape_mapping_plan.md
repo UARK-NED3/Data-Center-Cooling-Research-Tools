@@ -16,6 +16,34 @@ The workflow creates a thermal 12-rack, 6 MW data-center model and attaches a
 CDU pipe layout. It is useful as an external-model execution target, but it is
 not the v0.1 rack case and must not be presented as one.
 
+## Local structural inspection
+
+The passing R2025b preflight was followed by a read-only local structural
+inspection of the published `DataCenterCooling.slx` model at the source
+revision above. The generated inspection artifact remains local because it
+contains an absolute checkout path. The inspection did not simulate or save
+the external model.
+
+- The model declares the `daessc` solver and a stop-time expression of
+  `(env.nDays-1)*24*3600`; the source initialization file sets `env.nDays =
+  8`, so the published workflow is configured for a seven-day horizon.
+- The loaded model contained 777 blocks, including twelve repeated
+  `Datacenter_i_j` server-unit blocks under a 3-by-4 data-center layout and a
+  CDU pipe-layout subsystem.
+- A representative `Datacenter_1_1` mask exposes component-level server
+  nameplate inputs, utilization, and power-supply efficiency. Its published
+  values include 3,326 CPUs per server unit, a 0.6 actual-to-nameplate ratio,
+  and 0.85 power-supply efficiency. These are source-model configuration
+  values, not a 10 kW rack calibration or a measured heat load.
+- The inspected structure does not identify an explicit 30 degC TCS-supply
+  boundary, a 0.5 kg/s rack-flow boundary, or an 80/20 liquid-versus-air heat
+  split. Pipe `mdot_nominal` fields are component parameters and are not, by
+  themselves, a canonical rack-flow mapping.
+
+The source therefore supports a future, separately constructed one-rack
+Simscape adapter, but the existing 3-by-4 example cannot be relabeled as the
+v0.1 case by changing the aggregate 6 MW rating alone.
+
 ## Canonical-case mapping status
 
 | v0.1 quantity | Unit | Candidate external quantity | Status | Reason |
@@ -44,6 +72,9 @@ not the v0.1 rack case and must not be presented as one.
 
 ## Current blocker
 
-The local R2025b preflight found all required products except Stateflow. Do not
-run the project until the preflight reports `ready: true`, because the upstream
-project lists Stateflow among its required products.
+The local R2025b preflight now reports `ready: true` with all products listed
+by the upstream project, including Stateflow. The remaining blocker is model
+definition, not software installation: a one-rack derivative needs explicit
+source/measurement mappings for IT heat, TCS supply temperature, rack flow,
+fluid properties, and the residual-air heat path before it can produce a
+canonical comparison.
