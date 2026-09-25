@@ -14,12 +14,14 @@ Included resources should help researchers design, model, test, monitor, optimiz
 
 - If you need a tool for a specific research task, start with the [user guide](docs/user-guide.md).
 - If you want the current coverage summary, open the [generated catalog summary](docs/generated/catalog_summary.md) or the [trend summary](docs/trends.md).
+- If you need a transparent rack-level verification input, start with the [synthetic OCP-aligned benchmark case](benchmarks/ocp_tcs_rack_v0_1/README.md). It is a conservation check, not a calibrated or experimentally validated rack model.
 - If you want to refresh the repository, follow the [refresh playbook](docs/refresh-playbook.md) and run `python scripts/discover_github_repos.py`.
 - If you want to cite or describe this hub, use the arXiv manuscript draft in [paper/arxiv/main.tex](paper/arxiv/main.tex).
 
 ## Navigation
 
 - [Quick Start](#quick-start)
+- [Benchmark Cases](#benchmark-cases)
 - [Generated Catalog Snapshot](#generated-catalog-snapshot)
 - [Fundamental Thermal-Fluid Mechanisms](#fundamental-thermal-fluid-mechanisms)
 - [Chip, Package, And Server Cooling](#chip-package-and-server-cooling)
@@ -32,6 +34,14 @@ Included resources should help researchers design, model, test, monitor, optimiz
 - [Discovery Sources](#discovery-sources)
 - [Repository Review Workflow](#repository-review-workflow)
 - [Entry Format](#entry-format)
+
+## Benchmark Cases
+
+The repository provides benchmark cases separately from the curated tool catalog. Each case declares its maturity, validation state, physical scope, input provenance, and excluded physics. Do not treat a synthetic verification case as a representative hardware design or a validation record.
+
+- [OCP-aligned rack TCS v0.1](benchmarks/ocp_tcs_rack_v0_1/README.md): a synthetic steady-state rack heat-split and coolant-temperature-rise oracle. It contains no vendor, licensed, or site data.
+
+See [benchmarks/README.md](benchmarks/README.md) for the benchmark contract and [LICENSE-DATA.md](LICENSE-DATA.md) for the data and documentation terms.
 
 ## Generated Catalog Snapshot
 
@@ -252,3 +262,7 @@ Recommended tags:
 ## Contributing
 
 Contributions are welcome when they improve the usefulness of the hub for data center cooling researchers. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before adding entries.
+
+## License
+
+Original repository code is licensed under [Apache-2.0](LICENSE). Original benchmark configurations and documentation are available under [CC BY 4.0](LICENSE-DATA.md). These terms do not alter rights for external tools, standards, or data linked from this hub.

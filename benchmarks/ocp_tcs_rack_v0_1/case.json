@@ -1,0 +1,32 @@
+{
+  "case_id": "ocp-tcs-rack-v0.1",
+  "title": "Synthetic OCP-aligned rack technology-cooling-system verification case",
+  "maturity": "synthetic_verification",
+  "validation_state": "not_validated",
+  "system_scope": "steady rack heat split and technology-cooling-system temperature rise",
+  "topology": "facility-water-system -> CDU heat exchanger -> TCS supply -> rack manifold -> parallel IT branches -> TCS return -> CDU",
+  "time_basis": "steady state",
+  "fluid": {
+    "name": "water",
+    "specific_heat_j_kg_k": 4180.0,
+    "property_state": "constant assumed value for synthetic verification"
+  },
+  "tcs": {
+    "supply_temperature_c": 30.0,
+    "mass_flow_kg_s": 0.5
+  },
+  "rack": {
+    "it_heat_w": 10000.0,
+    "liquid_capture_fraction": 0.8,
+    "residual_air_heat_fraction": 0.2
+  },
+  "excluded_physics": [
+    "cold-plate thermal resistance",
+    "branch and manifold pressure drop",
+    "CDU UA and primary-loop heat balance",
+    "pump power",
+    "heat-rejection energy and water use",
+    "transients and thermal storage"
+  ],
+  "use_limit": "This file is a transparent synthetic verification input, not a representative vendor rack design or a validated performance case."
+}

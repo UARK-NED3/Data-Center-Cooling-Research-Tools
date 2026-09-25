@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OCP TCS Rack v0.1 synthetic verification case",
+  "type": "object",
+  "required": ["case_id", "maturity", "validation_state", "time_basis", "fluid", "tcs", "rack"],
+  "properties": {
+    "case_id": {"const": "ocp-tcs-rack-v0.1"},
+    "maturity": {"const": "synthetic_verification"},
+    "validation_state": {"const": "not_validated"},
+    "time_basis": {"const": "steady state"},
+    "fluid": {
+      "type": "object",
+      "required": ["specific_heat_j_kg_k"],
+      "properties": {"specific_heat_j_kg_k": {"type": "number", "exclusiveMinimum": 0}}
+    },
+    "tcs": {
+      "type": "object",
+      "required": ["supply_temperature_c", "mass_flow_kg_s"],
+      "properties": {"mass_flow_kg_s": {"type": "number", "exclusiveMinimum": 0}}
+    },
+    "rack": {
+      "type": "object",
+      "required": ["it_heat_w", "liquid_capture_fraction", "residual_air_heat_fraction"],
+      "properties": {
+        "it_heat_w": {"type": "number", "minimum": 0},
+        "liquid_capture_fraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "residual_air_heat_fraction": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+field,value,unit,evidence_class,source,source_url,notes
+topology,"FWS -> CDU -> TCS supply -> rack manifold -> IT branches -> TCS return -> CDU",,standard-aligned,"OCP Cold Plate Cooling Loop Requirements Rev. 2; LBNL Open Specification for a Liquid Cooled Server Rack (2018 draft)","https://www.opencompute.org/documents/cold-plate-cooling-loop-requirements-rev-2-pdf; https://datacenters.lbl.gov/sites/default/files/OpenSpecification.pdf",Architecture only; these documents do not prescribe the v0.1 IT heat split or CDU design.
+it_heat_w,10000,W,synthetic,NED3-authored verification input,https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools,Chosen solely to exercise conservation checks.
+liquid_capture_fraction,0.8,1,synthetic,NED3-authored verification input,https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools,Not a claimed industry-average or vendor value.
+tcs_supply_temperature_c,30,degC,synthetic,NED3-authored verification input,https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools,Not a prescribed OCP condition.
+tcs_mass_flow_kg_s,0.5,kg/s,synthetic,NED3-authored verification input,https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools,Not a pump curve or rack design value.
+coolant_specific_heat_j_kg_k,4180,J/(kg K),synthetic,NED3-authored verification input,https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools,Constant-water approximation for the stated verification calculation.

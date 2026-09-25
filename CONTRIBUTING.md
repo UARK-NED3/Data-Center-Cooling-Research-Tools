@@ -84,6 +84,14 @@ Use one compact table row:
 
 Avoid vague descriptions such as "cool tool" or "AI for data centers." Say what the resource does and where it fits.
 
+## Benchmark Contributions
+
+Benchmark cases are not catalog rows. Place each case under `benchmarks/<case-id>/` and include a machine-readable input file, schema, provenance ledger, scope statement, and runnable checks.
+
+Every input must identify whether it is synthetic, literature-derived, manufacturer-supplied, measured, or inferred. A case may be described as validated only when the repository includes a traceable comparison to an authorized external reference and quantitative agreement criteria. Do not add licensed, confidential, site-identifying, or vendor-restricted data unless its redistribution rights have been reviewed and documented.
+
+External tools remain external dependencies. Do not vendor their source or distribute their outputs unless their licenses and data rights allow it. Record the source URL, immutable version or commit, runtime version, execution command, input hash, and comparison result when adding an adapter run.
+
 ## Screening Search-Derived Repositories
 
 GitHub search results can be noisy. For repositories found through searches such as `data center cooling` or the `data-center` topic:
