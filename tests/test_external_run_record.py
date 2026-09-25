@@ -46,6 +46,18 @@ class ExternalRunRecordTests(unittest.TestCase):
         self.assertIn("report.representative_server_unit", source)
         self.assertIn('get_param(blockPath, "MaskValues")', source)
 
+    def test_matlab_steady_state_reference_has_no_hidden_simscape_execution(self):
+        source = (ADAPTERS_DIRECTORY / "matlab_steady_state_reference.m").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("jsondecode", source)
+        self.assertIn("tcs_return_temperature_c", source)
+        self.assertIn("report.method = strjoin", source)
+        self.assertIn("report.use_limit = strjoin", source)
+        self.assertNotIn("sim(", source)
+        self.assertNotIn("load_system", source)
+
     def test_matlab_preflight_binds_ver_output_before_reading_product_names(self):
         source = (ADAPTERS_DIRECTORY / "matlab_preflight.m").read_text(
             encoding="utf-8"

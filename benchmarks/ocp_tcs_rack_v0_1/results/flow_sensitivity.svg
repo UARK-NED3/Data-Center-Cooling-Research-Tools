@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="960" height="560" viewBox="0 0 960 560" role="img" aria-labelledby="title description">
+  <title id="title">Technology-cooling-system flow sensitivity</title>
+  <desc id="description">Synthetic steady-state coolant return temperature for the v0.1 rack verification case as a function of total TCS mass flow rate.</desc>
+  <style>
+    .title { font: 700 25px Arial, sans-serif; fill: #102a43; }
+    .subtitle { font: 15px Arial, sans-serif; fill: #486581; }
+    .axis { stroke: #243b53; stroke-width: 1.5; }
+    .grid { stroke: #d9e2ec; stroke-width: 1; }
+    .tick { font: 14px Arial, sans-serif; fill: #486581; }
+    .label { font: 16px Arial, sans-serif; fill: #243b53; }
+    .series { fill: none; stroke: #0b7285; stroke-width: 4; }
+    .marker { fill: #0b7285; stroke: white; stroke-width: 2; }
+    .baseline { font: 700 14px Arial, sans-serif; fill: #087f5b; }
+    .note { font: 13px Arial, sans-serif; fill: #627d98; }
+  </style>
+  <rect width="960" height="560" fill="white"/>
+  <text x="70" y="36" class="title">Technology-cooling-system flow sensitivity</text>
+  <text x="70" y="59" class="subtitle">10 kW IT heat, 80% liquid capture, 30 °C supply, cₚ = 4180 J/(kg·K)</text>
+  <line x1="125" y1="418.00" x2="865" y2="418.00" class="grid"/><line x1="125" y1="333.00" x2="865" y2="333.00" class="grid"/><line x1="125" y1="248.00" x2="865" y2="248.00" class="grid"/><line x1="125" y1="163.00" x2="865" y2="163.00" class="grid"/><line x1="125" y1="78.00" x2="865" y2="78.00" class="grid"/><line x1="125.00" y1="78" x2="125.00" y2="418" class="grid"/><line x1="371.67" y1="78" x2="371.67" y2="418" class="grid"/><line x1="618.33" y1="78" x2="618.33" y2="418" class="grid"/><line x1="865.00" y1="78" x2="865.00" y2="418" class="grid"/>
+  <line x1="125" y1="78" x2="125" y2="418" class="axis"/>
+  <line x1="125" y1="418" x2="865" y2="418" class="axis"/>
+  <text x="111" y="423.00" class="tick" text-anchor="end">30</text><text x="111" y="338.00" class="tick" text-anchor="end">32</text><text x="111" y="253.00" class="tick" text-anchor="end">34</text><text x="111" y="168.00" class="tick" text-anchor="end">36</text><text x="111" y="83.00" class="tick" text-anchor="end">38</text><text x="125.00" y="448" class="tick" text-anchor="middle">0.25</text><text x="371.67" y="448" class="tick" text-anchor="middle">0.5</text><text x="618.33" y="448" class="tick" text-anchor="middle">0.75</text><text x="865.00" y="448" class="tick" text-anchor="middle">1</text>
+  <polyline points="125.00,92.64 371.67,255.32 618.33,309.55 865.00,336.66" class="series"/>
+  <circle cx="125.00" cy="92.64" r="5" class="marker"/><circle cx="371.67" cy="255.32" r="5" class="marker"/><circle cx="618.33" cy="309.55" r="5" class="marker"/><circle cx="865.00" cy="336.66" r="5" class="marker"/>
+  <text x="383.67" y="241.32" class="baseline">Baseline: 33.83 °C</text>
+  <text x="495.00" y="484" class="label" text-anchor="middle">Total TCS mass flow rate, ṁ [kg/s]</text>
+  <text x="32" y="248.00" class="label" text-anchor="middle" transform="rotate(-90 32 248.00)">TCS return temperature [°C]</text>
+  <text x="70" y="520" class="note">Synthetic verification only; no pressure drop, component thermal resistance, CDU, pump, or facility model is included.</text>
+</svg>

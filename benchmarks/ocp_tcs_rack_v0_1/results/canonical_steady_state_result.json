@@ -1,0 +1,16 @@
+{
+  "case_id": "ocp-tcs-rack-v0.1",
+  "case_sha256": "6a371c56985e2ee54b8c195b946e2f4ed9b4dac9e466937980064e519a131666",
+  "evidence_class": "synthetic_derived",
+  "generator": "benchmarks.ocp_tcs_rack_v0_1.generate_reference_results",
+  "result": {
+    "air_heat_w": 2000.0,
+    "it_heat_w": 10000.0,
+    "liquid_heat_w": 8000.0,
+    "rack_energy_residual_w": 0.0,
+    "tcs_return_temperature_c": 33.82775119617225,
+    "tcs_supply_temperature_c": 30.0,
+    "tcs_temperature_rise_k": 3.827751196172249
+  },
+  "use_limit": "Verification output only; not a calibrated or experimentally validated rack result."
+}
