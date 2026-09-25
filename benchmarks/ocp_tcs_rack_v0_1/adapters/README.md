@@ -36,6 +36,9 @@ does not clone, open, modify, or simulate the MathWorks project. Keep that
 report local until a source revision, case-input mapping, and redistribution
 status have been recorded.
 
+The current source-specific boundary and staged comparison plan are in
+[`simscape_mapping_plan.md`](simscape_mapping_plan.md).
+
 ## Candidate models
 
 - **CompOpt**: a local rack-environment smoke run was completed at commit
