@@ -19,6 +19,14 @@ ADAPTERS_DIRECTORY = (
 
 
 class ExternalRunRecordTests(unittest.TestCase):
+    def test_matlab_preflight_binds_ver_output_before_reading_product_names(self):
+        source = (ADAPTERS_DIRECTORY / "matlab_preflight.m").read_text(
+            encoding="utf-8"
+        )
+
+        self.assertIn("installedProductInfo = ver;", source)
+        self.assertIn("{installedProductInfo.Name}", source)
+
     def test_planned_template_is_a_valid_nonexecution_record(self):
         result = validate_run_record(ADAPTERS_DIRECTORY / "run_record.template.json")
 

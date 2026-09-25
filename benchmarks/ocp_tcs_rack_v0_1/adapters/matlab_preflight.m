@@ -16,7 +16,8 @@ requiredProducts = [
     "Stateflow"
 ];
 
-installedProducts = string({ver.Name})';
+installedProductInfo = ver;
+installedProducts = string({installedProductInfo.Name})';
 missingProducts = setdiff(requiredProducts, installedProducts, "stable");
 release = string(version("-release"));
 supportedRelease = any(release == ["R2025b", "2025b"]);
