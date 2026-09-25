@@ -1,0 +1,51 @@
+{
+  "record_type": "external_model_run",
+  "schema_version": "0.1",
+  "case_id": "ocp-tcs-rack-v0.1",
+  "adapter_id": "mathworks-data-center-simscape",
+  "execution_state": "planned",
+  "model": {
+    "provider": "MathWorks",
+    "source_url": "https://github.com/simscape/Data-Center-Simscape",
+    "revision": null,
+    "upstream_license": "BSD-3-Clause",
+    "component": "DataCenterDesignSimscape.prj"
+  },
+  "environment": {
+    "runtime": "MATLAB",
+    "runtime_release": "R2025b",
+    "products": [
+      "MATLAB",
+      "Simulink",
+      "Simscape",
+      "Simscape Electrical",
+      "Simscape Fluids",
+      "Stateflow"
+    ],
+    "host_os": null
+  },
+  "command": {
+    "invocation": null,
+    "working_directory": null
+  },
+  "input": {
+    "case_sha256": null,
+    "mapping_document": "Create a case-input mapping before execution; do not silently substitute any v0.1 input."
+  },
+  "output": {
+    "report_path": null,
+    "output_sha256": null
+  },
+  "comparison": {
+    "state": "not_compared",
+    "reference": "benchmarks/ocp_tcs_rack_v0_1/analytical_reference.py",
+    "metrics": {}
+  },
+  "rights": {
+    "external_data_included": false,
+    "redistribution_review": "No external-model output may be committed until its redistribution status is reviewed."
+  },
+  "evidence_class": "planned",
+  "validation_state": "not_validated",
+  "notes": "This record documents a planned adapter run. It is not a run result or a validation claim."
+}

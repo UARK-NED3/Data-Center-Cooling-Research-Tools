@@ -35,8 +35,11 @@ reference has no thermal storage term.
 - `case.schema.json`: machine-readable input contract.
 - `provenance.csv`: source, units, and evidence class for every core input.
 - `analytical_reference.py`: dependency-free verification oracle.
-- `../adapters/`: external-model integration contracts. No external source
-  code is vendored.
+- `adapters/run_record.schema.json`: external-run traceability contract.
+- `adapters/matlab_preflight.m`: a local R2025b product check that does not
+  open or run a third-party model.
+- `adapters/`: external-model integration contracts. No external source code
+  is vendored.
 
 ## Run
 

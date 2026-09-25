@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "External-model adapter run record",
+  "type": "object",
+  "required": [
+    "record_type",
+    "schema_version",
+    "case_id",
+    "adapter_id",
+    "execution_state",
+    "model",
+    "environment",
+    "input",
+    "output",
+    "comparison"
+  ],
+  "properties": {
+    "record_type": {"const": "external_model_run"},
+    "schema_version": {"const": "0.1"},
+    "execution_state": {
+      "enum": ["planned", "completed", "failed", "not_run"]
+    },
+    "model": {
+      "type": "object",
+      "required": ["provider", "source_url", "revision"],
+      "properties": {
+        "provider": {"type": "string", "minLength": 1},
+        "source_url": {"type": "string", "format": "uri"},
+        "revision": {"type": ["string", "null"]}
+      }
+    },
+    "environment": {
+      "type": "object",
+      "required": ["runtime", "runtime_release", "products"],
+      "properties": {
+        "runtime": {"type": "string", "minLength": 1},
+        "runtime_release": {"type": "string", "minLength": 1},
+        "products": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["case_sha256", "mapping_document"],
+      "properties": {
+        "case_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "mapping_document": {"type": "string", "minLength": 1}
+      }
+    },
+    "output": {
+      "type": "object",
+      "required": ["report_path", "output_sha256"],
+      "properties": {
+        "report_path": {"type": ["string", "null"]},
+        "output_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "required": ["state", "reference", "metrics"],
+      "properties": {
+        "state": {"enum": ["not_compared", "compared", "not_applicable"]},
+        "reference": {"type": "string", "minLength": 1},
+        "metrics": {"type": "object"}
+      }
+    }
+  }
+}

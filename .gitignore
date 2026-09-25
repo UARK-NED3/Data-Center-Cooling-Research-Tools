@@ -4,4 +4,5 @@ Thumbs.db
 *.log
 __pycache__/
 *.py[cod]
+benchmarks/**/adapters/matlab_preflight_report.json
 
