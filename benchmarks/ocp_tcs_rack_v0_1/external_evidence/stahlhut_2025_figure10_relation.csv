@@ -1,0 +1,8 @@
+source_id,evidence_class,location,delta_t_k,liquid_heat_capture_fraction,relation,validity_note
+stahlhut_2025,reported_relation,"Figure 10 printed equation",0,1.0000,"1 - 0.0103*delta_t_k + 0.0001*delta_t_k^2","Sampled from printed relation; plotted data span approximately 3--27 K."
+stahlhut_2025,reported_relation,"Figure 10 printed equation",5,0.9510,"1 - 0.0103*delta_t_k + 0.0001*delta_t_k^2","Sampled from printed relation; plotted data span approximately 3--27 K."
+stahlhut_2025,reported_relation,"Figure 10 printed equation",10,0.9070,"1 - 0.0103*delta_t_k + 0.0001*delta_t_k^2","Sampled from printed relation; plotted data span approximately 3--27 K."
+stahlhut_2025,reported_relation,"Figure 10 printed equation",15,0.8680,"1 - 0.0103*delta_t_k + 0.0001*delta_t_k^2","Sampled from printed relation; plotted data span approximately 3--27 K."
+stahlhut_2025,reported_relation,"Figure 10 printed equation",20,0.8340,"1 - 0.0103*delta_t_k + 0.0001*delta_t_k^2","Sampled from printed relation; plotted data span approximately 3--27 K."
+stahlhut_2025,reported_relation,"Figure 10 printed equation",25,0.8050,"1 - 0.0103*delta_t_k + 0.0001*delta_t_k^2","Sampled from printed relation; plotted data span approximately 3--27 K."
+stahlhut_2025,reported_relation,"Figure 10 printed equation",30,0.7810,"1 - 0.0103*delta_t_k + 0.0001*delta_t_k^2","Sampled from printed relation; plotted data span approximately 3--27 K."

@@ -1,0 +1,8 @@
+source_id,record_identifier,period_utc,plugin,signal_name,reported_meaning,reported_unit,integer_scale,evidence_class,benchmark_role,restriction
+m100_dataset_12,10.5281/zenodo.7590583,2022-09,schneider_pub,PLC_PLC_Q101.Portata_attiva,Active flow rate,m3/h,10,measured source-reported,liquid-circuit flow target,PLC-panel control volume only
+m100_dataset_12,10.5281/zenodo.7590583,2022-09,schneider_pub,PLC_PLC_Q101.Temp_mandata,Supply flow temperature,degC,10,measured source-reported,thermal input,PLC-panel control volume only
+m100_dataset_12,10.5281/zenodo.7590583,2022-09,schneider_pub,PLC_PLC_Q101.Temp_ritorno,Return flow temperature,degC,10,measured source-reported,thermal output target,PLC-panel control volume only
+m100_dataset_12,10.5281/zenodo.7590583,2022-09,schneider_pub,PLC_PLC_Q101.Delta_temp,Reported temperature difference,degC,10,measured source-reported,consistency check,not independent of PLC control system
+m100_dataset_12,10.5281/zenodo.7590583,2022-09,schneider_pub,PLC_PLC_Q101.Portata_1,Flow sensor 1,m3/h,50,measured source-reported,sensor consistency check,flow-control-volume relationship unresolved
+m100_dataset_12,10.5281/zenodo.7590583,2022-09,schneider_pub,PLC_PLC_Q101.Portata_2,Flow sensor 2,m3/h,50,measured source-reported,sensor consistency check,flow-control-volume relationship unresolved
+m100_dataset_12,10.5281/zenodo.7590583,2022-09,ipmi_pub,total_power,Node total electrical power,W,1,measured source-reported,candidate workload descriptor,panel assignment unresolved

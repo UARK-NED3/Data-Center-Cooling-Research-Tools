@@ -1,0 +1,4 @@
+source_id,evidence_class,location,coolant,case_id,mass_flow_kg_s,specific_heat_j_kg_k,t_in_c,t_out_c,delta_t_k,liquid_heat_w,heat_uncertainty_w,relative_uncertainty_percent,notes
+stahlhut_2025,reported_table,"Table B1","15% propylene-glycol/water mixture",b1_01,0.2715,3900.0,27.0,31.9,4.9,4156.0,240.0,5.78,"Reported by Stahlhut et al.; do not treat as raw time-series data."
+stahlhut_2025,reported_table,"Table B1","15% propylene-glycol/water mixture",b1_02,0.1403,3900.0,26.4,33.6,7.2,3913.4,155.0,3.96,"Reported by Stahlhut et al.; do not treat as raw time-series data."
+stahlhut_2025,reported_table,"Table B1","15% propylene-glycol/water mixture",b1_03,0.1050,3900.0,26.1,35.6,9.5,3883.7,116.1,2.99,"Reported by Stahlhut et al.; do not treat as raw time-series data."
