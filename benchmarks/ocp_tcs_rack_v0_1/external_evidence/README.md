@@ -60,6 +60,38 @@ case after download. It does not turn M100 into a cold-plate branch benchmark:
 the documented signals are at the RDHx circuit scale and do not establish
 individual cold-plate pressure losses, branch split, or chip temperature.
 
+## Local evidence figures
+
+`frontier_facility_summary.py` reads the public Frontier workbook by its
+documented column order and writes a JSON evidence record. The source paper
+states that subloop flow and temperatures are measured at a ten-minute cadence,
+whereas the waste-heat fields are calculated from each subloop flow and
+temperature difference. The summary therefore checks the source-calculated
+identities, rather than presenting them as an independent calorimetric
+validation.
+
+```powershell
+python -m benchmarks.ocp_tcs_rack_v0_1.external_evidence.frontier_facility_summary `
+  --input-xlsx "C:\path\to\Frontier HPC & Facility Data.xlsx" `
+  --output "C:\path\to\frontier_facility_summary.json"
+```
+
+`plot_current_evidence.py` makes three local figures from the Frontier and
+NREL archives. It requires `pandas`, an Excel reader, and `matplotlib`; it does
+not copy the source workbooks or CSV records into this repository.
+
+```powershell
+python -m benchmarks.ocp_tcs_rack_v0_1.external_evidence.plot_current_evidence `
+  --frontier-xlsx "C:\path\to\Frontier HPC & Facility Data.xlsx" `
+  --nrel-input-dir "C:\path\to\Data-Centre-Waste-Heat" `
+  --output-dir "C:\path\to\local-figures"
+```
+
+The intended result is an empirical facility-operation reference, not a rack
+or cold-plate validation set. See [M100 analysis plan](m100_analysis_plan.md)
+for the dynamic liquid-loop work that begins after the M100 Parquet archives
+are available locally.
+
 ## Reuse boundary
 
 The source registry is an intake record, not a redistribution license.  A
