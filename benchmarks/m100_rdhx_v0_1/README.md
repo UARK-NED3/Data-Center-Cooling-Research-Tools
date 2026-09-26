@@ -78,6 +78,33 @@ Before a public model-comparison claim, complete these gates:
 4. Report prediction error against measured targets and independently report
    thermal residuals and uncertainty assumptions.
 
+## Local three-model stress test
+
+`local_three_model_benchmark.py` runs three deliberately different thermal
+model classes on one panel at a time: an M0 quasi-steady energy balance, an M1
+one-state dynamic liquid volume, and an M2 two-state load-to-liquid network.
+It uses chronological train, validation, and test blocks and writes all
+predictions, figures, and summaries to a caller-supplied local directory.
+
+The current adapter accepts the facility-wide IPMI power trace only as an
+**unassigned load proxy**. It is therefore useful for testing data handling,
+model sensitivity, chronological validation, and identifiability failure
+modes. It must not be described as validation of an RDHx, row, rack, or
+cold-plate model unless a panel-to-equipment and power-to-panel mapping is
+added to the input manifest.
+
+```powershell
+python -m benchmarks.m100_rdhx_v0_1.local_three_model_benchmark `
+  --plc-signals D:\path\to\m100_rdhx_synchronized_signals.csv `
+  --cluster-power D:\path\to\m100_ipmi_cluster_power_5min.csv `
+  --output-dir D:\private\three_model_output `
+  --panel Q101
+```
+
+The default `--minimum-node-count 961` retains only five-minute IPMI bins
+with at least 98% of the complete 980-node count. Do not put its outputs in
+this repository unless publication and derivative-use rights are confirmed.
+
 ## Sources
 
 - Marconi100 monitoring dataset, [Scientific Data article](https://doi.org/10.1038/s41597-023-02060-5).
