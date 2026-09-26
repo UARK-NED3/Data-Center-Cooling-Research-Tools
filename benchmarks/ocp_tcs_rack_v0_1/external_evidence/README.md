@@ -47,6 +47,19 @@ For each new digitization, record the source PDF, page, figure, axis limits,
 calibration coordinates, extraction date, and an uncertainty or verification
 check.  Keep restricted PDFs and their rendered pages outside this repository.
 
+## M100 liquid-circuit intake
+
+The ExaData documentation identifies a Schneider PLC stream for the Marconi100
+RDHx liquid-cooling circuit. It reports two flow sensors, active flow, supply
+and return temperatures, delta-T, pump control output, and valve positions at a
+20 s sampling period. The exact metric names and documented integer scalings
+are captured in `m100_schneider_liquid_circuit_metrics.csv`.
+
+This makes M100 a promising *dynamic liquid-loop and controller* comparison
+case after download. It does not turn M100 into a cold-plate branch benchmark:
+the documented signals are at the RDHx circuit scale and do not establish
+individual cold-plate pressure losses, branch split, or chip temperature.
+
 ## Reuse boundary
 
 The source registry is an intake record, not a redistribution license.  A
