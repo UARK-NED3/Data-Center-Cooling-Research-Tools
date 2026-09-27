@@ -15,6 +15,7 @@ Included resources should help researchers design, model, test, monitor, optimiz
 - If you need a tool for a specific research task, start with the [user guide](docs/user-guide.md).
 - If you want the current coverage summary, open the [generated catalog summary](docs/generated/catalog_summary.md) or the [trend summary](docs/trends.md).
 - If you need a transparent rack-level verification input, start with the [synthetic OCP-aligned benchmark case](benchmarks/ocp_tcs_rack_v0_1/README.md). It is a conservation check, not a calibrated or experimentally validated rack model.
+- If you need an external data source, use the [dataset catalog](docs/dataset-catalog.md). It indexes source metadata and benchmark relevance only; it does not host, mirror, or authorize reuse of third-party data.
 - If you want to refresh the repository, follow the [refresh playbook](docs/refresh-playbook.md) and run `python scripts/discover_github_repos.py`.
 - If you want to cite or describe this hub, use the arXiv manuscript draft in [paper/arxiv/main.tex](paper/arxiv/main.tex).
 
