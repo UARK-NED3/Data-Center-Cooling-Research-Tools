@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-labelledby="title description">
+  <title id="title">M100 RDHx benchmark scope</title>
+  <desc id="description">Measured node telemetry and PLC signals enter a liquid-circuit model comparison. The undocumented panel-to-rack topology is shown as a dashed boundary.</desc>
+  <defs>
+    <style>
+      .heading{font:700 28px Arial,sans-serif;fill:#102a43}.label{font:600 20px Arial,sans-serif;fill:#102a43}.body{font:17px Arial,sans-serif;fill:#334e68}.small{font:15px Arial,sans-serif;fill:#486581}.box{stroke-width:3;rx:18;ry:18}.arrow{stroke:#486581;stroke-width:4;fill:none;marker-end:url(#arrowhead)}.dash{stroke-dasharray:10 8}.tag{font:700 14px Arial,sans-serif;letter-spacing:1px}
+    </style>
+    <marker id="arrowhead" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#486581"/></marker>
+  </defs>
+  <rect width="1200" height="520" fill="#f7fafc"/>
+  <text x="60" y="55" class="heading">Measured M100 RDHx-system benchmark: evidence boundary</text>
+  <rect x="60" y="110" width="270" height="170" class="box" fill="#d9eff7" stroke="#0072b2"/>
+  <text x="88" y="148" class="label">Node telemetry</text>
+  <text x="88" y="180" class="body">Total electrical power</text>
+  <text x="88" y="207" class="body">Inlet-air temperature</text>
+  <text x="88" y="246" class="tag" fill="#0072b2">MEASURED</text>
+  <rect x="60" y="330" width="270" height="130" class="box" fill="#fef3c7" stroke="#b7791f"/>
+  <text x="88" y="368" class="label">Topology gate</text>
+  <text x="88" y="397" class="body">Panel-to-rack mapping</text>
+  <text x="88" y="426" class="small">Must be documented before load assignment</text>
+  <rect x="465" y="110" width="285" height="170" class="box" fill="#def7ec" stroke="#009e73"/>
+  <text x="492" y="148" class="label">RDHx PLC signals</text>
+  <text x="492" y="180" class="body">Flow, supply, return</text>
+  <text x="492" y="207" class="body">Pump and valve commands</text>
+  <text x="492" y="246" class="tag" fill="#007a58">MEASURED</text>
+  <rect x="870" y="110" width="270" height="170" class="box" fill="#ede9fe" stroke="#6b46c1"/>
+  <text x="898" y="148" class="label">Model comparison</text>
+  <text x="898" y="180" class="body">Common inputs and outputs</text>
+  <text x="898" y="207" class="body">Chronological holdout</text>
+  <text x="898" y="246" class="tag" fill="#5a38aa">PROPOSED</text>
+  <path d="M330 195 H455" class="arrow"/>
+  <path d="M750 195 H860" class="arrow"/>
+  <path d="M195 330 V290 H607 V280" class="arrow dash"/>
+  <text x="466" y="354" class="label">Derived local diagnostics</text>
+  <text x="466" y="383" class="body">Delta T = Treturn - Tsupply</text>
+  <text x="466" y="411" class="body">Qscreen = rho cp Vdot Delta T</text>
+  <text x="466" y="442" class="small">Screening diagnostic only.</text>
+  <text x="466" y="462" class="small">Not an independently measured rack heat rate.</text>
+  <path d="M607 280 V330" class="arrow"/>
+  <rect x="870" y="330" width="270" height="130" class="box" fill="#fff5f5" stroke="#c53030"/>
+  <text x="898" y="368" class="label">Not claimed</text>
+  <text x="898" y="397" class="body">Cold-plate validation</text>
+  <text x="898" y="426" class="body">Individual-rack hydraulics</text>
+</svg>

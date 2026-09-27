@@ -1,0 +1,10 @@
+source_id,plugin,metric,reported_meaning,reported_unit,reported_scaling,sampling_period,benchmark_role,scope_limit
+m100_dataset_1,schneider_pub,PLC_PLC_Q101.Portata_1,Flow-rate sensor 1,m3/h,x50 integer,20 s,"liquid-loop flow response",RDHx-circuit sensor; not a cold-plate branch flow
+m100_dataset_1,schneider_pub,PLC_PLC_Q101.Portata_2,Flow-rate sensor 2,m3/h,x50 integer,20 s,"liquid-loop flow response",RDHx-circuit sensor; not a cold-plate branch flow
+m100_dataset_1,schneider_pub,PLC_PLC_Q101.Portata_attiva,Active flow rate,m3/h,x10 integer,20 s,"liquid-loop flow response",control interpretation requires source-schema inspection
+m100_dataset_1,schneider_pub,PLC_PLC_Q101.Temp_mandata,Supply-flow temperature,degC,x10 integer,20 s,"thermal response and heat-balance inputs",control-volume definition requires source-schema inspection
+m100_dataset_1,schneider_pub,PLC_PLC_Q101.Temp_ritorno,Return-flow temperature,degC,x10 integer,20 s,"thermal response and heat-balance inputs",control-volume definition requires source-schema inspection
+m100_dataset_1,schneider_pub,PLC_PLC_Q101.Delta_temp,Temperature difference,degC,x10 integer,20 s,"temperature-difference cross-check",compare against decoded supply/return temperatures
+m100_dataset_1,schneider_pub,PLC_PLC_Q101.Out_pid_pompe,Pump PID output,not specified,none stated,20 s,"controller-response comparison",not a calibrated pump-speed or power measurement
+m100_dataset_1,schneider_pub,PLC_PLC_Q101.Pos_valvola1,Valve 1 position,percent,x100 integer,20 s,"valve-control trajectory",not a pressure-drop measurement
+m100_dataset_1,schneider_pub,PLC_PLC_Q101.Pos_valvola_2,Valve 2 position,percent,x100 integer,20 s,"valve-control trajectory",not a pressure-drop measurement

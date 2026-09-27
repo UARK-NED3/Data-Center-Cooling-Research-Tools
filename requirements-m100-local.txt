@@ -1,0 +1,5 @@
+# Dependencies for local-only M100 Parquet intake and figures.
+# M100 source data and generated derivatives stay outside the Git checkout.
+pandas>=2.1,<3
+matplotlib>=3.8,<4
+pyarrow>=14,<26
