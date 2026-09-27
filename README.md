@@ -15,6 +15,7 @@ Included resources should help researchers design, model, test, monitor, optimiz
 - If you need a tool for a specific research task, start with the [user guide](docs/user-guide.md).
 - If you want the current coverage summary, open the [generated catalog summary](docs/generated/catalog_summary.md) or the [trend summary](docs/trends.md).
 - If you need a transparent rack-level verification input, start with the [synthetic OCP-aligned benchmark case](benchmarks/ocp_tcs_rack_v0_1/README.md). It is a conservation check, not a calibrated or experimentally validated rack model.
+- If you need an external data source, use the [dataset catalog](docs/dataset-catalog.md). It indexes source metadata and benchmark relevance only; it does not host, mirror, or authorize reuse of third-party data.
 - If you are comparing models against a measured liquid-circuit record, start with the [M100 RDHx benchmark contract](benchmarks/m100_rdhx_v0_1/README.md). Its local-only intake preserves third-party data rights and distinguishes a PLC-circuit result from rack or cold-plate validation.
 - For the public overview and evidence boundary, open the [project webpage source](docs/index.html). Enable GitHub Pages from the `docs/` directory only after reviewing the public-release scope.
 - If you want to refresh the repository, follow the [refresh playbook](docs/refresh-playbook.md) and run `python scripts/discover_github_repos.py`.
