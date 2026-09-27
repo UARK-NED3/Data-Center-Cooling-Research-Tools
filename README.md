@@ -25,6 +25,7 @@ Included resources should help researchers design, model, test, monitor, optimiz
 
 - [Quick Start](#quick-start)
 - [Benchmark Cases](#benchmark-cases)
+- [External Datasets](#external-datasets)
 - [Generated Catalog Snapshot](#generated-catalog-snapshot)
 - [Fundamental Thermal-Fluid Mechanisms](#fundamental-thermal-fluid-mechanisms)
 - [Chip, Package, And Server Cooling](#chip-package-and-server-cooling)
@@ -45,6 +46,19 @@ The repository provides benchmark cases separately from the curated tool catalog
 - [OCP-aligned rack TCS v0.1](benchmarks/ocp_tcs_rack_v0_1/README.md): a synthetic steady-state rack heat-split and coolant-temperature-rise oracle. It contains no vendor, licensed, or site data.
 
 See [benchmarks/README.md](benchmarks/README.md) for the benchmark contract and [LICENSE-DATA.md](LICENSE-DATA.md) for the data and documentation terms.
+
+## External Datasets
+
+The repository indexes external data sources but does not host, mirror, or authorize reuse of their records. The [full dataset catalog](docs/dataset-catalog.md) provides the canonical metadata, source links, access notes, and rights-status boundary. The concise index below is for discovery only.
+
+| Dataset group | Curated records | Appropriate use and boundary |
+| --- | --- | --- |
+| Facility and cooling-system telemetry | [M100 ExaData](https://zenodo.org/records/7588815), [M100 time-aggregated anomaly data](https://zenodo.org/records/7541722), [NREL ESIF HPC cooling measurements](https://github.com/M-D-Murphy/Data-Centre-Waste-Heat) | Operational cooling and facility/loop analysis after auditing control volumes, sensor definitions, topology, time base, and uncertainty. These records are not direct rack-model validation by default. |
+| Node and server thermal telemetry | [HazardNet Marconi-A2](https://zenodo.org/records/10050368), [OLCF Summit](https://doi.ccs.ornl.gov/dataset/086578e9-8a9f-56b1-a657-0ed8b7393deb), [University of Melbourne cloud PM logs](https://zenodo.org/records/10069402) | Node-level temperature, power, workload, and operations modeling. Rack, coolant-loop, and room-scale claims require a documented spatial mapping and boundary conditions. |
+| Experiment plus simulation case | [Retrofitted air-cooled data-center experiment and OpenFOAM case](https://zenodo.org/records/6793217) | Airflow and thermal CFD comparison within its published geometry, heat inputs, measurements, and operating conditions. It does not establish general validity beyond that case. |
+| Workload context only | [Google clusterdata 2019](https://github.com/google/cluster-data/blob/master/ClusterData2019.md), [Alibaba GPU cluster trace v2026](https://github.com/alibaba/clusterdata/tree/master/cluster-trace-gpu-v2026) | Constructing trace-driven demand schedules after specifying a power or heat-generation model. Neither trace can validate a thermal or cooling model. |
+
+Before analysis, publication, or redistribution, inspect each source's version, citation requirement, access terms, and license. A public download link does not itself grant reuse or redistribution rights.
 
 ## Generated Catalog Snapshot
 
