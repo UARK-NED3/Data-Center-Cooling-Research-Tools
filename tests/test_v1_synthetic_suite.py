@@ -10,6 +10,7 @@ from benchmarks.ocp_tcs_rack_v1_0.model_suite import (
     simulate_two_node_case,
 )
 from benchmarks.ocp_tcs_rack_v1_0.generate_artifacts import generate_artifacts
+from benchmarks.ocp_tcs_rack_v1_0.plot_itherm_figures import generate_itherm_figures
 
 
 class SyntheticSuiteTests(unittest.TestCase):
@@ -57,6 +58,22 @@ class SyntheticSuiteTests(unittest.TestCase):
         self.assertIn("Synthetic scenarios; verification and model-structure comparison only", figure)
         self.assertIn("M1 quasi-steady", figure)
         self.assertIn("M2 two-node", figure)
+
+    def test_itherm_figure_generator_writes_declared_main_figure_assets(self):
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            figures = generate_itherm_figures(Path(temporary_directory))
+            expected = {
+                "control_volume",
+                "input_schedule",
+                "steady_reference",
+                "sensitivity",
+                "verification",
+                "data_readiness",
+            }
+            self.assertEqual(set(figures), expected)
+            for path in figures.values():
+                self.assertTrue(path.is_file())
+                self.assertEqual(path.suffix, ".svg")
 
 
 if __name__ == "__main__":

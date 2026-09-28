@@ -50,12 +50,19 @@ rejection, air-side recirculation, and hardware-calibrated parameters.
 
 ```powershell
 python -m benchmarks.ocp_tcs_rack_v1_0.generate_artifacts
+python -m benchmarks.ocp_tcs_rack_v1_0.plot_itherm_figures
 python -m unittest tests.test_v1_synthetic_suite -v
 ```
 
 The generated results are public synthetic derivatives. They record source
 hashes, declared model identities, and conservation residuals. No third-party
 dataset is read by this suite.
+
+`plot_itherm_figures` creates vector SVG figures for the control volume,
+declared inputs, analytical reference, synthetic sensitivity, numerical checks,
+and field-data readiness audit. The plotting environment requires Matplotlib;
+the resulting figures retain the same synthetic or metadata-audit evidence
+boundary as the underlying suite.
 
 ## Claim boundary
 

@@ -7,4 +7,7 @@ __pycache__/
 benchmarks/**/adapters/matlab_preflight_report.json
 benchmarks/ocp_tcs_rack_v1_0/results/synthetic_transient_model_comparison.png
 docs/assets/evidence_gated_benchmark_architecture_v1_0.png
+benchmarks/ocp_tcs_rack_v1_0/results/fig*.png
+benchmarks/ocp_tcs_rack_v1_0/results/*_out.svg
+docs/assets/*_out.svg
 

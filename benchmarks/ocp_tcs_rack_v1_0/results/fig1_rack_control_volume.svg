@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+  "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns:xlink="http://www.w3.org/1999/xlink" width="453.56375pt" height="220.10295pt" viewBox="0 0 453.56375 220.10295" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-09-28T07:25:57.400942</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 220.10295
+L 453.56375 220.10295
+L 453.56375 0
+L 0 0
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 158.482675 156.22272
+L 295.081075 156.22272
+Q 303.116275 156.22272 303.116275 152.67456
+L 303.116275 42.6816
+Q 303.116275 39.13344 295.081075 39.13344
+L 158.482675 39.13344
+Q 150.447475 39.13344 150.447475 42.6816
+L 150.447475 152.67456
+Q 150.447475 156.22272 158.482675 156.22272
+z
+" clip-path="url(#p653a761c83)" style="fill: #f8fafc; stroke: #243b53; stroke-width: 1.5; stroke-linejoin: miter"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 52.006221 83.48544
+Q 102.236637 83.48544 150.230984 83.48544
+" clip-path="url(#p653a761c83)" style="fill: none; stroke: #1f77b4; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 144.630984 80.68544
+L 150.230984 83.48544
+L 144.630984 86.28544
+z
+" clip-path="url(#p653a761c83)" style="fill: #1f77b4; stroke: #1f77b4; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 301.097421 83.48544
+Q 351.327837 83.48544 399.322184 83.48544
+" clip-path="url(#p653a761c83)" style="fill: none; stroke: #d95f02; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 393.722184 80.68544
+L 399.322184 83.48544
+L 393.722184 86.28544
+z
+" clip-path="url(#p653a761c83)" style="fill: #d95f02; stroke: #d95f02; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 226.781875 12.747248
+Q 226.781875 25.828781 226.781875 36.674245
+" clip-path="url(#p653a761c83)" style="fill: none; stroke: #111827; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 229.581875 31.074245
+L 226.781875 36.674245
+L 223.981875 31.074245
+z
+" clip-path="url(#p653a761c83)" style="fill: #111827; stroke: #111827; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 226.781875 156.446429
+Q 226.781875 167.754116 226.781875 176.825735
+" clip-path="url(#p653a761c83)" style="fill: none; stroke: #6b7280; stroke-width: 2; stroke-linecap: round"/>
+    <path d="M 229.581875 171.225735
+L 226.781875 176.825735
+L 223.981875 171.225735
+z
+" clip-path="url(#p653a761c83)" style="fill: #6b7280; stroke: #6b7280; stroke-width: 2; stroke-linecap: round"/>
+   </g>
+   <g id="text_1">
+    <text style="font-weight: 700; font-size: 9px; font-family: 'Arial'; text-anchor: middle; fill: #102a43" x="226.781875" y="55.659049" transform="rotate(-0 226.781875 55.659049)">Declared rack TCS control volume</text>
+   </g>
+   <g id="text_2">
+    <!-- $Q_{IT}$ -->
+    <g transform="translate(217.356875 97.52617)">
+     <text>
+      <tspan x="0" y="-0.34375" style="font-style: oblique; font-size: 13px; font-family: 'DejaVu Sans'">Q</tspan>
+      <tspan x="10.232422" y="1.789062" style="font-style: oblique; font-size: 9.1px; font-family: 'DejaVu Sans'">I</tspan>
+      <tspan x="12.916211" y="1.789062" style="font-style: oblique; font-size: 9.1px; font-family: 'DejaVu Sans'">T</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_3">
+    <!-- $Q_\ell=f_\ell Q_{IT}$     $Q_a=(1-f_\ell)Q_{IT}$ -->
+    <g transform="translate(167.966875 116.08605)">
+     <text>
+      <tspan x="0" y="-0.15625" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'">Q</tspan>
+      <tspan x="20.980371" y="-0.15625" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'">f</tspan>
+      <tspan x="26.997363" y="-0.15625" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'">Q</tspan>
+      <tspan x="52.536182" y="-0.15625" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'">Q</tspan>
+      <tspan x="95.059863" y="-0.15625" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'">f</tspan>
+      <tspan x="104.588086" y="-0.15625" style="font-style: oblique; font-size: 9px; font-family: 'DejaVu Sans'">Q</tspan>
+      <tspan x="7.083984" y="1.320312" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'">ℓ</tspan>
+      <tspan x="24.148828" y="1.320312" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'">ℓ</tspan>
+      <tspan x="34.081348" y="1.320312" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'">I</tspan>
+      <tspan x="35.939355" y="1.320312" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'">T</tspan>
+      <tspan x="59.620166" y="1.320312" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'">a</tspan>
+      <tspan x="98.22832" y="1.320312" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'">ℓ</tspan>
+      <tspan x="111.67207" y="1.320312" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'">I</tspan>
+      <tspan x="113.530078" y="1.320312" style="font-style: oblique; font-size: 6.3px; font-family: 'DejaVu Sans'">T</tspan>
+      <tspan x="11.685937" y="-0.15625" style="font-size: 9px; font-family: 'DejaVu Sans'">=</tspan>
+      <tspan x="65.480273" y="-0.15625" style="font-size: 9px; font-family: 'DejaVu Sans'">=</tspan>
+      <tspan x="74.774707" y="-0.15625" style="font-size: 9px; font-family: 'DejaVu Sans'">(</tspan>
+      <tspan x="78.285938" y="-0.15625" style="font-size: 9px; font-family: 'DejaVu Sans'">1</tspan>
+      <tspan x="85.76543" y="-0.15625" style="font-size: 9px; font-family: 'DejaVu Sans'">−</tspan>
+      <tspan x="101.076855" y="-0.15625" style="font-size: 9px; font-family: 'DejaVu Sans'">)</tspan>
+      <tspan x="40.03374" y="-0.15625" style="font-size: 9px; font-family: 'Arial'"> </tspan>
+      <tspan x="42.534229" y="-0.15625" style="font-size: 9px; font-family: 'Arial'"> </tspan>
+      <tspan x="45.034717" y="-0.15625" style="font-size: 9px; font-family: 'Arial'"> </tspan>
+      <tspan x="47.535205" y="-0.15625" style="font-size: 9px; font-family: 'Arial'"> </tspan>
+      <tspan x="50.035693" y="-0.15625" style="font-size: 9px; font-family: 'Arial'"> </tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_4">
+    <text style="font-size: 8px; font-family: 'Arial'; text-anchor: middle" x="226.781875" y="137.00376" transform="rotate(-0 226.781875 137.00376)">M1: no storage; M2: effective hardware and coolant storage</text>
+   </g>
+   <g id="text_5">
+    <text style="font-size: 8px; font-family: 'Arial'; fill: #1f77b4" transform="translate(81.56315 62.30264)">TCS supply</text>
+    <!-- $T_s$, $\dot m$, $c_p$ -->
+    <g style="fill: #1f77b4" transform="translate(85.796275 72.53039)">
+     <text>
+      <tspan x="0" y="-0.921875" style="font-style: oblique; font-size: 8px; font-family: 'DejaVu Sans'; fill: #1f77b4">T</tspan>
+      <tspan x="12.468359" y="-0.921875" style="font-style: oblique; font-size: 8px; font-family: 'DejaVu Sans'; fill: #1f77b4">m</tspan>
+      <tspan x="24.706641" y="-0.921875" style="font-style: oblique; font-size: 8px; font-family: 'DejaVu Sans'; fill: #1f77b4">c</tspan>
+      <tspan x="4.886719" y="0.390625" style="font-style: oblique; font-size: 5.6px; font-family: 'DejaVu Sans'; fill: #1f77b4">s</tspan>
+      <tspan x="29.105078" y="0.390625" style="font-style: oblique; font-size: 5.6px; font-family: 'DejaVu Sans'; fill: #1f77b4">p</tspan>
+      <tspan x="8.023047" y="-0.921875" style="font-size: 8px; font-family: 'Arial'; fill: #1f77b4">,</tspan>
+      <tspan x="10.245703" y="-0.921875" style="font-size: 8px; font-family: 'Arial'; fill: #1f77b4"> </tspan>
+      <tspan x="20.261328" y="-0.921875" style="font-size: 8px; font-family: 'Arial'; fill: #1f77b4">,</tspan>
+      <tspan x="22.483984" y="-0.921875" style="font-size: 8px; font-family: 'Arial'; fill: #1f77b4"> </tspan>
+      <tspan x="18.581641" y="-1.921875" style="font-size: 8px; font-family: 'DejaVu Sans'; fill: #1f77b4">̇</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_6">
+    <text style="font-size: 8px; font-family: 'Arial'; fill: #d95f02" transform="translate(331.7681 63.582015)">TCS return</text>
+    <!-- $T_r$ -->
+    <g style="fill: #d95f02" transform="translate(347.607475 72.043515)">
+     <text>
+      <tspan x="0" y="-0.171875" style="font-style: oblique; font-size: 8px; font-family: 'DejaVu Sans'; fill: #d95f02">T</tspan>
+      <tspan x="4.886719" y="1.140625" style="font-style: oblique; font-size: 5.6px; font-family: 'DejaVu Sans'; fill: #d95f02">r</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_7">
+    <text style="font-size: 8px; font-family: 'Arial'; fill: #111827" transform="translate(232.7407 23.638965)">IT heat input</text>
+    <!-- $Q_{IT}$ -->
+    <g style="fill: #111827" transform="translate(249.105075 32.152965)">
+     <text>
+      <tspan x="0" y="-0.0625" style="font-style: oblique; font-size: 8px; font-family: 'DejaVu Sans'; fill: #111827">Q</tspan>
+      <tspan x="6.296875" y="1.25" style="font-style: oblique; font-size: 5.6px; font-family: 'DejaVu Sans'; fill: #111827">I</tspan>
+      <tspan x="7.948438" y="1.25" style="font-style: oblique; font-size: 5.6px; font-family: 'DejaVu Sans'; fill: #111827">T</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_8">
+    <text style="font-size: 8px; font-family: 'Arial'; fill: #6b7280" transform="translate(224.668825 165.517365)">Residual-air path</text>
+    <!-- $Q_a$ -->
+    <g style="fill: #6b7280" transform="translate(249.905075 174.127365)">
+     <text>
+      <tspan x="0" y="-0.0625" style="font-style: oblique; font-size: 8px; font-family: 'DejaVu Sans'; fill: #6b7280">Q</tspan>
+      <tspan x="6.296875" y="1.25" style="font-style: oblique; font-size: 5.6px; font-family: 'DejaVu Sans'; fill: #6b7280">a</tspan>
+     </text>
+    </g>
+   </g>
+   <g id="text_9">
+    <text style="font-size: 8px; font-family: 'Arial'; text-anchor: middle; fill: #4b5563" x="226.781875" y="211.2192" transform="rotate(-0 226.781875 211.2192)">Synthetic v1.0 boundary. CDU, facility heat rejection, air recirculation, pump power, and branch maldistribution are excluded.</text>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p653a761c83">
+   <rect x="25.901875" y="7.2" width="401.76" height="177.408"/>
+  </clipPath>
+ </defs>
+</svg>
