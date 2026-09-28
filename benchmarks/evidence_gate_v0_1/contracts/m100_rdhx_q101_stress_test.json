@@ -1,0 +1,31 @@
+{
+  "case_id": "m100_rdhx_q101_stress_test",
+  "purpose": "local_stress_test",
+  "prediction": {
+    "quantity": "return_temperature",
+    "unit": "degC",
+    "time_basis": "five_minute_mean",
+    "control_volume": "M100_Q101_PLC_temperature_flow_control_volume"
+  },
+  "measurement": {
+    "quantity": "return_temperature",
+    "unit": "degC",
+    "time_basis": "five_minute_mean",
+    "control_volume": "M100_Q101_PLC_temperature_flow_control_volume",
+    "uncertainty_status": "unknown"
+  },
+  "inputs": [
+    {"name": "Q101_supply_temperature", "evidence_status": "documented", "target_leakage": false},
+    {"name": "Q101_active_flow", "evidence_status": "documented", "target_leakage": false},
+    {"name": "facility_wide_IPMI_power", "evidence_status": "proxy", "target_leakage": false}
+  ],
+  "topology_links": [
+    {"name": "Q101_PLC_sensor_to_circuit_control_volume", "status": "documented"}
+  ],
+  "provenance": {
+    "source_id": "Marconi100 monitoring record, locally obtained by user",
+    "rights_status": "third_party_local_only_pending_derivative_permission",
+    "raw_data_in_repository": false
+  },
+  "run": {"execution_state": "completed_local", "validation_state": "not_validated"}
+}

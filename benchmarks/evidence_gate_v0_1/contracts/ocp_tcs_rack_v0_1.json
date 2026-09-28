@@ -1,0 +1,30 @@
+{
+  "case_id": "ocp_tcs_rack_v0_1",
+  "purpose": "cross_implementation_verification",
+  "prediction": {
+    "quantity": "coolant_return_temperature",
+    "unit": "degC",
+    "time_basis": "steady_state",
+    "control_volume": "synthetic_rack_tcs_outlet"
+  },
+  "measurement": {
+    "quantity": "coolant_return_temperature",
+    "unit": "degC",
+    "time_basis": "steady_state",
+    "control_volume": "synthetic_rack_tcs_outlet",
+    "uncertainty_status": "not_applicable_synthetic"
+  },
+  "inputs": [
+    {"name": "rack_heat_load", "evidence_status": "documented", "target_leakage": false},
+    {"name": "tcs_mass_flow", "evidence_status": "documented", "target_leakage": false}
+  ],
+  "topology_links": [
+    {"name": "synthetic_rack_heat_to_tcs_outlet", "status": "documented"}
+  ],
+  "provenance": {
+    "source_id": "NED3 OCP-aligned synthetic rack case v0.1",
+    "rights_status": "ned3_authored_cc_by_4_0",
+    "raw_data_in_repository": false
+  },
+  "run": {"execution_state": "completed", "validation_state": "verification_only"}
+}

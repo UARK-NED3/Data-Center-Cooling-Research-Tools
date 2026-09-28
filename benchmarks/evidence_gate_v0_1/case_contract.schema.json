@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Evidence-gated cooling benchmark case contract",
+  "type": "object",
+  "required": ["case_id", "purpose", "prediction", "measurement", "inputs", "topology_links", "provenance", "run"],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "purpose": {"enum": ["cross_implementation_verification", "local_stress_test", "measured_validation"]},
+    "prediction": {"$ref": "#/$defs/target"},
+    "measurement": {
+      "allOf": [
+        {"$ref": "#/$defs/target"},
+        {"required": ["uncertainty_status"]}
+      ]
+    },
+    "inputs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/input"}},
+    "topology_links": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/link"}},
+    "provenance": {"$ref": "#/$defs/provenance"},
+    "run": {"$ref": "#/$defs/run"}
+  },
+  "$defs": {
+    "target": {
+      "type": "object",
+      "required": ["quantity", "unit", "time_basis", "control_volume"],
+      "properties": {
+        "quantity": {"type": "string", "minLength": 1},
+        "unit": {"type": "string", "minLength": 1},
+        "time_basis": {"type": "string", "minLength": 1},
+        "control_volume": {"type": "string", "minLength": 1}
+      }
+    },
+    "input": {
+      "type": "object",
+      "required": ["name", "evidence_status", "target_leakage"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "evidence_status": {"enum": ["documented", "proxy", "unknown"]},
+        "target_leakage": {"type": "boolean"}
+      }
+    },
+    "link": {
+      "type": "object",
+      "required": ["name", "status"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "status": {"enum": ["documented", "assumed", "unknown"]}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["source_id", "rights_status", "raw_data_in_repository"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "rights_status": {"type": "string", "minLength": 1},
+        "raw_data_in_repository": {"type": "boolean"}
+      }
+    },
+    "run": {
+      "type": "object",
+      "required": ["execution_state", "validation_state"],
+      "properties": {
+        "execution_state": {"enum": ["not_run", "smoke_test", "completed", "completed_local"]},
+        "validation_state": {"enum": ["verification_only", "not_validated", "validated"]}
+      }
+    }
+  }
+}

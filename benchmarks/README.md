@@ -14,3 +14,11 @@ records are intentionally not included.
   applicability limits.
 
 The initial case is [OCP TCS Rack v0.1](ocp_tcs_rack_v0_1/README.md).
+
+## Evidence gate
+
+[Evidence-gated benchmark contracts v0.1](evidence_gate_v0_1/README.md)
+provide a metadata-first admission check before a model is numerically scored.
+They distinguish a valid verification calculation, a conditional diagnostic,
+and a blocked comparison whose control volume, topology, input provenance, or
+measurement-aligned execution is incomplete.

@@ -1,0 +1,30 @@
+{
+  "case_id": "retrofit_openfoam_smoke_test",
+  "purpose": "measured_validation",
+  "prediction": {
+    "quantity": "air_temperature_at_published_sensor_locations",
+    "unit": "degC",
+    "time_basis": "published_stationary_profile",
+    "control_volume": "retrofitted_room_air_sensor_location"
+  },
+  "measurement": {
+    "quantity": "air_temperature_at_published_sensor_locations",
+    "unit": "degC",
+    "time_basis": "published_stationary_profile",
+    "control_volume": "retrofitted_room_air_sensor_location",
+    "uncertainty_status": "unknown"
+  },
+  "inputs": [
+    {"name": "published_heat_input", "evidence_status": "documented", "target_leakage": false},
+    {"name": "published_airflow_boundary_conditions", "evidence_status": "documented", "target_leakage": false}
+  ],
+  "topology_links": [
+    {"name": "published_sensor_coordinate_to_CFD_sampling_location", "status": "assumed"}
+  ],
+  "provenance": {
+    "source_id": "Kuzay et al. Data in Brief 2022, DOI 10.1016/j.dib.2022.108587",
+    "rights_status": "public_source_terms_and_derivative_rights_to_be_verified",
+    "raw_data_in_repository": false
+  },
+  "run": {"execution_state": "smoke_test", "validation_state": "not_validated"}
+}
