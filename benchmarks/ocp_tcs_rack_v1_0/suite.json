@@ -1,0 +1,42 @@
+{
+  "suite_id": "ocp-tcs-rack-v1.0",
+  "title": "Synthetic liquid-cooled rack model-comparison suite",
+  "evidence_class": "synthetic_derived",
+  "validation_state": "not_validated",
+  "purpose": "cross_implementation_verification_and_model_structure_comparison",
+  "system_boundary": "Technology cooling system from rack-manifold inlet to rack-manifold return, with a separately declared residual air heat path.",
+  "fluid": {
+    "name": "water",
+    "specific_heat_j_kg_k": 4180.0,
+    "property_state": "constant assumed value for synthetic cases"
+  },
+  "baseline": {
+    "supply_temperature_c": 30.0,
+    "mass_flow_kg_s": 0.5,
+    "it_heat_w": 10000.0,
+    "liquid_capture_fraction": 0.8,
+    "residual_air_heat_fraction": 0.2
+  },
+  "reduced_order_parameters": {
+    "heat_capacity_hardware_j_k": 200000.0,
+    "heat_capacity_coolant_j_k": 20000.0,
+    "ua_w_k": 4000.0,
+    "interpretation": "Illustrative synthetic effective parameters. They are not fitted to a rack, cold plate, or field record."
+  },
+  "scenarios": [
+    "steady_flow_sweep",
+    "it_load_step",
+    "supply_temperature_step",
+    "mass_flow_step"
+  ],
+  "excluded_physics": [
+    "branch-level flow maldistribution",
+    "component-specific cold-plate correlations",
+    "pump curve and pump power",
+    "CDU heat-exchanger performance",
+    "facility-water-system heat rejection",
+    "air-side room recirculation",
+    "experimentally calibrated hardware parameters"
+  ],
+  "use_limit": "This suite supports code verification and controlled comparison of declared model structures. It does not establish prediction accuracy for real equipment."
+}

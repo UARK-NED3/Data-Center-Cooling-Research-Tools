@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="640" viewBox="0 0 1400 640" role="img" aria-labelledby="title description">
+  <title id="title">Evidence-gated liquid-cooled rack benchmark workflow</title>
+  <desc id="description">A workflow links declared case inputs through evidence checks, model adapters, and quantitative comparison to an evidence-bounded conclusion.</desc>
+  <style>
+    .title {font: 700 31px Arial, sans-serif; fill:#102a43;} .subtitle {font: 17px Arial, sans-serif; fill:#486581;}
+    .h {font: 700 18px Arial, sans-serif; fill:#102a43;} .body {font: 15px Arial, sans-serif; fill:#243b53;} .small {font: 14px Arial, sans-serif; fill:#486581;}
+    .box {stroke:#486581; stroke-width:2; rx:12;} .arrow {stroke:#243b53; stroke-width:2.5; fill:none; marker-end:url(#arrow);} .good {fill:#e6fcf5;} .warn {fill:#fff9db;} .model {fill:#e7f5ff;} .metric {fill:#f3f0ff;}
+  </style>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#243b53"/></marker></defs>
+  <rect width="1400" height="640" fill="white"/>
+  <text x="70" y="50" class="title">Evidence-gated benchmark for liquid-cooled rack models</text>
+  <text x="70" y="78" class="subtitle">A model score is interpreted only after its physical target, evidence, and declared assumptions are compatible.</text>
+
+  <rect x="70" y="155" width="220" height="250" class="box good"/>
+  <text x="92" y="190" class="h">1. Case contract</text>
+  <text x="92" y="224" class="body">TCS control volume</text><text x="92" y="250" class="body">Heat-path partition</text><text x="92" y="276" class="body">Units and time basis</text><text x="92" y="302" class="body">Fluid-property state</text><text x="92" y="328" class="body">Excluded physics</text><text x="92" y="369" class="small">Synthetic, measured, or</text><text x="92" y="390" class="small">conditional-source label</text>
+
+  <rect x="355" y="155" width="235" height="250" class="box warn"/>
+  <text x="377" y="190" class="h">2. Evidence gate</text>
+  <text x="377" y="224" class="body">Target/control-volume match</text><text x="377" y="250" class="body">Input provenance</text><text x="377" y="276" class="body">Topology and sensor map</text><text x="377" y="302" class="body">Uncertainty status</text><text x="377" y="328" class="body">Rights and run status</text><text x="377" y="369" class="small">Admit, conditional, or block</text><text x="377" y="390" class="small">before interpreting accuracy</text>
+
+  <rect x="655" y="125" width="240" height="110" class="box model"/>
+  <text x="677" y="160" class="h">M1: analytical balance</text><text x="677" y="190" class="body">Python and MATLAB reference</text><text x="677" y="212" class="small">steady conservation check</text>
+  <rect x="655" y="265" width="240" height="110" class="box model"/>
+  <text x="677" y="300" class="h">M2: thermal network</text><text x="677" y="330" class="body">two effective thermal nodes</text><text x="677" y="352" class="small">declared transient storage</text>
+  <rect x="655" y="405" width="240" height="110" class="box model"/>
+  <text x="677" y="440" class="h">M3: component network</text><text x="677" y="470" class="body">Simscape adapter, planned</text><text x="677" y="492" class="small">not a completed result</text>
+
+  <rect x="970" y="155" width="210" height="250" class="box metric"/>
+  <text x="992" y="190" class="h">3. Common metrics</text>
+  <text x="992" y="224" class="body">Energy residual</text><text x="992" y="250" class="body">Return temperature</text><text x="992" y="276" class="body">Peak and lag errors</text><text x="992" y="302" class="body">Sensitivity ranking</text><text x="992" y="328" class="body">Runtime and run hash</text><text x="992" y="369" class="small">Same inputs and output</text><text x="992" y="390" class="small">definitions for all models</text>
+
+  <rect x="1210" y="155" width="150" height="250" class="box good"/>
+  <text x="1232" y="190" class="h">Claim</text><text x="1232" y="225" class="h">tier</text>
+  <text x="1232" y="266" class="body">Verification</text><text x="1232" y="300" class="body">Diagnostic</text><text x="1232" y="334" class="body">Validation</text><text x="1232" y="378" class="small">only when the</text><text x="1232" y="398" class="small">evidence permits</text>
+  <path d="M290,280 L345,280" class="arrow"/><path d="M590,280 L645,180" class="arrow"/><path d="M590,280 L645,320" class="arrow"/><path d="M590,280 L645,460" class="arrow"/>
+  <path d="M895,180 L960,250" class="arrow"/><path d="M895,320 L960,280" class="arrow"/><path d="M895,460 L960,315" class="arrow"/><path d="M1180,280 L1200,280" class="arrow"/>
+  <text x="70" y="580" class="small">The framework does not infer missing topology from correlated signals or turn a synthetic comparison into empirical rack validation.</text>
+</svg>
