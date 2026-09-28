@@ -19,7 +19,7 @@
       <h1>Data Center Cooling Research Tools</h1>
       <p>A curated hub and benchmark framework for thermal-fluid models across servers, racks, CDUs, and facility cooling systems.</p>
       <a class="button" href="https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools">Explore the repository</a>
-      <a class="button" href="https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools/blob/main/benchmarks/m100_rdhx_v0_1/README.md">Read the M100 benchmark contract</a>
+      <a class="button" href="https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools/blob/main/benchmarks/ocp_tcs_rack_v1_0/README.md">Run the synthetic v1.0 suite</a>
       <a class="button" href="https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools/blob/main/docs/m100-lay-summary.md">Plain-language summary</a>
     </div>
   </header>
@@ -29,28 +29,28 @@
       <p class="lede">Cooling models often cannot be compared because their heat paths, coolant conditions, time bases, and reported outputs differ. This project creates a shared, auditable path from documented measurements to comparable model runs. It does not present an energy-balance calculation as model validation.</p>
       <div class="grid">
         <article class="card"><div class="tag">1. COMMON CONTRACT</div><h3>Comparable inputs and outputs</h3><p>Each model declares its control volume, input trace, initial state, units, time step, output definition, and run record.</p></article>
-        <article class="card"><div class="tag">2. MEASURED EVIDENCE</div><h3>RDHx circuit telemetry</h3><p>The first intake uses source-reported PLC temperature, flow, and control signals alongside node telemetry from the M100 monitoring record.</p></article>
-        <article class="card"><div class="tag">3. HONEST VALIDATION</div><h3>Chronological holdouts</h3><p>Models will be assessed on future contiguous intervals, not randomly mixed neighboring 20-second records.</p></article>
+        <article class="card"><div class="tag">2. SYNTHETIC MODEL TESTS</div><h3>Declared disturbances</h3><p>The v1.0 suite compares a quasi-steady balance and a two-node thermal network under synthetic load, supply-temperature, and flow changes.</p></article>
+        <article class="card"><div class="tag">3. HONEST CLAIMS</div><h3>Evidence-gated results</h3><p>Verification, conditional diagnosis, and empirical validation have different prerequisites and must not be conflated.</p></article>
       </div>
     </section>
     <section class="two">
       <div>
-        <h2>Measured-system scope</h2>
-        <p>The current case is an RDHx liquid-circuit benchmark. The data record supports a measured intake and signal-consistency audit now. It does not yet document an individual-rack liquid branch or a cold-plate heat path.</p>
+        <h2>Current benchmark scope</h2>
+        <p>The public v1.0 case is a synthetic rack-manifold technology-cooling-system benchmark. It compares declared model structures without presenting an assumed heat path as an empirical validation case.</p>
         <ul class="list">
-          <li><strong>Measured:</strong> node electrical power and inlet-air temperature; PLC flow, supply/return temperature, and controller signals.</li>
-          <li><strong>Derived locally:</strong> direct temperature rise and a screening heat-rate diagnostic.</li>
-          <li><strong>Required before model-to-rack claims:</strong> panel-to-rack topology, loop interpretation, and source permission for publishing derivatives.</li>
+          <li><strong>Implemented:</strong> M1 quasi-steady balance and M2 two-node reduced-order response.</li>
+          <li><strong>Generated:</strong> traceable synthetic time series, conservation residuals, and vector figures.</li>
+          <li><strong>Required before hardware-accuracy claims:</strong> documented topology, sensor locations, uncertainty, and a measurement-aligned model run.</li>
         </ul>
       </div>
-      <div class="callout"><strong>Evidence status</strong><br>Local M100 analysis outputs are not deployed here. The public repository carries the code, schemas, source links, and synthetic tests; third-party raw data and derived figures remain outside the release until rights are confirmed.</div>
+      <div class="callout"><strong>Evidence status</strong><br>The public repository carries NED3-authored synthetic cases, schemas, source links, and tests. M3 is an adapter target, not a completed Simscape result. Third-party raw data and derived figures remain outside the release until rights are confirmed.</div>
     </section>
     <figure class="figure">
-      <img src="assets/m100-benchmark-scope.svg" alt="Diagram of the M100 RDHx benchmark scope and evidence boundary.">
-      <figcaption class="caption">Benchmark scope and evidence boundary. Solid arrows indicate documented data flow. The dashed path is a required topology check, not an assumed physical mapping.</figcaption>
+      <img src="assets/evidence_gated_benchmark_architecture_v1_0.svg" alt="Evidence-gated liquid-cooled rack benchmark workflow.">
+      <figcaption class="caption">The framework joins a declared physical case, evidence checks, model adapters, common metrics, and a claim tier. It does not infer missing physical links from correlated signals.</figcaption>
     </figure>
     <section class="two">
-      <div><h2>What model developers receive</h2><p>A developer supplies a runnable implementation and a machine-readable run record. The framework checks the record, applies common inputs and holdout windows, and compares declared outputs against measured targets when the system boundary matches.</p></div>
+      <div><h2>What model developers receive</h2><p>A developer supplies a runnable implementation and a machine-readable run record. The framework checks the record, applies common synthetic inputs, and compares compatible outputs. Measured targets are added only when the system boundary and evidence are documented.</p></div>
       <div><h2>Who benefits</h2><p>Researchers can compare reduced-order, network, and simulation models. Operators can see which measurements constrain a prediction. Tool users can identify where a claimed result is supported, proposed, or blocked by missing facility metadata.</p></div>
     </section>
   </main>

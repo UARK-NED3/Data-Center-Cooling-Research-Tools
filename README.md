@@ -15,6 +15,8 @@ Included resources should help researchers design, model, test, monitor, optimiz
 - If you need a tool for a specific research task, start with the [user guide](docs/user-guide.md).
 - If you want the current coverage summary, open the [generated catalog summary](docs/generated/catalog_summary.md) or the [trend summary](docs/trends.md).
 - If you need a transparent rack-level verification input, start with the [synthetic OCP-aligned benchmark case](benchmarks/ocp_tcs_rack_v0_1/README.md). It is a conservation check, not a calibrated or experimentally validated rack model.
+- If you need a controlled comparison of model structure under declared load, supply-temperature, and flow disturbances, use the [synthetic rack model-comparison suite v1.0](benchmarks/ocp_tcs_rack_v1_0/README.md). It includes an analytical reference and a two-node reduced-order model. Its Simscape adapter remains planned until an executed one-rack run record is committed.
+- If you are deciding whether a model and measurement can legitimately be scored together, run the [evidence-gated benchmark contracts](benchmarks/evidence_gate_v0_1/README.md). They distinguish an admissible verification score from a conditional diagnostic or a blocked comparison.
 - If you need an external data source, use the [dataset catalog](docs/dataset-catalog.md). It indexes source metadata and benchmark relevance only; it does not host, mirror, or authorize reuse of third-party data.
 - If you are comparing models against a measured liquid-circuit record, start with the [M100 RDHx benchmark contract](benchmarks/m100_rdhx_v0_1/README.md). Its local-only intake preserves third-party data rights and distinguishes a PLC-circuit result from rack or cold-plate validation.
 - For the public overview and evidence boundary, open the [project webpage source](docs/index.html). Enable GitHub Pages from the `docs/` directory only after reviewing the public-release scope.
@@ -44,6 +46,7 @@ Included resources should help researchers design, model, test, monitor, optimiz
 The repository provides benchmark cases separately from the curated tool catalog. Each case declares its maturity, validation state, physical scope, input provenance, and excluded physics. Do not treat a synthetic verification case as a representative hardware design or a validation record.
 
 - [OCP-aligned rack TCS v0.1](benchmarks/ocp_tcs_rack_v0_1/README.md): a synthetic steady-state rack heat-split and coolant-temperature-rise oracle. It contains no vendor, licensed, or site data.
+- [Synthetic rack model-comparison suite v1.0](benchmarks/ocp_tcs_rack_v1_0/README.md): declared steady and transient scenarios for M1 and M2. It supports verification and synthetic model-structure comparison, not empirical prediction accuracy.
 
 See [benchmarks/README.md](benchmarks/README.md) for the benchmark contract and [LICENSE-DATA.md](LICENSE-DATA.md) for the data and documentation terms.
 

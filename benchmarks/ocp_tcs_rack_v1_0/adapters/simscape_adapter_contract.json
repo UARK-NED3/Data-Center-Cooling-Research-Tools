@@ -1,0 +1,35 @@
+{
+  "adapter_id": "simscape-fluids-one-rack-v1.0",
+  "model_level": "M3_component_network",
+  "execution_state": "planned",
+  "source_model": {
+    "name": "MathWorks Data-Center-Simscape",
+    "url": "https://github.com/simscape/Data-Center-Simscape",
+    "license": "BSD-3-Clause",
+    "source_code_vendored": false
+  },
+  "required_benchmark_inputs": [
+    "rack IT heat input [W]",
+    "liquid capture fraction [-]",
+    "TCS supply temperature [degC]",
+    "TCS total mass flow [kg/s]",
+    "water specific heat [J/(kg K)]",
+    "initial temperatures [degC]",
+    "scenario time series [s]"
+  ],
+  "required_canonical_outputs": [
+    "rack-manifold return temperature [degC]",
+    "liquid-side heat rejection [W]",
+    "rack energy residual [W]",
+    "simulation time series [s]"
+  ],
+  "mandatory_mapping_evidence": [
+    "one-rack topology and component inventory",
+    "supply-temperature boundary implementation",
+    "mass-flow boundary implementation",
+    "property-state implementation",
+    "return-temperature sensor-equivalent output",
+    "solver and initialization settings"
+  ],
+  "use_limit": "This is an adapter-development contract. It is not an executed simulation result or validation record."
+}

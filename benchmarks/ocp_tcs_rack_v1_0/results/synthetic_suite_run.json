@@ -1,0 +1,14 @@
+{
+  "evidence_class": "synthetic_derived",
+  "maximum_absolute_m2_energy_residual_w": 1.8189894035458565e-12,
+  "model_levels": {
+    "M1": "quasi_steady_energy_balance",
+    "M2": "two_node_reduced_order_model",
+    "M3": "component_network_adapter_planned_not_executed"
+  },
+  "suite_id": "ocp-tcs-rack-v1.0",
+  "suite_sha256": "23192e34f2b8dab8a6afe953a67e5f4a24b954037f0bd85bbdf76ed61d094ead",
+  "transient_rows": 601,
+  "use_limit": "This suite supports code verification and controlled comparison of declared model structures. It does not establish prediction accuracy for real equipment.",
+  "validation_state": "not_validated"
+}

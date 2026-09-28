@@ -1,0 +1,87 @@
+[
+  {
+    "contract_file": "m100_rdhx_q101_stress_test.json",
+    "decision": {
+      "benchmark_score_permitted": false,
+      "case_id": "m100_rdhx_q101_stress_test",
+      "claim_ceiling": "demonstration",
+      "diagnostic_metric_permitted": true,
+      "reasons": [
+        {
+          "code": "unassigned_input_proxy",
+          "detail": "input 'facility_wide_IPMI_power' is a declared proxy, not a documented assignment",
+          "severity": "conditional"
+        },
+        {
+          "code": "measurement_uncertainty_unknown",
+          "detail": "measurement uncertainty is unavailable for interpretation of an error metric",
+          "severity": "conditional"
+        }
+      ],
+      "status": "conditional"
+    },
+    "gap_report": {
+      "case_id": "m100_rdhx_q101_stress_test",
+      "minimum_actions": [
+        "document_proxy_to_target_heat_or_load_mapping",
+        "document_measurement_calibration_and_uncertainty"
+      ],
+      "rights_boundary": "third_party_local_only_pending_derivative_permission",
+      "status": "conditional"
+    }
+  },
+  {
+    "contract_file": "ocp_tcs_rack_v0_1.json",
+    "decision": {
+      "benchmark_score_permitted": true,
+      "case_id": "ocp_tcs_rack_v0_1",
+      "claim_ceiling": "verification",
+      "diagnostic_metric_permitted": true,
+      "reasons": [],
+      "status": "admit"
+    },
+    "gap_report": {
+      "case_id": "ocp_tcs_rack_v0_1",
+      "minimum_actions": [],
+      "rights_boundary": "ned3_authored_cc_by_4_0",
+      "status": "admit"
+    }
+  },
+  {
+    "contract_file": "retrofit_openfoam_smoke_test.json",
+    "decision": {
+      "benchmark_score_permitted": false,
+      "case_id": "retrofit_openfoam_smoke_test",
+      "claim_ceiling": "demonstration",
+      "diagnostic_metric_permitted": false,
+      "reasons": [
+        {
+          "code": "undocumented_topology",
+          "detail": "topology link 'published_sensor_coordinate_to_CFD_sampling_location' is 'assumed', not documented",
+          "severity": "block"
+        },
+        {
+          "code": "incomplete_run",
+          "detail": "execution state 'smoke_test' cannot support a scored comparison",
+          "severity": "block"
+        },
+        {
+          "code": "measurement_uncertainty_unknown",
+          "detail": "measurement uncertainty is unavailable for interpretation of an error metric",
+          "severity": "conditional"
+        }
+      ],
+      "status": "block"
+    },
+    "gap_report": {
+      "case_id": "retrofit_openfoam_smoke_test",
+      "minimum_actions": [
+        "document_published_sensor_coordinate_to_cfd_sampling_location_mapping",
+        "complete_measurement_aligned_model_run",
+        "document_measurement_calibration_and_uncertainty"
+      ],
+      "rights_boundary": "public_source_terms_and_derivative_rights_to_be_verified",
+      "status": "block"
+    }
+  }
+]
