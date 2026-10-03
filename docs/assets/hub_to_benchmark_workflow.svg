@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1500" height="600" viewBox="0 0 1500 600" role="img" aria-labelledby="title description">
+  <title id="title">Hub-to-benchmark workflow for coherent data-center cooling-model comparison</title>
+  <desc id="description">A catalog of models and datasets feeds a canonical comparison contract, evidence-gated adapters, and evidence-bounded outcomes. The workflow preserves solver diversity while requiring compatible boundaries and metadata before results are compared.</desc>
+  <style>
+    .title {font:700 31px Arial,sans-serif;fill:#102a43}.subtitle {font:17px Arial,sans-serif;fill:#486581}
+    .heading {font:700 19px Arial,sans-serif;fill:#102a43}.body {font:16px Arial,sans-serif;fill:#243b53}.small {font:14px Arial,sans-serif;fill:#486581}.tag {font:700 13px Arial,sans-serif;letter-spacing:1px}
+    .box {stroke-width:2.5;rx:14;ry:14}.arrow {stroke:#243b53;stroke-width:3;fill:none;marker-end:url(#arrow)}.dash {stroke-dasharray:9 7}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#243b53"/></marker>
+  </defs>
+  <rect width="1400" height="600" fill="#ffffff"/>
+  <text x="58" y="54" class="title">From a cooling-tools hub to comparable rack-model evidence</text>
+  <text x="58" y="82" class="subtitle">The hub identifies resources. The benchmark supplies the common physical and reporting contract needed to use selected resources coherently.</text>
+
+  <rect x="55" y="142" width="285" height="300" class="box" fill="#e8f4f8" stroke="#0072b2"/>
+  <text x="80" y="180" class="heading">Cooling-tools hub</text>
+  <text x="80" y="213" class="body">Model resources</text>
+  <text x="99" y="240" class="small">Component and server physics</text>
+  <text x="99" y="263" class="small">Rack networks and CFD</text>
+  <text x="99" y="286" class="small">Room, plant, and control models</text>
+  <text x="80" y="324" class="body">Dataset records</text>
+  <text x="99" y="351" class="small">Node, loop, room, and facility</text>
+  <text x="99" y="374" class="small">telemetry; experiments; workload</text>
+  <text x="80" y="414" class="tag" fill="#0072b2">DISCOVERY AND CATALOGING</text>
+
+  <rect x="410" y="142" width="310" height="300" class="box" fill="#e6fcf5" stroke="#009e73"/>
+  <text x="435" y="180" class="heading">Canonical case contract</text>
+  <text x="435" y="214" class="body">Declare before comparing</text>
+  <text x="454" y="243" class="small">Prediction target and control volume</text>
+  <text x="454" y="267" class="small">Heat paths, fluid state, and time basis</text>
+  <text x="454" y="291" class="small">Inputs, units, and output definitions</text>
+  <text x="454" y="315" class="small">Topology, sensors, uncertainty, and rights</text>
+  <text x="435" y="357" class="body">Do not infer missing mappings</text>
+  <text x="435" y="414" class="tag" fill="#007a58">PHYSICAL AND DATA INTERFACE</text>
+
+  <rect x="800" y="142" width="310" height="300" class="box" fill="#f3f0ff" stroke="#6b46c1"/>
+  <text x="825" y="180" class="heading">Adapters and evidence gate</text>
+  <text x="825" y="214" class="body">Retain solver diversity</text>
+  <text x="844" y="243" class="small">Map solver-native inputs and outputs</text>
+  <text x="844" y="267" class="small">Record settings and run identity</text>
+  <text x="844" y="291" class="small">Check target and metadata alignment</text>
+  <text x="844" y="315" class="small">Admit, condition, or block a claim</text>
+  <text x="825" y="414" class="tag" fill="#5a38aa">EXECUTABLE COMPARISON</text>
+
+  <rect x="1190" y="142" width="255" height="300" class="box" fill="#fff9db" stroke="#b7791f"/>
+  <text x="1215" y="180" class="heading">Useable outcomes</text>
+  <text x="1215" y="218" class="body">Verification</text>
+  <text x="1215" y="249" class="small">Shared synthetic cases</text>
+  <text x="1215" y="288" class="body">Diagnostic</text>
+  <text x="1215" y="319" class="small">Evidence-bounded field use</text>
+  <text x="1215" y="358" class="body">Validation</text>
+  <text x="1215" y="389" class="small">Only with aligned measurements</text>
+
+  <path d="M340 292 H399" class="arrow"/>
+  <path d="M720 292 H789" class="arrow"/>
+  <path d="M1110 292 H1179" class="arrow"/>
+  <path d="M197 474 V510 H955 V452" class="arrow dash"/>
+  <text x="355" y="535" class="small">A common interface enables coherent use of selected tools and records without requiring a common solver.</text>
+  <text x="355" y="557" class="small">Catalogued resources are not presumed to be mutually comparable.</text>
+</svg>

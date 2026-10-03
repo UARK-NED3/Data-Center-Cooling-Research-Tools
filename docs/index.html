@@ -26,25 +26,29 @@
   <main class="wrap">
     <section>
       <h2>Why this benchmark matters</h2>
-      <p class="lede">Cooling models often cannot be compared because their heat paths, coolant conditions, time bases, and reported outputs differ. This project creates a shared, auditable path from documented measurements to comparable model runs. It does not present an energy-balance calculation as model validation.</p>
+      <p class="lede">The repository is a discovery hub for cooling tools and data across component, rack, room, and facility scales. The benchmark adds the shared physical and reporting contract that a selected model and dataset must satisfy before their results are compared. It does not present an energy-balance calculation as model validation.</p>
       <div class="grid">
         <article class="card"><div class="tag">1. COMMON CONTRACT</div><h3>Comparable inputs and outputs</h3><p>Each model declares its control volume, input trace, initial state, units, time step, output definition, and run record.</p></article>
-        <article class="card"><div class="tag">2. SYNTHETIC MODEL TESTS</div><h3>Declared disturbances</h3><p>The v1.0 suite compares a quasi-steady balance and a two-node thermal network under synthetic load, supply-temperature, and flow changes.</p></article>
+        <article class="card"><div class="tag">2. SYNTHETIC MODEL TESTS</div><h3>Declared disturbances</h3><p>The v1.1 suite compares a quasi-steady balance, a two-node thermal network, and a parallel-branch thermal-hydraulic model under declared synthetic inputs.</p></article>
         <article class="card"><div class="tag">3. HONEST CLAIMS</div><h3>Evidence-gated results</h3><p>Verification, conditional diagnosis, and empirical validation have different prerequisites and must not be conflated.</p></article>
       </div>
     </section>
     <section class="two">
       <div>
         <h2>Current benchmark scope</h2>
-        <p>The public v1.0 case is a synthetic rack-manifold technology-cooling-system benchmark. It compares declared model structures without presenting an assumed heat path as an empirical validation case.</p>
+        <p>The public v1.1 case is a synthetic rack-manifold technology-cooling-system benchmark. It compares declared model structures without presenting an assumed heat path as an empirical validation case.</p>
         <ul class="list">
-          <li><strong>Implemented:</strong> M1 quasi-steady balance and M2 two-node reduced-order response.</li>
+          <li><strong>Implemented:</strong> M1 quasi-steady balance, M2 two-node reduced-order response, and M3 parallel-branch thermal-hydraulic network.</li>
           <li><strong>Generated:</strong> traceable synthetic time series, conservation residuals, and vector figures.</li>
           <li><strong>Required before hardware-accuracy claims:</strong> documented topology, sensor locations, uncertainty, and a measurement-aligned model run.</li>
         </ul>
       </div>
-      <div class="callout"><strong>Evidence status</strong><br>The public repository carries NED3-authored synthetic cases, schemas, source links, and tests. M3 is an adapter target, not a completed Simscape result. Third-party raw data and derived figures remain outside the release until rights are confirmed.</div>
+      <div class="callout"><strong>Evidence status</strong><br>The public repository carries NED3-authored synthetic cases, schemas, source links, and tests. M3 is implemented in Python; a separate Simscape adapter remains unexecuted. Third-party raw data and derived figures remain outside the release until rights are confirmed.</div>
     </section>
+    <figure class="figure">
+      <img src="assets/hub_to_benchmark_workflow.svg" alt="Cooling-tools hub connected to a canonical case contract, evidence-gated adapters, and evidence-bounded outcomes.">
+      <figcaption class="caption">The repository discovers and organizes tools and datasets. The benchmark makes a selected subset comparable by declaring compatible control volumes, heat paths, time bases, metadata, and outputs before a model result is interpreted.</figcaption>
+    </figure>
     <figure class="figure">
       <img src="assets/evidence_gated_benchmark_architecture_v1_0.svg" alt="Evidence-gated liquid-cooled rack benchmark workflow.">
       <figcaption class="caption">The framework joins a declared physical case, evidence checks, model adapters, common metrics, and a claim tier. It does not infer missing physical links from correlated signals.</figcaption>
