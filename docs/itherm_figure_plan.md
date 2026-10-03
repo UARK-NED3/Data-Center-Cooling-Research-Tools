@@ -13,14 +13,15 @@ records; no protected raw data or derivatives are included in the repository.
 
 The paper should answer the following questions in order.
 
-1. What physical rack-level prediction is being compared?
-2. Why cannot two nominally similar models be compared without a common case
+1. What public datasets and cooling-model classes exist, and which evidence can support the present rack-level question?
+2. What physical rack-level prediction is being compared?
+3. Why cannot two nominally similar models be compared without a common case
    and evidence contract?
-3. What inputs and model levels does the executable v1.1 suite declare?
-4. What do the implemented models predict under identical synthetic tests?
-5. Which conclusions are numerical verification or model-structure findings,
+4. What inputs and model levels does the executable v1.1 suite declare?
+5. What do the implemented models predict under identical synthetic tests?
+6. Which conclusions are numerical verification or model-structure findings,
    and which would require a fully specified experiment?
-6. Which available records can be promoted to that experiment and which
+7. Which available records can be promoted to that experiment and which
    metadata are still missing?
 
 The resulting argument uses eight main figures.  Figures S1 and S2 are useful
@@ -42,6 +43,13 @@ benchmark-ready field record makes them central.
 | --- | --- | --- | --- | --- |
 | Fig. S1 | **Run-record traceability.** What must an implementation report for replay? | Case-to-code-to-output provenance diagram and a compact excerpt of the run-record schema. | Documentation of the public synthetic suite. | To generate |
 | Fig. S2 | **Claim escalation.** What additional measurements move a case from verification to validation? | Evidence ladder showing the required physical metadata and resulting permitted comparisons. | Framework guidance, not a result. | To generate |
+
+## Landscape tables
+
+| ID | Manuscript role and question | Proposed content and source | Evidence class and claim boundary |
+| --- | --- | --- | --- |
+| Table I | **Dataset landscape.** Which public data records can support cooling studies at component, node, facility, and workload scales? | The nine external records in `docs/dataset-catalog.md`, grouped by physical scale, measured variables, admissible benchmark role, and use in the paper. | Narrative scoping compilation. A catalogued record is not necessarily licensed for derivative sharing or sufficient for rack-model validation. |
+| Table II | **Model landscape.** How do transport, component, rack, room, facility, and digital-twin models relate? | Scale-based taxonomy with inputs, outputs, and relation to the rack-manifold benchmark. | Literature and software synthesis. M1--M3 are the only models executed in the paper. |
 
 ## Placement and figure-to-section mapping
 
