@@ -7,7 +7,10 @@ not empirical rack validation.
 """
 
 import unittest
+from pathlib import Path
+import tempfile
 
+from benchmarks.ocp_tcs_rack_v1_1.generate_artifacts import generate_artifacts
 from benchmarks.ocp_tcs_rack_v1_1.model_suite import (
     evaluate_multibranch_steady_case,
     simulate_multibranch_case,
@@ -89,6 +92,22 @@ class MultibranchSuiteTests(unittest.TestCase):
 
         self.assertAlmostEqual(rows[-1]["mixed_return_temperature_c"], steady["mixed_return_temperature_c"], places=3)
         self.assertLess(max(abs(row["energy_residual_w"]) for row in rows), 1.0e-8)
+
+    def test_artifact_generator_writes_three_model_comparison_with_traceability_metadata(self):
+        with tempfile.TemporaryDirectory() as temporary_directory:
+            artifacts = generate_artifacts(Path(temporary_directory))
+            summary = artifacts["summary_json"].read_text(encoding="utf-8")
+            comparison = artifacts["comparison_csv"].read_text(encoding="utf-8")
+            figure = artifacts["comparison_svg"].read_text(encoding="utf-8")
+            preview = artifacts["comparison_png"]
+            publication_figure = artifacts["comparison_pdf"]
+            self.assertTrue(preview.is_file())
+            self.assertTrue(publication_figure.is_file())
+
+        self.assertIn('"evidence_class": "synthetic_derived"', summary)
+        self.assertIn('"M3": "multi_branch_thermal_hydraulic_network"', summary)
+        self.assertIn("scenario_id,m1_mixed_return_temperature_c", comparison)
+        self.assertIn("Synthetic model-structure comparison", figure)
 
 
 if __name__ == "__main__":

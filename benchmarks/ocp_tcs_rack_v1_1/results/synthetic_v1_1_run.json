@@ -1,0 +1,15 @@
+{
+  "evidence_class": "synthetic_derived",
+  "maximum_absolute_m3_energy_residual_w": 6.366462912410498e-12,
+  "maximum_absolute_m3_mass_flow_residual_kg_s": 1.1102230246251565e-16,
+  "model_levels": {
+    "M1": "quasi_steady_whole_rack_energy_balance",
+    "M2": "two_node_mixed_thermal_network",
+    "M3": "multi_branch_thermal_hydraulic_network"
+  },
+  "scenario_count": 4,
+  "suite_id": "ocp-tcs-rack-v1.1",
+  "suite_sha256": "823c9dfc382a7204da837dd3d84b6486f9094ee363c1893e194640d1677ece6b",
+  "use_limit": "This suite supports code verification and controlled comparison of declared model structures. It does not establish prediction accuracy for real equipment.",
+  "validation_state": "not_validated"
+}
