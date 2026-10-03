@@ -1,0 +1,29 @@
+{
+  "suite_id": "ocp-tcs-rack-v1.1",
+  "title": "Synthetic multi-branch liquid-cooled rack model-comparison suite",
+  "evidence_class": "synthetic_derived",
+  "validation_state": "not_validated",
+  "purpose": "model_structure_comparison_and_cross_implementation_verification",
+  "system_boundary": "Technology cooling system from rack-manifold supply to rack-manifold return, with a separately declared residual-air heat path.",
+  "fluid": {
+    "name": "water",
+    "specific_heat_j_kg_k": 4180.0,
+    "density_kg_m3": 997.0,
+    "property_state": "constant assumed values for synthetic cases"
+  },
+  "baseline": {
+    "supply_temperature_c": 30.0,
+    "mass_flow_kg_s": 0.5,
+    "it_heat_w": 10000.0,
+    "pump_efficiency": 0.6
+  },
+  "branches": [
+    {"branch_id": "B1", "it_heat_fraction": 0.4, "liquid_capture_fraction": 0.8, "hydraulic_resistance_pa_s2_kg2": 900000.0, "ua_w_k": 1200.0, "hardware_heat_capacity_j_k": 60000.0, "coolant_heat_capacity_j_k": 6000.0},
+    {"branch_id": "B2", "it_heat_fraction": 0.3, "liquid_capture_fraction": 0.8, "hydraulic_resistance_pa_s2_kg2": 1000000.0, "ua_w_k": 1100.0, "hardware_heat_capacity_j_k": 55000.0, "coolant_heat_capacity_j_k": 5500.0},
+    {"branch_id": "B3", "it_heat_fraction": 0.2, "liquid_capture_fraction": 0.8, "hydraulic_resistance_pa_s2_kg2": 1100000.0, "ua_w_k": 1000.0, "hardware_heat_capacity_j_k": 50000.0, "coolant_heat_capacity_j_k": 5000.0},
+    {"branch_id": "B4", "it_heat_fraction": 0.1, "liquid_capture_fraction": 0.8, "hydraulic_resistance_pa_s2_kg2": 2500000.0, "ua_w_k": 900.0, "hardware_heat_capacity_j_k": 45000.0, "coolant_heat_capacity_j_k": 4500.0}
+  ],
+  "scenarios": ["balanced_baseline", "hydraulic_imbalance", "nonuniform_heat_load", "constant_input_transient"],
+  "excluded_physics": ["calibrated cold-plate correlations", "pump curve", "CDU heat-exchanger performance", "facility heat rejection", "air-side recirculation", "experimentally calibrated parameters"],
+  "use_limit": "This suite supports code verification and controlled comparison of declared model structures. It does not establish prediction accuracy for real equipment."
+}
