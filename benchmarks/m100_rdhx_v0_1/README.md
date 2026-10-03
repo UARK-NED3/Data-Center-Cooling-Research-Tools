@@ -105,6 +105,31 @@ The default `--minimum-node-count 961` retains only five-minute IPMI bins
 with at least 98% of the complete 980-node count. Do not put its outputs in
 this repository unless publication and derivative-use rights are confirmed.
 
+## Local conditional-result report
+
+After the intake and three-model steps, the following command writes an
+operating-range table, a locked-test error table, and vector/raster figures to
+the caller's private output directory:
+
+```powershell
+python -m benchmarks.m100_rdhx_v0_1.local_result_report `
+  --signals-csv D:\private\m100_rdhx_synchronized_signals.csv `
+  --predictions-csv D:\private\q101_three_model_predictions.csv `
+  --model-summary-json D:\private\q101_three_model_summary.json `
+  --output-dir D:\private\conditional_report `
+  --panel Q101 `
+  --operating-start 2022-09-12T00:00:00Z `
+  --operating-end 2022-09-13T00:00:00Z
+```
+
+The operating-range table distinguishes the two PLC panels and reports the
+5th, 50th, and 95th percentiles of source-reported temperature and flow, plus
+the derived screening heat rate. The model table uses only the untouched
+chronological test block. A lower error is a conditional workflow result, not
+an identified thermal parameter or a validated RDHx, rack, or cold-plate
+model. The report explicitly marks a parameter selected at the edge of the
+declared candidate grid because that condition is an identifiability warning.
+
 ## Sources
 
 - Marconi100 monitoring dataset, [Scientific Data article](https://doi.org/10.1038/s41597-023-02060-5).
