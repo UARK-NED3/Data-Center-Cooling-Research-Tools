@@ -20,6 +20,15 @@ synthetic inputs and export a machine-readable run summary, time-series CSV
 files, and vector figure. These artifacts compare model structures; they do
 not validate a physical rack or substitute for a component test.
 
+The [synthetic multi-branch suite v1.1](ocp_tcs_rack_v1_1/README.md) adds an
+implemented M3 parallel-branch thermal-hydraulic model to the same whole-rack
+control volume. It reports branch-flow ranges, effective branch temperatures,
+pressure drop, pump-power estimates, and mass/energy residuals for four
+NED3-authored synthetic scenarios. Its three-model comparison demonstrates a
+specific limitation of bulk-only scoring: models can agree on mixed return
+temperature while differing in branch-level states. It is not an empirical
+comparison or a substitute for measurement-aligned rack validation.
+
 ## Evidence gate
 
 [Evidence-gated benchmark contracts v0.1](evidence_gate_v0_1/README.md)
