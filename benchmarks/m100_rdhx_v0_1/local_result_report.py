@@ -24,11 +24,15 @@ OPERATING_COLUMNS = (
     "derived_heat_transfer_kw",
 )
 
+# Display names use D0-D2 so the local diagnostic variants cannot be confused
+# with the public synthetic benchmark models M1-M3.  The CSV column names keep
+# the original m0/m1/m2 prefixes for compatibility with existing local runs.
 MODEL_COLUMNS = (
-    ("M0 quasi-steady", "m0_return_temperature_c"),
-    ("M1 one-state", "m1_return_temperature_c"),
-    ("M2 two-state", "m2_return_temperature_c"),
+    ("D0 quasi-steady", "m0_return_temperature_c"),
+    ("D1 one-state", "m1_return_temperature_c"),
+    ("D2 two-state", "m2_return_temperature_c"),
 )
+MODEL_STYLE_KEYS = ("D0", "D1", "D2")
 
 
 def _require_private_destination(output_dir: str | Path) -> Path:
@@ -110,13 +114,17 @@ def summarize_conditional_test_metrics(predictions: pd.DataFrame) -> pd.DataFram
         rmse = float(np.sqrt(np.mean(np.square(residual))))
         if m0_rmse is None:
             m0_rmse = rmse
+        bias = float(np.mean(residual))
         records.append(
             {
                 "model": name,
                 "sample_count": int(len(test)),
                 "mae_c": float(np.mean(np.abs(residual))),
                 "rmse_c": rmse,
-                "bias_c": float(np.mean(residual)),
+                "bias_c": bias,
+                # RMSE^2 = bias^2 + error_sd^2 (population SD of the residual).
+                "error_sd_c": float(np.std(residual)),
+                "bias_share_of_mse": float(bias * bias / (rmse * rmse)) if rmse > 0.0 else float("nan"),
                 "max_absolute_error_c": float(np.max(np.abs(residual))),
                 "rmse_change_from_m0_percent": float(100.0 * (rmse - m0_rmse) / m0_rmse)
                 if m0_rmse > 0.0
@@ -156,72 +164,100 @@ def _plot_local_result_report(
     operating_end: str | None,
     m2_at_candidate_bound: bool,
 ) -> None:
-    """Render a three-part local diagnostic without writing source observations."""
+    """Render a three-part local diagnostic without writing source observations.
+
+    The figure is drawn at IEEE double-column width.  Panel (a) shows one
+    measured PLC window, (b) hourly means over the locked test block, and (c)
+    splits each test RMSE into its mean bias and bias-removed spread.
+    """
 
     try:
         import matplotlib.pyplot as plt
         import matplotlib.dates as mdates
+        from matplotlib.lines import Line2D
     except ImportError as exc:  # pragma: no cover - environment-specific guard.
         raise RuntimeError("figure generation requires matplotlib") from exc
+    from benchmarks.publication_style import DOUBLE_COLUMN_IN, ENTITY_STYLE, panel_label, save_figure, use_style
 
     window = _select_operating_window(signals, panel, operating_start, operating_end)
     trace = window.set_index("timestamp").resample("5min").median(numeric_only=True)
+    hours = (trace.index - trace.index[0]).total_seconds() / 3600.0
     ordered_predictions = predictions.sort_values("time_bin", kind="stable").copy()
     ordered_predictions["time_bin"] = pd.to_datetime(ordered_predictions["time_bin"], utc=True)
     test = ordered_predictions.loc[ordered_predictions["split"] == "test"].copy()
+    hourly = test.set_index("time_bin").resample("1h").mean(numeric_only=True)
+    plotted_columns = ["return_temperature_c", *(column for _, column in MODEL_COLUMNS)]
 
-    plt.rcParams.update({"font.family": "Arial", "font.size": 8, "savefig.dpi": 300})
-    figure = plt.figure(figsize=(11.2, 3.55), constrained_layout=True)
-    grid = figure.add_gridspec(1, 3, width_ratios=(1.0, 1.35, 0.85))
+    use_style()
+    figure = plt.figure(figsize=(DOUBLE_COLUMN_IN, 2.55))
+    grid = figure.add_gridspec(2, 3, width_ratios=(1.0, 1.5, 0.95))
 
-    axis_a = figure.add_subplot(grid[0, 0])
-    axis_a.plot(trace.index, trace["supply_temperature_c"], color="#0072B2", label="Supply temperature")
-    axis_a.plot(trace.index, trace["return_temperature_c"], color="#D55E00", label="Return temperature")
-    axis_a.set_ylabel("Temperature (°C)")
-    twin = axis_a.twinx()
-    twin.plot(trace.index, trace["active_flow_m3h"], color="#009E73", linewidth=0.9, label="Active flow")
-    twin.set_ylabel("Active flow (m$^3$ h$^{-1}$)", color="#007C5D")
-    twin.tick_params(axis="y", colors="#007C5D")
-    handles, labels = axis_a.get_legend_handles_labels()
-    flow_handles, flow_labels = twin.get_legend_handles_labels()
-    axis_a.legend(handles + flow_handles, labels + flow_labels, loc="upper left", ncol=1, frameon=False, fontsize=6.5)
-    axis_a.xaxis.set_major_locator(mdates.AutoDateLocator(minticks=3, maxticks=5))
-    axis_a.xaxis.set_major_formatter(mdates.DateFormatter("%m-%d\n%H:%M"))
-    axis_a.set_title("(a) Measured PLC operating window", loc="left", fontweight="normal")
+    axis_t = figure.add_subplot(grid[0, 0])
+    axis_f = figure.add_subplot(grid[1, 0], sharex=axis_t)
+    axis_t.plot(hours, trace["supply_temperature_c"], color=ENTITY_STYLE["supply"]["color"], linewidth=1.0, label="Supply")
+    axis_t.plot(hours, trace["return_temperature_c"], color=ENTITY_STYLE["return"]["color"], linewidth=1.0, label="Return")
+    axis_t.set_ylabel("$T$ (°C)")
+    axis_t.legend(loc="center right")
+    axis_t.tick_params(labelbottom=False)
+    axis_f.plot(hours, trace["active_flow_m3h"], color=ENTITY_STYLE["measured"]["color"], linewidth=0.9)
+    axis_f.set_ylabel("$\\dot V$ (m$^3$ h$^{-1}$)")
+    axis_f.set_xlabel(f"Hours from {trace.index[0]:%d %b %Y} 00:00 UTC")
+    span = max(float(hours[-1]), 1.0)
+    axis_f.set_xlim(0.0, span)
+    if span >= 23.0:
+        axis_f.set_xticks((0, 6, 12, 18, 24))
+    figure.align_ylabels((axis_t, axis_f))
 
-    axis_b = figure.add_subplot(grid[0, 1])
-    axis_b.plot(test["time_bin"], test["return_temperature_c"], color="black", linewidth=1.0, label="Measured return")
-    colors = ("#0072B2", "#E69F00", "#CC79A7")
-    for (name, column), color in zip(MODEL_COLUMNS, colors):
-        axis_b.plot(test["time_bin"], test[column], color=color, linewidth=0.75, label=name)
+    axis_b = figure.add_subplot(grid[:, 1])
+    axis_b.plot(hourly.index, hourly["return_temperature_c"], color=ENTITY_STYLE["measured"]["color"], linewidth=1.1, label="Measured", zorder=4)
+    for (name, column), key in zip(MODEL_COLUMNS, MODEL_STYLE_KEYS):
+        style = ENTITY_STYLE[key]
+        axis_b.plot(hourly.index, hourly[column], color=style["color"], linestyle=style["linestyle"], linewidth=1.0, label=name.split()[0])
     axis_b.set_ylabel("Return temperature (°C)")
-    axis_b.set_title("(b) Locked chronological test block", loc="left", fontweight="normal")
-    axis_b.legend(loc="upper left", ncol=2, frameon=False, fontsize=6.5)
+    axis_b.xaxis.set_major_locator(mdates.DayLocator())
+    axis_b.xaxis.set_major_formatter(mdates.DateFormatter("%d %b"))
+    axis_b.xaxis.set_minor_locator(mdates.HourLocator(byhour=(6, 12, 18)))
+    axis_b.set_xlabel("Locked test block, 2022 (hourly means)")
+    axis_b.legend(loc="upper center", ncols=4, handlelength=1.6, columnspacing=0.8)
+    values = hourly[plotted_columns].to_numpy(dtype=float)
+    low = float(np.nanmin(values))
+    high = float(np.nanmax(values))
+    axis_b.set_ylim(low - 0.15, high + 0.45 * (high - low) + 0.15)
 
-    axis_c = figure.add_subplot(grid[0, 2])
-    bars = axis_c.bar(test_metrics["model"], test_metrics["rmse_c"], color=colors, width=0.62)
-    axis_c.set_ylabel("Test RMSE (°C)")
-    axis_c.set_ylim(0.0, max(0.1, float(test_metrics["rmse_c"].max()) * 1.30))
-    axis_c.set_title("(c) Conditional prediction error", loc="left", fontweight="normal")
-    axis_c.tick_params(axis="x", labelrotation=18, labelsize=7)
-    for bar, value in zip(bars, test_metrics["rmse_c"]):
-        axis_c.text(bar.get_x() + bar.get_width() / 2.0, float(value) + 0.02, f"{float(value):.3f}", ha="center", va="bottom", fontsize=8)
+    axis_c = figure.add_subplot(grid[:, 2])
+    names = [str(name).split()[0] for name in test_metrics["model"]]
+    rows = list(range(len(names)))[::-1]
+    for y, (_, metric), key in zip(rows, test_metrics.iterrows(), MODEL_STYLE_KEYS):
+        color = ENTITY_STYLE[key]["color"]
+        axis_c.plot([0.0, metric["rmse_c"]], [y, y], color=color, linewidth=0.8, alpha=0.6)
+        axis_c.plot(abs(metric["bias_c"]), y, linestyle="none", marker="o", markerfacecolor="white", markeredgecolor=color)
+        axis_c.plot(metric["error_sd_c"], y, linestyle="none", marker="x", color=color)
+        axis_c.plot(metric["rmse_c"], y, linestyle="none", marker="o", color=color)
+        axis_c.text(metric["rmse_c"] + 0.04, y, f"{metric['rmse_c']:.2f}", va="center", fontsize=7)
+    labels = [f"{name}*" if name == "D2" and m2_at_candidate_bound else name for name in names]
+    axis_c.set_yticks(rows, labels)
+    axis_c.tick_params(axis="y", which="minor", left=False, right=False)
+    axis_c.set_ylim(-1.1, len(names) - 0.4)
+    axis_c.set_xlim(0.0, max(1.1, float(test_metrics["rmse_c"].max()) + 0.3))
+    axis_c.set_xlabel("Test error (°C)")
+    axis_c.legend(
+        handles=[
+            Line2D([], [], linestyle="none", marker="o", color="0.3", label="RMSE"),
+            Line2D([], [], linestyle="none", marker="o", markerfacecolor="white", markeredgecolor="0.3", label="|Bias|"),
+            Line2D([], [], linestyle="none", marker="x", color="0.3", label="SD"),
+        ],
+        loc="lower right",
+        ncols=3,
+        handletextpad=0.2,
+        columnspacing=0.6,
+    )
     if m2_at_candidate_bound:
-        axis_c.text(
-            0.99,
-            0.96,
-            "M2 includes a candidate-bound parameter",
-            transform=axis_c.transAxes,
-            ha="right",
-            va="top",
-            fontsize=7,
-            color="0.25",
-        )
-    for axis in (axis_a, axis_b, axis_c):
-        axis.grid(alpha=0.22)
-    for suffix in (".png", ".pdf", ".svg"):
-        figure.savefig(output_path.with_suffix(suffix), bbox_inches="tight")
-    plt.close(figure)
+        axis_c.text(0.03, 0.97, "* parameter at\ncandidate bound", transform=axis_c.transAxes, fontsize=7, va="top")
+
+    panel_label(axis_t, "a", x=-0.34, y=1.04)
+    panel_label(axis_b, "b", x=-0.14, y=1.02)
+    panel_label(axis_c, "c", x=-0.2, y=1.02)
+    save_figure(figure, output_path.with_suffix(""))
 
 
 def write_local_result_report(

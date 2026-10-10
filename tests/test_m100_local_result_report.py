@@ -50,7 +50,7 @@ class M100LocalResultReportTests(unittest.TestCase):
 
         summary = summarize_conditional_test_metrics(predictions)
 
-        self.assertEqual(summary["model"].tolist(), ["M0 quasi-steady", "M1 one-state", "M2 two-state"])
+        self.assertEqual(summary["model"].tolist(), ["D0 quasi-steady", "D1 one-state", "D2 two-state"])
         self.assertEqual(summary.loc[0, "sample_count"], 2)
         self.assertAlmostEqual(summary.loc[0, "rmse_c"], 1.0)
         self.assertAlmostEqual(summary.loc[2, "rmse_c"], 0.0)

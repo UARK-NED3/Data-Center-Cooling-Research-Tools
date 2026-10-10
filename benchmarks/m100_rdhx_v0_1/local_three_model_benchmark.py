@@ -305,9 +305,9 @@ def _plot_predictions(output: pd.DataFrame, output_path: Path) -> None:
 
     figure, axis = plt.subplots(figsize=(11, 4.2), constrained_layout=True)
     axis.plot(output["time_bin"], output["return_temperature_c"], color="black", linewidth=1.2, label="Measured return")
-    axis.plot(output["time_bin"], output["m0_return_temperature_c"], linewidth=0.8, label="M0 quasi-steady")
-    axis.plot(output["time_bin"], output["m1_return_temperature_c"], linewidth=0.8, label="M1 one-state")
-    axis.plot(output["time_bin"], output["m2_return_temperature_c"], linewidth=0.8, label="M2 two-state")
+    axis.plot(output["time_bin"], output["m0_return_temperature_c"], linewidth=0.8, label="D0 quasi-steady")
+    axis.plot(output["time_bin"], output["m1_return_temperature_c"], linewidth=0.8, label="D1 one-state")
+    axis.plot(output["time_bin"], output["m2_return_temperature_c"], linewidth=0.8, label="D2 two-state")
     axis.set_xlabel("UTC time")
     axis.set_ylabel("Return temperature (°C)")
     axis.set_title("Conditional local stress test; facility power is an unassigned proxy")
