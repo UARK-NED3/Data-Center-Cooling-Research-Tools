@@ -134,6 +134,39 @@ def summarize_conditional_test_metrics(predictions: pd.DataFrame) -> pd.DataFram
     return pd.DataFrame.from_records(records)
 
 
+def summarize_daily_test_rmse(
+    predictions: pd.DataFrame, *, bin_minutes: float = 5.0, minimum_coverage: float = 0.9
+) -> pd.DataFrame:
+    """Return test RMSE per model for each sufficiently complete UTC day.
+
+    A single RMSE over a few test days can hide a ranking that changes from day
+    to day.  Days with fewer than ``minimum_coverage`` of the expected bins are
+    excluded so that partial days at the block edges do not dominate the spread.
+    """
+
+    required = {"time_bin", "split", "return_temperature_c", *(column for _, column in MODEL_COLUMNS)}
+    _require_columns(predictions, required, "prediction table")
+    test = predictions.loc[predictions["split"] == "test"].copy()
+    test["day"] = pd.to_datetime(test["time_bin"], utc=True).dt.floor("D")
+    expected = 24.0 * 60.0 / bin_minutes
+    records: list[dict[str, object]] = []
+    for day, group in test.groupby("day", sort=True):
+        if len(group) < minimum_coverage * expected:
+            continue
+        observed = pd.to_numeric(group["return_temperature_c"], errors="coerce").to_numpy(dtype=float)
+        for name, column in MODEL_COLUMNS:
+            residual = pd.to_numeric(group[column], errors="coerce").to_numpy(dtype=float) - observed
+            records.append(
+                {
+                    "day": day.date().isoformat(),
+                    "sample_count": int(len(group)),
+                    "model": name,
+                    "rmse_c": float(np.sqrt(np.mean(np.square(residual)))),
+                }
+            )
+    return pd.DataFrame.from_records(records, columns=["day", "sample_count", "model", "rmse_c"])
+
+
 def _select_operating_window(
     signals: pd.DataFrame, panel: str, start: str | None, end: str | None
 ) -> pd.DataFrame:
@@ -163,12 +196,14 @@ def _plot_local_result_report(
     operating_start: str | None,
     operating_end: str | None,
     m2_at_candidate_bound: bool,
+    daily_rmse: pd.DataFrame | None = None,
 ) -> None:
     """Render a three-part local diagnostic without writing source observations.
 
     The figure is drawn at IEEE double-column width.  Panel (a) shows one
     measured PLC window, (b) hourly means over the locked test block, and (c)
-    splits each test RMSE into its mean bias and bias-removed spread.
+    splits each test RMSE into its mean bias and bias-removed spread, with the
+    range of daily RMSE over complete test days when supplied.
     """
 
     try:
@@ -234,6 +269,18 @@ def _plot_local_result_report(
         axis_c.plot(metric["error_sd_c"], y, linestyle="none", marker="x", color=color)
         axis_c.plot(metric["rmse_c"], y, linestyle="none", marker="o", color=color)
         axis_c.text(metric["rmse_c"] + 0.04, y, f"{metric['rmse_c']:.2f}", va="center", fontsize=7)
+        if daily_rmse is not None and not daily_rmse.empty:
+            days = daily_rmse.loc[daily_rmse["model"] == metric["model"], "rmse_c"]
+            if not days.empty:
+                axis_c.errorbar(
+                    [0.5 * (days.min() + days.max())],
+                    [y - 0.28],
+                    xerr=[[0.5 * (days.max() - days.min())]],
+                    fmt="none",
+                    ecolor=color,
+                    elinewidth=1.0,
+                    capsize=2.0,
+                )
     labels = [f"{name}*" if name == "D2" and m2_at_candidate_bound else name for name in names]
     axis_c.set_yticks(rows, labels)
     axis_c.tick_params(axis="y", which="minor", left=False, right=False)
@@ -245,10 +292,11 @@ def _plot_local_result_report(
             Line2D([], [], linestyle="none", marker="o", color="0.3", label="RMSE"),
             Line2D([], [], linestyle="none", marker="o", markerfacecolor="white", markeredgecolor="0.3", label="|Bias|"),
             Line2D([], [], linestyle="none", marker="x", color="0.3", label="SD"),
+            Line2D([], [], color="0.3", linewidth=1.0, marker="|", markersize=5, label="Daily range"),
         ],
         loc="lower right",
-        ncols=3,
-        handletextpad=0.2,
+        ncols=2,
+        handletextpad=0.3,
         columnspacing=0.6,
     )
     if m2_at_candidate_bound:
@@ -279,9 +327,11 @@ def write_local_result_report(
         model_summary = json.load(stream)
     statistics = summarize_operating_statistics(signals)
     test_metrics = summarize_conditional_test_metrics(predictions)
+    daily_rmse = summarize_daily_test_rmse(predictions)
     destination.mkdir(parents=True, exist_ok=True)
     statistics.to_csv(destination / "m100_plc_operating_statistics.csv", index=False)
     test_metrics.to_csv(destination / "m100_conditional_test_metrics.csv", index=False)
+    daily_rmse.to_csv(destination / "m100_conditional_daily_rmse.csv", index=False)
     figure_path = destination / "m100_conditional_stress_test.png"
     _plot_local_result_report(
         signals,
@@ -292,6 +342,7 @@ def write_local_result_report(
         operating_start=operating_start,
         operating_end=operating_end,
         m2_at_candidate_bound=bool(model_summary.get("m2", {}).get("parameter_at_candidate_bound", False)),
+        daily_rmse=daily_rmse,
     )
     provenance: dict[str, object] = {
         "analysis": "m100_rdhx_v0_1 conditional local result report",
@@ -304,6 +355,7 @@ def write_local_result_report(
         "output_files": [
             str((destination / "m100_plc_operating_statistics.csv").resolve()),
             str((destination / "m100_conditional_test_metrics.csv").resolve()),
+            str((destination / "m100_conditional_daily_rmse.csv").resolve()),
             str(figure_path.resolve()),
             str(figure_path.with_suffix(".pdf").resolve()),
             str(figure_path.with_suffix(".svg").resolve()),

@@ -11,6 +11,7 @@ import pandas as pd
 
 from benchmarks.m100_rdhx_v0_1.local_result_report import (
     summarize_conditional_test_metrics,
+    summarize_daily_test_rmse,
     summarize_operating_statistics,
     write_local_result_report,
 )
@@ -55,6 +56,30 @@ class M100LocalResultReportTests(unittest.TestCase):
         self.assertAlmostEqual(summary.loc[0, "rmse_c"], 1.0)
         self.assertAlmostEqual(summary.loc[2, "rmse_c"], 0.0)
         self.assertAlmostEqual(summary.loc[2, "rmse_change_from_m0_percent"], -100.0)
+
+    def test_daily_rmse_keeps_only_complete_test_days(self):
+        complete = pd.date_range("2022-09-24", periods=288, freq="5min", tz="UTC")
+        partial = pd.date_range("2022-09-25", periods=10, freq="5min", tz="UTC")
+        time_bins = complete.append(partial)
+        observed = [20.0] * len(time_bins)
+        predictions = pd.DataFrame(
+            {
+                "time_bin": time_bins,
+                "split": "test",
+                "return_temperature_c": observed,
+                "m0_return_temperature_c": [21.0] * len(time_bins),
+                "m1_return_temperature_c": [20.5] * len(time_bins),
+                "m2_return_temperature_c": observed,
+            }
+        )
+
+        daily = summarize_daily_test_rmse(predictions)
+
+        self.assertEqual(sorted(daily["day"].unique()), ["2022-09-24"])
+        by_model = dict(zip(daily["model"], daily["rmse_c"]))
+        self.assertAlmostEqual(by_model["D0 quasi-steady"], 1.0)
+        self.assertAlmostEqual(by_model["D1 one-state"], 0.5)
+        self.assertAlmostEqual(by_model["D2 two-state"], 0.0)
 
     def test_local_report_writes_vector_and_raster_figures_outside_the_repository(self):
         timestamps = pd.date_range("2022-09-01", periods=4, freq="5min", tz="UTC")
