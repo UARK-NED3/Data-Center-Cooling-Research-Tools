@@ -4,8 +4,19 @@ This benchmark is a reproducible intake and model-comparison contract for the
 liquid cooling circuit monitored at the Marconi100 HPC facility. It is not a
 direct-to-chip, cold-plate, or individual-rack benchmark. The public package
 contains code, schemas, a synthetic test fixture, and documentation. It does
-not distribute M100 observations or M100-derived result tables because the
-source record's redistribution terms must be confirmed before publication.
+not distribute M100 observations or processed M100 records. M100 source data
+must be obtained from its source record and remain subject to that record's
+terms.
+
+## Reuse and release
+
+Dataset 12 is available from [Zenodo record 7590583](https://zenodo.org/records/7590583),
+which identifies the record as CC BY 4.0 (checked 2026-10-10). Cite both the
+M100 paper and the exact Zenodo record used, comply with the record-specific
+license, and identify material changes when publishing an analysis. The
+repository releases its original code, schemas, synthetic fixture, and
+documentation. It does not mirror raw M100 files or processed source records.
+See [M100_REUSE.md](M100_REUSE.md) for the provenance and attribution record.
 
 ## Engineering question
 
@@ -71,7 +82,8 @@ it needs a separately obtained M100 source partition.
 
 Before a public model-comparison claim, complete these gates:
 
-1. Verify archive checksum and source permission for published derivatives.
+1. Verify the archive checksum and source-record version. Cite the M100 paper
+   and exact Zenodo record, and comply with the record-specific license.
 2. Document whether Q101 and Q102 are redundant or independent loops and map
    each model control volume to the recorded sensors.
 3. Use chronological holdouts. Never split adjacent 20-s records randomly.
@@ -102,8 +114,9 @@ python -m benchmarks.m100_rdhx_v0_1.local_three_model_benchmark `
 ```
 
 The default `--minimum-node-count 961` retains only five-minute IPMI bins
-with at least 98% of the complete 980-node count. Do not put its outputs in
-this repository unless publication and derivative-use rights are confirmed.
+with at least 98% of the complete 980-node count. Do not commit raw or
+processed M100 records. Any public derived output must retain a provenance
+record and the required source attribution.
 
 ## Sources
 
