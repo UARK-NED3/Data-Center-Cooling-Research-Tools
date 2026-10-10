@@ -5,90 +5,65 @@ evidence-gated benchmark for liquid-cooled data-center rack models.  It is a
 publication plan, not a claim that every planned capability has already been
 executed. The public v1.1 results are synthetic and unvalidated. The M3
 parallel-branch network is implemented in Python; a Simscape adapter remains
-planned. M100, Summit, and Kuzay are reviewed
-only at the level supported by their published metadata and the locally held
-records; no protected raw data or derivatives are included in the repository.
+planned. M100, Summit, and Kuzay are reviewed only at the level supported by
+their published metadata and the locally held records; no protected raw data
+or derivatives are included in the repository.
 
 ## Narrative sequence
 
-The paper should answer the following questions in order.
+1. What physical rack-level prediction is being compared, and which signals sit
+   on its boundary?
+2. How does a catalog of tools become a comparison that is gated by evidence?
+3. What inputs does the executable suite declare, and how do M1 and M2 respond?
+4. Are the implementations numerically verified before they are interpreted?
+5. What do M1, M2, and M3 predict at a common rack manifold?
+6. Which declared parameters set the hidden hardware state, and which only set
+   its response time?
+7. Which public records document what a rack-model validation would need?
+8. What does a real M100 PLC record support when the power-to-panel topology is
+   not documented?
 
-1. How does the cooling-tools hub make models and datasets discoverable across physical scales?
-2. What common physical and reporting contract makes a selected subset comparable?
-3. What public datasets and cooling-model classes exist, and which evidence can support the present rack-level question?
-4. What physical rack-level prediction is being compared?
-5. Why cannot two nominally similar models be compared without a common case
-   and evidence contract?
-6. What inputs and model levels does the executable v1.1 suite declare?
-7. What do the implemented models predict under identical synthetic tests?
-8. What does a real M100 PLC record support when the power-to-panel topology is not documented?
-9. Which conclusions are numerical verification or model-structure findings,
-   and which would require a fully specified experiment?
-10. Which available records can be promoted to that experiment and which
-   metadata are still missing?
+## Main figures and table (v0.5 manuscript)
 
-The resulting argument uses ten main figures. Figures S1 and S2 are useful
-audit artifacts and should remain supplementary unless a future M3 run or
-benchmark-ready field record makes them central.
+Seven figures and one readiness table replace the ten figures of the v0.4
+draft.  Two figures are double-column.
 
-| ID | Manuscript role and question | Proposed content and source | Evidence class and claim boundary | Status |
-| --- | --- | --- | --- | --- |
-| Fig. 1 | **Physical target.** What is included in a rack thermal control volume? | User-authored rack-manifold schematic showing IT heat, liquid capture, residual air heat, TCS supply and return, and excluded CDU/facility paths. | Conceptual representation of the declared v1.0 boundary.  It does not depict a measured topology or commercial rack. | To generate |
-| Fig. 2 | **Hub-to-benchmark role.** How does a catalog of tools and data become a coherent comparison workflow? | `docs/assets/hub_to_benchmark_workflow.svg`, which maps the hub, canonical case contract, evidence-gated adapters, and permitted outcomes. | Conceptual framework. It does not claim that every catalogued model or dataset is executable, mutually comparable, or validated. | Generated |
-| Fig. 3 | **Benchmark logic.** How does the framework prevent an unsupported comparison? | Existing evidence-gated architecture: case contract, evidence gate, M1/M2/M3, common outputs, and permissible claim tier. | Framework design. M1/M2/M3 are implemented as synthetic models; a Simscape adapter remains planned. | Generated |
-| Fig. 4 | **Case definition.** What synthetic disturbances are applied to every implemented model? | Time histories of IT heat, TCS supply temperature, and mass flow from `suite.json` and the declared 1,200 s schedule. | NED3-authored synthetic test inputs; not field measurements or operating recommendations. | To generate |
-| Fig. 5 | **Steady baseline.** What conservation trend must every compatible model reproduce? | M1 temperature rise versus mass flow, together with liquid and residual-air heat partitions at the 10 kW baseline. | Analytical, derived result for the declared control volume. This is code/conservation verification, not rack validation. | To generate |
-| Fig. 6 | **Three-model comparison.** What model-form difference emerges at a common rack manifold? | M1/M2/M3 mixed-return difference, M2 effective hardware state versus the M3 branch peak, and M3 branch-flow ranges under four mechanism-focused cases. | Synthetic model-structure comparison. M3 hydraulic resistances and thermal parameters are declared inputs, not measured hardware properties. | Generated |
-| Fig. 7 | **Sensitivity and identifiability.** Which declared effective parameters change the response, and which observables would identify them? | Parameter sweep of $UA$, hardware capacitance, and coolant capacitance. Report return-temperature rise, effective-hardware peak temperature, and settling time. | Synthetic sensitivity analysis. It identifies data needs for calibration; it does not estimate physical parameters. | To generate |
-| Fig. 8 | **Verification evidence.** Does the numerical implementation close the stated energy balance and converge in time step? | Energy-residual trace and time-step sensitivity for M2 under the declared disturbances. | Numerical verification of the implementation only. It cannot establish physical accuracy. | To generate |
-| Fig. 9 | **M100 conditional diagnostic.** What can the measured PLC and aggregate-power records test before topology is known? | Local-only Q101 PLC operating trace, chronological return-temperature predictions, and test errors from the M100 Dataset 12 workflow. | Measured source records with derived screening quantities and an unassigned facility-power proxy. A candidate-bound fitted parameter is an identifiability warning. Do not publish derivatives or claim physical rack validation without rights and topology confirmation. | Generated locally only |
-| Fig. 10 | **Field-data readiness.** Can available public records support a rack-model validation claim? | Curated matrix for M100, Summit, and Kuzay against topology, load allocation, flow, supply/return sensor locations, coolant properties, synchronization, uncertainty, and rights/provenance. | Literature/dataset metadata synthesis. Each entry is traceable to a cited source and is not a reanalysis of restricted records. | To generate |
-
-| Supplement | Role | Proposed content and source | Evidence class and claim boundary | Status |
-| --- | --- | --- | --- | --- |
-| Fig. S1 | **Run-record traceability.** What must an implementation report for replay? | Case-to-code-to-output provenance diagram and a compact excerpt of the run-record schema. | Documentation of the public synthetic suite. | To generate |
-| Fig. S2 | **Claim escalation.** What additional measurements move a case from verification to validation? | Evidence ladder showing the required physical metadata and resulting permitted comparisons. | Framework guidance, not a result. | To generate |
-
-## Landscape tables
-
-| ID | Manuscript role and question | Proposed content and source | Evidence class and claim boundary |
+| ID | Question | Source | Evidence class and claim boundary |
 | --- | --- | --- | --- |
-| Table I | **Dataset landscape.** Which public data records can support cooling studies at component, node, facility, and workload scales? | The nine external records in `docs/dataset-catalog.md`, grouped by physical scale, measured variables, admissible benchmark role, and use in the paper. | Narrative scoping compilation. A catalogued record is not necessarily licensed for derivative sharing or sufficient for rack-model validation. |
-| Table II | **Model landscape.** How do transport, component, rack, room, facility, and digital-twin models relate? | Scale-based taxonomy with inputs, outputs, and relation to the rack-manifold benchmark. | Literature and software synthesis. M1--M3 are the only models executed in the paper. |
+| Fig. 1 | **Physical target.** What is inside the rack TCS boundary? | `docs/figures/itherm2027/fig_rack_tcs_schematic.tex` (TikZ). Supply and return manifolds, four synthetic branches, boundary signals ($T_s$, $\dot m$, $T_r$) versus branch states ($\dot m_i$, $T_{h,i}$), the 8 kW liquid and 2 kW residual-air paths, and the excluded CDU. | Conceptual drawing of the declared synthetic v1.1 case. Not a measured or commercial rack topology. |
+| Fig. 2 | **Framework.** How does the evidence gate prevent an unsupported comparison? | `docs/figures/itherm2027/fig_evidence_gated_framework.tex` (TikZ). Tools hub, case contract, gate with an explicit *block* loop, adapters, M1/M2/M3 and a planned external solver, common metrics, claim tier set by gate status. | Framework design. M1--M3 implemented; external solver planned. |
+| Fig. 3 | **Inputs and response.** What is applied to every model, and how do M1 and M2 respond? | `paper_figures.inputs_response_figure` from the v1.0 suite. | NED3-authored synthetic stimuli and model responses. |
+| Fig. 4 | **Verification.** Does M2 converge to the exact solution at the expected order? | `paper_figures.convergence_figure`; closed-form reference `two_node_exact_state`. | Numerical verification only. |
+| Fig. 5 | **Model structure.** Same bulk return, different hidden state. | `paper_figures.model_structure_figure` from the v1.1 scenario table (C1--C4). | Synthetic model-structure comparison; not hardware accuracy. |
+| Fig. 6 | **Sensitivity.** Which parameter sets the equilibrium and which sets the response time? | `paper_figures.sensitivity_figure`; exact equilibrium and exact 98 % rise time. | Synthetic, one-at-a-time; not parameter identification. |
+| Table IV | **Readiness.** Which published records document the rack TCS boundary? | Manuscript table (D/P/N with filled, half, and open symbols). | Metadata audit of cited sources; not a data-quality score. |
+| Fig. 7 | **M100 conditional diagnostic.** | `benchmarks/m100_rdhx_v0_1/local_result_report.py`, written outside the repository. | Measured PLC records, derived screening quantities, unassigned power proxy. Local variants are labeled D0--D2 to keep them distinct from M1--M3. |
 
-## Placement and figure-to-section mapping
-
-| Manuscript section | Figures | Job in the argument |
-| --- | --- | --- |
-| Introduction and motivation | Fig. 1, Fig. 2, Fig. 10 | Define the physical target, distinguish the hub from the benchmark, and demonstrate the evidence gap that prevents direct reuse of available records as a validation case. |
-| Framework and case definition | Fig. 3, Fig. 4 | Specify the evidence contract and the common synthetic forcing functions. |
-| Models and verification | Fig. 5, Fig. 8 | Establish the analytical reference and numerical implementation checks before interpretation. |
-| Results and interpretation | Fig. 6, Fig. 7, Fig. 9 | Show model-form differences, identify data needed to distinguish model behavior, and demonstrate the bounded role of M100 field telemetry. |
-| Supplement | Fig. S1, Fig. S2 | Preserve traceability and decision logic without interrupting the main physical narrative. |
+The v0.4 analytical M1 plot (temperature rise versus flow and an 8 kW / 2 kW
+bar chart) is not carried forward: Eq. (2) states the $1/\dot m$ dependence and
+Fig. 1 carries the heat split.
 
 ## Design rules
 
-- Use vector SVG/PDF for all schematics and line plots.  Use Arial in exported
-  figures, with at least 8 pt text at final two-column width.
-- Use a consistent semantic palette: TCS supply/flow inputs in blue,
-  liquid-path heat and return temperature in orange, effective hardware state
-  in purple, residual-air heat in gray, and unexecuted/planned work in a
-  gray dashed treatment.  Do not use color as the sole encoding.
-- Use normal `(a)`, `(b)`, and so forth outside axes.  Each subfigure label
-  must be unique and aligned.
-- Each caption must identify the quantity, units, data source, calculation,
-  and evidence boundary.  No figure may imply that synthetic cases are
-  measured rack results.
-- Keep Fig. 7 numerical detail in the main paper only if the venue page limit
-  allows it.  If space is constrained, move it to the supplement and retain
-  the numerical-verification statement in the methods.
+- Draw at printed size: 3.5 in single column, 7.16 in double column.  Include
+  at `\columnwidth` or `\textwidth` with no further scaling.
+- Arial (plots) or Helvetica (TikZ), 8 pt labels and 7 pt ticks;
+  `publication_style.save_figure` refuses to write a figure with smaller text.
+- No titles or footers inside figures; the caption states the evidence class.
+- One color per entity across all figures (`publication_style.ENTITY_STYLE`):
+  measured data black; supply blue; return vermillion; residual air gray;
+  M1 sky blue circles; M2 orange squares; M3 green triangles; local M100
+  variants D0--D2 reddish purple with distinct line styles.
+- Categorical cases are plotted as markers, never joined by lines.
+- Axis labels use *quantity, symbol (unit)* with SI exponent units.
 
 ## Promotion criteria
 
-The implemented M3 result augments Fig. 5, but it does not validate M3. A
-future Simscape implementation can be added only after its input/output
-mapping, solver settings, version, and run record are captured. A field-data comparison may enter the main
-results only when the selected record documents the model boundary, power-to-
-loop allocation, supply and return sensor positions, flow, time alignment,
-coolant properties, uncertainty or quality flags, and rights for the intended
-use.  Otherwise it remains a conditional diagnostic or a data-readiness item.
+The implemented M3 result does not validate M3. A future Simscape
+implementation can be added only after its input/output mapping, solver
+settings, version, and run record are captured. A field-data comparison may
+enter the main results only when the selected record documents the model
+boundary, power-to-loop allocation, supply and return sensor positions, flow,
+time alignment, coolant properties, uncertainty or quality flags, and rights
+for the intended use.  Otherwise it remains a conditional diagnostic or a
+data-readiness item.
