@@ -48,6 +48,23 @@
     }
   },
   {
+    "contract_file": "ocp_tcs_rack_v1_1.json",
+    "decision": {
+      "benchmark_score_permitted": true,
+      "case_id": "ocp_tcs_rack_v1_1",
+      "claim_ceiling": "verification",
+      "diagnostic_metric_permitted": true,
+      "reasons": [],
+      "status": "admit"
+    },
+    "gap_report": {
+      "case_id": "ocp_tcs_rack_v1_1",
+      "minimum_actions": [],
+      "rights_boundary": "ned3_authored_cc_by_4_0",
+      "status": "admit"
+    }
+  },
+  {
     "contract_file": "retrofit_openfoam_smoke_test.json",
     "decision": {
       "benchmark_score_permitted": false,
