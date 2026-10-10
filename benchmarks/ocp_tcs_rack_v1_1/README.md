@@ -36,13 +36,18 @@ pump curve or cold-plate correlation.
 
 ## Mechanism-focused scenarios
 
-`generate_artifacts.py` evaluates four deterministic cases:
+`suite.json` declares four deterministic cases, each with its full branch
+table, so that an external implementation can reproduce them without reading
+this repository's Python:
 
-1. **Balanced reference:** M3 must reduce to the whole-rack energy balance.
-2. **Nominal nonuniform:** declared branch heat loads and resistances vary.
-3. **Hydraulic imbalance:** one branch has increased resistance at equal heat load.
-4. **Coupled load-hydraulic stress:** high branch heat load coincides with increased resistance.
+1. **C1 balanced reference:** M3 must reduce to the whole-rack energy balance.
+2. **C2 nominal nonuniform:** declared branch heat loads, resistances, and UA vary.
+3. **C3 hydraulic imbalance:** branch B4 resistance is increased fourfold at equal heat load.
+4. **C4 coupled load-hydraulic stress:** branch B1 carries 55 % of the heat with a tripled resistance.
 
+M1 uses the heat-weighted aggregate capture fraction.  M2 is evaluated at its
+closed-form constant-input equilibrium with summed branch UA and
+capacitances; a 1,800 s forward-Euler run is kept as a settling cross-check.
 The intended comparison is whether identical bulk heat and flow conditions can
 hide different branch-flow and effective-hardware-temperature predictions.
 The results do not identify a best model for physical equipment.
@@ -51,11 +56,16 @@ The results do not identify a best model for physical equipment.
 
 ```powershell
 python -m benchmarks.ocp_tcs_rack_v1_1.generate_artifacts
-python -m unittest tests.test_v1_1_multibranch_suite -v
+python -m benchmarks.ocp_tcs_rack_v1_1.paper_figures
+python -m pytest tests/test_v1_1_multibranch_suite.py tests/test_itherm_paper_figures.py
 ```
 
-The checked-in CSV, SVG, and JSON files under `results/` are public synthetic
-derivatives.  The PNG is a local preview and is intentionally ignored.
+`paper_figures.py` writes the ITherm publication figures to `results/itherm/`
+at printed IEEE size, each with the CSV of plotted values, plus
+`itherm_figure_metrics.json` with every scalar quoted in the manuscript
+(observed convergence order, normalized residual, rise times).  The checked-in
+CSV, SVG, PDF, and JSON files are public synthetic derivatives; PNG previews
+are ignored.
 
 ## Claim boundary
 

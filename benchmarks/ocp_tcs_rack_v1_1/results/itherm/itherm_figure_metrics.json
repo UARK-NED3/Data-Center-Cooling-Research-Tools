@@ -1,0 +1,142 @@
+{
+  "evidence_class": "synthetic_derived",
+  "m2_transient_max_abs_residual_w": 1.8189894035458565e-12,
+  "m2_transient_max_abs_residual_relative_to_liquid_heat": 2.2737367544323206e-16,
+  "convergence": {
+    "observed_order_hardware": 1.0029019979062317,
+    "exact_hardware_temperature_200s_c": 34.264247841919875,
+    "slow_time_constant_s": 152.11777330806814,
+    "fast_time_constant_s": 3.1453845866685,
+    "forward_euler_stability_limit_s": 6.290769173337
+  },
+  "sensitivity": {
+    "baseline_steady_hardware_temperature_c": 35.82775119617225,
+    "baseline_rise_time_98_s": 594.9465468581084,
+    "rows": [
+      {
+        "parameter": "UA",
+        "multiplier": 0.5,
+        "steady_hardware_temperature_c": 37.82775119617225,
+        "rise_time_98_s": 784.2022714075397
+      },
+      {
+        "parameter": "UA",
+        "multiplier": 1.0,
+        "steady_hardware_temperature_c": 35.82775119617225,
+        "rise_time_98_s": 594.9465468581084
+      },
+      {
+        "parameter": "UA",
+        "multiplier": 2.0,
+        "steady_hardware_temperature_c": 34.82775119617225,
+        "rise_time_98_s": 502.18282825895653
+      },
+      {
+        "parameter": "C_h",
+        "multiplier": 0.5,
+        "steady_hardware_temperature_c": 35.82775119617225,
+        "rise_time_98_s": 310.34543152977324
+      },
+      {
+        "parameter": "C_h",
+        "multiplier": 1.0,
+        "steady_hardware_temperature_c": 35.82775119617225,
+        "rise_time_98_s": 594.9465468581084
+      },
+      {
+        "parameter": "C_h",
+        "multiplier": 2.0,
+        "steady_hardware_temperature_c": 35.82775119617225,
+        "rise_time_98_s": 1164.7064558741934
+      },
+      {
+        "parameter": "C_f",
+        "multiplier": 0.5,
+        "steady_hardware_temperature_c": 35.82775119617225,
+        "rise_time_98_s": 582.3532279372321
+      },
+      {
+        "parameter": "C_f",
+        "multiplier": 1.0,
+        "steady_hardware_temperature_c": 35.82775119617225,
+        "rise_time_98_s": 594.9465468581084
+      },
+      {
+        "parameter": "C_f",
+        "multiplier": 2.0,
+        "steady_hardware_temperature_c": 35.82775119617225,
+        "rise_time_98_s": 620.6908630598354
+      }
+    ]
+  },
+  "model_structure": [
+    {
+      "scenario_id": "balanced_reference",
+      "case_code": "C1",
+      "m1_mixed_return_temperature_c": 33.82775119617225,
+      "m2_mixed_return_temperature_c": 33.82775119617225,
+      "m2_effective_hardware_temperature_c": 35.82775119617225,
+      "m2_return_temperature_at_1800s_c": 33.8277233622482,
+      "m3_mixed_return_temperature_c": 33.82775119617225,
+      "m3_peak_effective_hardware_temperature_c": 35.82775119617225,
+      "m3_hottest_branch_id": "B1",
+      "m3_min_branch_flow_kg_s": 0.125,
+      "m3_max_branch_flow_kg_s": 0.125,
+      "m3_pressure_drop_pa": 15625.0,
+      "m3_pump_power_w": 13.060013373453694,
+      "m3_energy_residual_w": -4.547473508864641e-12,
+      "m3_mass_flow_residual_kg_s": 0.0
+    },
+    {
+      "scenario_id": "nominal_nonuniform",
+      "case_code": "C2",
+      "m1_mixed_return_temperature_c": 33.82775119617225,
+      "m2_mixed_return_temperature_c": 33.82775119617225,
+      "m2_effective_hardware_temperature_c": 35.732513100934156,
+      "m2_return_temperature_at_1800s_c": 33.827709957240856,
+      "m3_mixed_return_temperature_c": 33.827751196172244,
+      "m3_peak_effective_hardware_temperature_c": 37.95388937561795,
+      "m3_hottest_branch_id": "B1",
+      "m3_min_branch_flow_kg_s": 0.08687550512351652,
+      "m3_max_branch_flow_kg_s": 0.1447925085391942,
+      "m3_pressure_drop_pa": 18868.383476165363,
+      "m3_pump_power_w": 15.770965794187031,
+      "m3_energy_residual_w": -2.7284841053187847e-12,
+      "m3_mass_flow_residual_kg_s": 1.1102230246251565e-16
+    },
+    {
+      "scenario_id": "hydraulic_imbalance",
+      "case_code": "C3",
+      "m1_mixed_return_temperature_c": 33.82775119617225,
+      "m2_mixed_return_temperature_c": 33.82775119617225,
+      "m2_effective_hardware_temperature_c": 35.82775119617225,
+      "m2_return_temperature_at_1800s_c": 33.8277233622482,
+      "m3_mixed_return_temperature_c": 33.82775119617225,
+      "m3_peak_effective_hardware_temperature_c": 38.698564593301434,
+      "m3_hottest_branch_id": "B4",
+      "m3_min_branch_flow_kg_s": 0.07142857142857144,
+      "m3_max_branch_flow_kg_s": 0.14285714285714288,
+      "m3_pressure_drop_pa": 20408.163265306124,
+      "m3_pump_power_w": 17.057976651041564,
+      "m3_energy_residual_w": -6.366462912410498e-12,
+      "m3_mass_flow_residual_kg_s": 0.0
+    },
+    {
+      "scenario_id": "coupled_load_hydraulic_stress",
+      "case_code": "C4",
+      "m1_mixed_return_temperature_c": 33.82775119617225,
+      "m2_mixed_return_temperature_c": 33.82775119617225,
+      "m2_effective_hardware_temperature_c": 35.732513100934156,
+      "m2_return_temperature_at_1800s_c": 33.827709957240856,
+      "m3_mixed_return_temperature_c": 33.82775119617225,
+      "m3_peak_effective_hardware_temperature_c": 44.71739732068373,
+      "m3_hottest_branch_id": "B1",
+      "m3_min_branch_flow_kg_s": 0.0952544779077323,
+      "m3_max_branch_flow_kg_s": 0.15651907876032742,
+      "m3_pressure_drop_pa": 24498.22201598158,
+      "m3_pump_power_w": 20.47661485789166,
+      "m3_energy_residual_w": -2.7284841053187847e-12,
+      "m3_mass_flow_residual_kg_s": 0.0
+    }
+  ]
+}
