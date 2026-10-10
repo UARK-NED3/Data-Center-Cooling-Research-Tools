@@ -39,6 +39,8 @@ RC_PARAMS = {
     "pdf.fonttype": 42,
     "ps.fonttype": 42,
     "svg.fonttype": "none",
+    # Fixed salt so SVG element IDs, and therefore committed files, are stable.
+    "svg.hashsalt": "dc-cooling-research-tools",
     "savefig.dpi": 600,
     # Keep the exported page equal to the drawn size; a tight bounding box
     # would crop it and LaTeX would then rescale the text.
