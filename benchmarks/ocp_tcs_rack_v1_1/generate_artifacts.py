@@ -105,7 +105,11 @@ def evaluate_scenarios(suite: dict) -> tuple[list[dict], list[dict]]:
         )
         branch_flows = [branch["mass_flow_kg_s"] for branch in m3["branches"]]
         hardware = [branch["effective_hardware_temperature_c"] for branch in m3["branches"]]
-        hottest = m3["branches"][hardware.index(max(hardware))]["branch_id"]
+        # A tie (balanced case) has no limiting branch; do not single one out.
+        if max(hardware) - min(hardware) < 1.0e-9:
+            hottest = "uniform"
+        else:
+            hottest = m3["branches"][hardware.index(max(hardware))]["branch_id"]
         comparison.append(
             {
                 "scenario_id": scenario["scenario_id"],

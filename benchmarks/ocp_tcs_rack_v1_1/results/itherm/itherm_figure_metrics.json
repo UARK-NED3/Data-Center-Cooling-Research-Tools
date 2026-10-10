@@ -79,7 +79,7 @@
       "m2_return_temperature_at_1800s_c": 33.8277233622482,
       "m3_mixed_return_temperature_c": 33.82775119617225,
       "m3_peak_effective_hardware_temperature_c": 35.82775119617225,
-      "m3_hottest_branch_id": "B1",
+      "m3_hottest_branch_id": "uniform",
       "m3_min_branch_flow_kg_s": 0.125,
       "m3_max_branch_flow_kg_s": 0.125,
       "m3_pressure_drop_pa": 15625.0,
