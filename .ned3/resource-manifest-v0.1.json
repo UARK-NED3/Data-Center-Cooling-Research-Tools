@@ -1,0 +1,43 @@
+{
+  "manifest_version": "0.1.0",
+  "resource": {
+    "id": "data-center-cooling-research-tools",
+    "name": "Data Center Cooling Research Tools",
+    "kind": "catalog",
+    "visibility": "public"
+  },
+  "canonical_repository": {
+    "url": "https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools",
+    "default_branch": "main",
+    "reference": "778b73c5f25c39ce5714d75822ef891cbf24026a",
+    "accessed_on": "2026-10-12"
+  },
+  "lifecycle": {
+    "status": "active_research",
+    "maintainer_review": "pending"
+  },
+  "intended_use": {
+    "users": ["researchers and engineers selecting documented data-center cooling resources"],
+    "supported_tasks": ["discover cooling tools", "compare documented resource scope", "locate benchmark and data-source leads"],
+    "not_intended_for": ["a local execution record, design validation, or permission to redistribute a third-party artifact"]
+  },
+  "interfaces": {
+    "required_inputs": ["research task", "physical scale and cooling regime", "required evidence level"],
+    "outputs": ["curated resource candidates", "documented scope and validation status", "next-step references"],
+    "execution": "not_runnable"
+  },
+  "evidence": {
+    "ceiling": "metadata_only",
+    "validation_status": "not_claimed",
+    "limitations": ["Catalog entries remain subject to their source-specific assumptions, versions, licenses, and validation boundaries.", "Synthetic repository benchmarks are verification aids, not calibrated or experimentally validated hardware models."]
+  },
+  "reuse": {
+    "software_license": "declared",
+    "data_rights": "verify_before_reuse",
+    "citation": "citation_file"
+  },
+  "links": {
+    "documentation": "https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools#readme",
+    "issues": "https://github.com/UARK-NED3/Data-Center-Cooling-Research-Tools/issues"
+  }
+}
