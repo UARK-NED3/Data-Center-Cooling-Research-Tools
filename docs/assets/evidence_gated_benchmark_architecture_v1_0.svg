@@ -24,7 +24,7 @@
   <rect x="655" y="265" width="240" height="110" class="box model"/>
   <text x="677" y="300" class="h">M2: thermal network</text><text x="677" y="330" class="body">two effective thermal nodes</text><text x="677" y="352" class="small">declared transient storage</text>
   <rect x="655" y="405" width="240" height="110" class="box model"/>
-  <text x="677" y="440" class="h">M3: component network</text><text x="677" y="470" class="body">Simscape adapter, planned</text><text x="677" y="492" class="small">not a completed result</text>
+  <text x="677" y="440" class="h">M3: multi-branch network</text><text x="677" y="470" class="body">parallel thermal-hydraulic paths</text><text x="677" y="492" class="small">declared synthetic branch inputs</text>
 
   <rect x="970" y="155" width="210" height="250" class="box metric"/>
   <text x="992" y="190" class="h">3. Common metrics</text>

@@ -10,6 +10,7 @@ properties.
 from __future__ import annotations
 
 import json
+import math
 from pathlib import Path
 
 
@@ -135,6 +136,146 @@ def simulate_two_node_case(
         hardware_temperature_c += hardware_rate_k_s * time_step_s
         return_temperature_c += coolant_rate_k_s * time_step_s
     return rows
+
+
+def two_node_steady_state(
+    *,
+    supply_temperature_c: float,
+    mass_flow_kg_s: float,
+    specific_heat_j_kg_k: float,
+    liquid_heat_w: float,
+    ua_w_k: float,
+) -> dict[str, float]:
+    """Return the constant-input equilibrium of the two-node model.
+
+    Setting both time derivatives to zero gives
+    ``T_r = T_supply + Q_liquid/(m_dot c_p)`` and ``T_h = T_r + Q_liquid/UA``.
+    The capacitances do not appear: they set the approach rate, not the
+    equilibrium.
+    """
+    if mass_flow_kg_s <= 0.0 or specific_heat_j_kg_k <= 0.0 or ua_w_k <= 0.0:
+        raise ValueError("mass_flow_kg_s, specific_heat_j_kg_k, and ua_w_k must be positive")
+    return_temperature_c = supply_temperature_c + liquid_heat_w / (mass_flow_kg_s * specific_heat_j_kg_k)
+    return {
+        "return_temperature_c": return_temperature_c,
+        "hardware_temperature_c": return_temperature_c + liquid_heat_w / ua_w_k,
+    }
+
+
+def two_node_exact_state(
+    *,
+    time_s: float,
+    supply_temperature_c: float,
+    mass_flow_kg_s: float,
+    specific_heat_j_kg_k: float,
+    liquid_heat_w: float,
+    heat_capacity_hardware_j_k: float,
+    heat_capacity_coolant_j_k: float,
+    ua_w_k: float,
+    initial_hardware_temperature_c: float | None = None,
+    initial_return_temperature_c: float | None = None,
+) -> dict[str, float]:
+    """Evaluate the closed-form two-node solution for constant inputs.
+
+    With constant ``Q_liquid``, ``m_dot``, and ``T_supply`` the model is a
+    linear, constant-coefficient system ``dy/dt = A y`` for the deviation ``y``
+    from equilibrium.  ``A`` has two distinct real negative eigenvalues, so
+    ``exp(A t) = [exp(l1 t)(A - l2 I) - exp(l2 t)(A - l1 I)]/(l1 - l2)``.
+    This is the exact reference used for the time-step convergence check.
+    """
+    for name, value in {
+        "heat_capacity_hardware_j_k": heat_capacity_hardware_j_k,
+        "heat_capacity_coolant_j_k": heat_capacity_coolant_j_k,
+    }.items():
+        if value <= 0.0:
+            raise ValueError(f"{name} must be positive")
+    if time_s < 0.0:
+        raise ValueError("time_s must be nonnegative")
+    equilibrium = two_node_steady_state(
+        supply_temperature_c=supply_temperature_c,
+        mass_flow_kg_s=mass_flow_kg_s,
+        specific_heat_j_kg_k=specific_heat_j_kg_k,
+        liquid_heat_w=liquid_heat_w,
+        ua_w_k=ua_w_k,
+    )
+    hardware_0 = supply_temperature_c if initial_hardware_temperature_c is None else initial_hardware_temperature_c
+    return_0 = supply_temperature_c if initial_return_temperature_c is None else initial_return_temperature_c
+    y_h = hardware_0 - equilibrium["hardware_temperature_c"]
+    y_r = return_0 - equilibrium["return_temperature_c"]
+
+    a = ua_w_k / heat_capacity_hardware_j_k
+    b = ua_w_k / heat_capacity_coolant_j_k
+    c = mass_flow_kg_s * specific_heat_j_kg_k / heat_capacity_coolant_j_k
+    a11, a12, a21, a22 = -a, a, b, -(b + c)
+    trace = a11 + a22
+    discriminant = math.sqrt(trace * trace - 4.0 * (a11 * a22 - a12 * a21))
+    lambda_1 = 0.5 * (trace + discriminant)
+    lambda_2 = 0.5 * (trace - discriminant)
+    e_1 = math.exp(lambda_1 * time_s)
+    e_2 = math.exp(lambda_2 * time_s)
+    scale = 1.0 / (lambda_1 - lambda_2)
+    m11 = scale * (e_1 * (a11 - lambda_2) - e_2 * (a11 - lambda_1))
+    m12 = scale * (e_1 - e_2) * a12
+    m21 = scale * (e_1 - e_2) * a21
+    m22 = scale * (e_1 * (a22 - lambda_2) - e_2 * (a22 - lambda_1))
+    return {
+        "time_s": time_s,
+        "hardware_temperature_c": equilibrium["hardware_temperature_c"] + m11 * y_h + m12 * y_r,
+        "return_temperature_c": equilibrium["return_temperature_c"] + m21 * y_h + m22 * y_r,
+        "slow_time_constant_s": -1.0 / lambda_1,
+        "fast_time_constant_s": -1.0 / lambda_2,
+    }
+
+
+def two_node_rise_time(
+    *,
+    fraction: float,
+    supply_temperature_c: float,
+    mass_flow_kg_s: float,
+    specific_heat_j_kg_k: float,
+    liquid_heat_w: float,
+    heat_capacity_hardware_j_k: float,
+    heat_capacity_coolant_j_k: float,
+    ua_w_k: float,
+) -> float:
+    """Return the exact time for ``T_h`` to complete a fraction of its rise.
+
+    Both nodes start at the supply temperature.  The hardware response is
+    monotonic for this passive network, so bisection on the closed-form
+    solution converges to the unique crossing.
+    """
+    if not 0.0 < fraction < 1.0:
+        raise ValueError("fraction must be between 0 and 1")
+    parameters = {
+        "supply_temperature_c": supply_temperature_c,
+        "mass_flow_kg_s": mass_flow_kg_s,
+        "specific_heat_j_kg_k": specific_heat_j_kg_k,
+        "liquid_heat_w": liquid_heat_w,
+        "heat_capacity_hardware_j_k": heat_capacity_hardware_j_k,
+        "heat_capacity_coolant_j_k": heat_capacity_coolant_j_k,
+        "ua_w_k": ua_w_k,
+    }
+    final = two_node_steady_state(
+        supply_temperature_c=supply_temperature_c,
+        mass_flow_kg_s=mass_flow_kg_s,
+        specific_heat_j_kg_k=specific_heat_j_kg_k,
+        liquid_heat_w=liquid_heat_w,
+        ua_w_k=ua_w_k,
+    )["hardware_temperature_c"]
+    target = supply_temperature_c + fraction * (final - supply_temperature_c)
+    upper = two_node_exact_state(time_s=0.0, **parameters)["slow_time_constant_s"]
+    while two_node_exact_state(time_s=upper, **parameters)["hardware_temperature_c"] < target:
+        upper *= 2.0
+    lower = 0.0
+    for _ in range(200):
+        middle = 0.5 * (lower + upper)
+        if two_node_exact_state(time_s=middle, **parameters)["hardware_temperature_c"] < target:
+            lower = middle
+        else:
+            upper = middle
+        if upper - lower < 1.0e-9:
+            break
+    return 0.5 * (lower + upper)
 
 
 def load_suite(suite_path: str | Path = DEFAULT_SUITE_PATH) -> dict:
