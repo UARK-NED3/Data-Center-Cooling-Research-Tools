@@ -93,10 +93,15 @@ Before a public model-comparison claim, complete these gates:
 ## Local three-model stress test
 
 `local_three_model_benchmark.py` runs three deliberately different thermal
-model classes on one panel at a time: an M0 quasi-steady energy balance, an M1
-one-state dynamic liquid volume, and an M2 two-state load-to-liquid network.
-It uses chronological train, validation, and test blocks and writes all
-predictions, figures, and summaries to a caller-supplied local directory.
+model classes on one panel at a time: a D0 quasi-steady energy balance, a D1
+one-state dynamic liquid volume, and a D2 two-state load-to-liquid network.
+The D labels keep these local diagnostic variants distinct from the public
+synthetic benchmark models M1--M3; prediction columns keep their original
+`m0_`, `m1_`, and `m2_` prefixes for compatibility.  It uses chronological
+train, validation, and test blocks and writes all predictions, figures, and
+summaries to a caller-supplied local directory.  `local_result_report.py`
+reports each test RMSE together with its mean bias and bias-removed standard
+deviation, because a constant offset can dominate the RMSE.
 
 The current adapter accepts the facility-wide IPMI power trace only as an
 **unassigned load proxy**. It is therefore useful for testing data handling,
@@ -117,6 +122,31 @@ The default `--minimum-node-count 961` retains only five-minute IPMI bins
 with at least 98% of the complete 980-node count. Do not commit raw or
 processed M100 records. Any public derived output must retain a provenance
 record and the required source attribution.
+
+## Local conditional-result report
+
+After the intake and three-model steps, the following command writes an
+operating-range table, a locked-test error table, and vector/raster figures to
+the caller's private output directory:
+
+```powershell
+python -m benchmarks.m100_rdhx_v0_1.local_result_report `
+  --signals-csv D:\private\m100_rdhx_synchronized_signals.csv `
+  --predictions-csv D:\private\q101_three_model_predictions.csv `
+  --model-summary-json D:\private\q101_three_model_summary.json `
+  --output-dir D:\private\conditional_report `
+  --panel Q101 `
+  --operating-start 2022-09-12T00:00:00Z `
+  --operating-end 2022-09-13T00:00:00Z
+```
+
+The operating-range table distinguishes the two PLC panels and reports the
+5th, 50th, and 95th percentiles of source-reported temperature and flow, plus
+the derived screening heat rate. The model table uses only the untouched
+chronological test block. A lower error is a conditional workflow result, not
+an identified thermal parameter or a validated RDHx, rack, or cold-plate
+model. The report explicitly marks a parameter selected at the edge of the
+declared candidate grid because that condition is an identifiability warning.
 
 ## Sources
 

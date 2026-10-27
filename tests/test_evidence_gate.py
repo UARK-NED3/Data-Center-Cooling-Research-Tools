@@ -131,6 +131,7 @@ class EvidenceGateTests(unittest.TestCase):
     def test_registered_contracts_preserve_their_declared_claim_boundaries(self):
         expected = {
             "ocp_tcs_rack_v0_1.json": "admit",
+            "ocp_tcs_rack_v1_1.json": "admit",
             "m100_rdhx_q101_stress_test.json": "conditional",
             "retrofit_openfoam_smoke_test.json": "block",
         }

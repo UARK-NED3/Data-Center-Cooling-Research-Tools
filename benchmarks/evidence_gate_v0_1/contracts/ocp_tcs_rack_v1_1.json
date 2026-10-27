@@ -1,0 +1,34 @@
+{
+  "case_id": "ocp_tcs_rack_v1_1",
+  "purpose": "cross_implementation_verification",
+  "prediction": {
+    "quantity": "coolant_mixed_return_temperature",
+    "unit": "degC",
+    "time_basis": "steady_state",
+    "control_volume": "synthetic_rack_tcs_manifold"
+  },
+  "measurement": {
+    "quantity": "coolant_mixed_return_temperature",
+    "unit": "degC",
+    "time_basis": "steady_state",
+    "control_volume": "synthetic_rack_tcs_manifold",
+    "uncertainty_status": "not_applicable_synthetic"
+  },
+  "inputs": [
+    {"name": "rack_heat_load", "evidence_status": "documented", "target_leakage": false},
+    {"name": "tcs_mass_flow", "evidence_status": "documented", "target_leakage": false},
+    {"name": "branch_heat_fractions", "evidence_status": "documented", "target_leakage": false},
+    {"name": "branch_hydraulic_resistances", "evidence_status": "documented", "target_leakage": false},
+    {"name": "branch_conductances", "evidence_status": "documented", "target_leakage": false}
+  ],
+  "topology_links": [
+    {"name": "synthetic_supply_manifold_to_branch_cold_plates", "status": "documented"},
+    {"name": "synthetic_branch_outlets_to_return_manifold", "status": "documented"}
+  ],
+  "provenance": {
+    "source_id": "NED3 synthetic multi-branch rack case v1.1 (benchmarks/ocp_tcs_rack_v1_1/suite.json)",
+    "rights_status": "ned3_authored_cc_by_4_0",
+    "raw_data_in_repository": false
+  },
+  "run": {"execution_state": "completed", "validation_state": "verification_only"}
+}

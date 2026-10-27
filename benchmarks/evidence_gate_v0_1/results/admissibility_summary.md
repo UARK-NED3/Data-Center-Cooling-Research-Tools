@@ -6,6 +6,7 @@ This generated report evaluates metadata contracts only. It contains no third-pa
 | --- | --- | --- | --- | --- |
 | m100_rdhx_q101_stress_test | conditional | not permitted | demonstration | unassigned_input_proxy, measurement_uncertainty_unknown |
 | ocp_tcs_rack_v0_1 | admit | permitted | verification | none |
+| ocp_tcs_rack_v1_1 | admit | permitted | verification | none |
 | retrofit_openfoam_smoke_test | block | not permitted | demonstration | undocumented_topology, incomplete_run, measurement_uncertainty_unknown |
 
 ## Minimum actions for blocked or conditional cases
@@ -15,6 +16,9 @@ This generated report evaluates metadata contracts only. It contains no third-pa
 - `document_measurement_calibration_and_uncertainty`
 
 ### ocp_tcs_rack_v0_1
+- No additional evidence action is registered for the stated verification scope.
+
+### ocp_tcs_rack_v1_1
 - No additional evidence action is registered for the stated verification scope.
 
 ### retrofit_openfoam_smoke_test

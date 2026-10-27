@@ -52,7 +52,7 @@ def predict_m0_quasisteady(
     load_to_circuit_fraction: float,
     cp_j_kgk: float = 4182.0,
 ) -> np.ndarray:
-    """Predict return temperature from the zero-storage energy balance.
+    r"""Predict return temperature from the zero-storage energy balance.
 
     M0 is the algebraic reference \(T_r=T_s+\eta Q/(\dot m c_p)\).  It is
     not an independently validated rack model unless ``load_proxy_kw`` has a
@@ -130,7 +130,7 @@ def simulate_m1_lumped(
     time_step_s: float,
     cp_j_kgk: float = 4182.0,
 ) -> np.ndarray:
-    """Simulate a one-state liquid control volume with forward Euler time steps.
+    r"""Simulate a one-state liquid control volume with forward Euler time steps.
 
     The governing model is \(C dT_r/dt=\eta Q-\dot m c_p(T_r-T_s)\).
     ``thermal_capacitance_j_k`` is an effective parameter, not a measured mass
@@ -178,7 +178,7 @@ def simulate_m2_two_state(
     time_step_s: float,
     cp_j_kgk: float = 4182.0,
 ) -> np.ndarray:
-    """Simulate a load-to-liquid, two-state thermal network with forward Euler.
+    r"""Simulate a load-to-liquid, two-state thermal network with forward Euler.
 
     M2 represents a heat-producing thermal mass coupled by \(UA\) to a liquid
     control volume.  The reported output is the liquid return temperature.
