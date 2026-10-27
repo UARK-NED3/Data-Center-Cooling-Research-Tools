@@ -147,9 +147,10 @@ def model_structure_figure(stem: Path, suite: dict, comparison: list[dict], bran
             style = ENTITY_STYLE[model]
             top.plot(index + offsets[model], value, linestyle="none", marker=style["marker"], markersize=marker_size, color=style["color"])
     top.set_ylabel(r"Temperature (°C)")
-    top.set_ylim(31.6, 46.5)
-    top.text(1.5, 32.55, r"Open: mixed return $T_r$", ha="center", va="center", fontsize=7)
-    top.text(-0.45, 45.2, r"Filled: hardware $T_h$", ha="left", va="center", fontsize=7)
+    top.set_ylim(32.5, 46.5)
+    # Both marker-fill meanings sit together above the legend.
+    top.text(-0.45, 45.35, r"Filled: hardware $T_h$", ha="left", va="center", fontsize=7)
+    top.text(-0.45, 44.1, r"Open: mixed return $T_r$", ha="left", va="center", fontsize=7)
     handles = [
         Line2D([], [], linestyle="none", marker=ENTITY_STYLE["M1"]["marker"], color=ENTITY_STYLE["M1"]["color"], label="M1 whole rack"),
         Line2D([], [], linestyle="none", marker=ENTITY_STYLE["M2"]["marker"], color=ENTITY_STYLE["M2"]["color"], label="M2 lumped node"),

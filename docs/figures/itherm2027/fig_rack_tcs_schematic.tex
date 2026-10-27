@@ -73,9 +73,13 @@
   \node[anchor=south west, inner sep=1pt] at (4.72,4.66) {$T_{h,i}$, $UA_i$};
 
   % ------------------------------------------------------------------ key
-  \node[obs] at (6.8,1.3) {};
-  \node[anchor=west] at (6.9,1.3) {boundary signal};
-  \node[hidden] at (6.8,0.85) {};
-  \node[anchor=west] at (6.9,0.85) {M3 branch state};
+  \draw[pipe, supply] (6.73,2.2) -- (6.95,2.2);
+  \node[anchor=west] at (6.97,2.2) {coolant supply};
+  \draw[pipe, return] (6.73,1.75) -- (6.95,1.75);
+  \node[anchor=west] at (6.97,1.75) {heated return};
+  \node[obs] at (6.84,1.3) {};
+  \node[anchor=west] at (6.97,1.3) {boundary signal};
+  \node[hidden] at (6.84,0.85) {};
+  \node[anchor=west] at (6.97,0.85) {M3 branch state};
 \end{tikzpicture}
 \end{document}
